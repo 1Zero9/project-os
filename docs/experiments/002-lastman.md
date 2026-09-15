@@ -3,7 +3,7 @@
 - **Experiment:** Lastman
 - **Type:** Existing Project Adoption
 - **Project OS version tested:** v0.1
-- **Status:** Active
+- **Status:** Closed
 
 ## Provenance
 
@@ -113,7 +113,41 @@ Evidence against the hypothesis includes:
 
 ## Outcome
 
-Not yet determined.
+## Outcome
+
+**SUPPORTED, with qualifications.**
+
+Project OS v0.1 was introduced into an independently developed active
+project and reached a consequential current decision without reconstructing
+the project's full history.
+
+The process:
+
+- established sufficient current-state understanding from existing artefacts
+- preserved inherited project decisions
+- surfaced an implicit move from an RVR-specific application toward a
+  provisional multi-organiser platform
+- stopped historical reconstruction when owner intent became the missing
+  evidence
+- recorded that direction provisionally rather than prematurely freezing it
+- followed the material consequence into a targeted tenant-isolation Risk &
+  Failure Check
+- identified a demonstrated authorisation defect
+- constrained remediation to the minimum existing control pattern
+
+The demonstrated blocker was corrected in Lastman commit:
+
+`eafec859be32e171e0d4fba65343dadd01837983`
+
+Verification was static rather than live functional verification.
+
+A repeated seam was also observed between Project OS v0.1's prescribed
+creation of a project-local `PROJECT-OS.md` artefact and the controlled
+adoption of an existing project.
+
+Full evidence is recorded in:
+
+`docs/evidence/002-evidence-log.md`
 
 ## Framework Changes
 
