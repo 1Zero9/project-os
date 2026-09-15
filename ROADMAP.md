@@ -170,6 +170,16 @@ Potential experiment:
 Use an existing active project as Experiment 002 to test whether Project OS
 can successfully adopt a project it did not create.
 
+**Experiment 001 (LaunchCity) supports testing this next.** See
+`docs/experiments/001-launchcity.md`. Proposed Experiment 002 question:
+
+> Can Project OS v0.1 be introduced into an existing active project and
+> improve the next meaningful decision without requiring reconstruction of
+> the project's entire history?
+
+The project has not yet been selected. This is not a promotion of Existing
+Project Adoption into a framework capability.
+
 Origin:
 Project OS discussion, September 2026.
 
