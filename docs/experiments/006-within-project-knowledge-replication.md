@@ -361,3 +361,53 @@ knowledge packet are locked, with provenance recorded above. Phase 2A
 (target-native baseline, frozen before the packet is introduced into
 execution context) has not begun. Project OS v0.1 remains FROZEN; no
 framework file was modified in producing this document.
+
+---
+
+## Phase 3 — Closure
+
+**Classification: NOT SUPPORTED.**
+
+No traceable material improvement from the historical knowledge packet was
+demonstrated. The frozen, pre-packet mechanical baseline (Ground Control
+commit `666744068dcd05fbe9210bddca3f220652c75579`) already specified the
+same schema-change workflow (`db:generate` → `db:migrate`) and the same
+non-versioned, stateless token design that the implementation (Ground
+Control commit `6bd945df722d6bc327682865265915b4dc6a8db6`) actually used.
+Item 1 (schema workflow) and Item 3 (token revocation pattern, rejected
+for reuse) confirmed decisions the baseline had already reached
+independently; Item 2 (admin structural privacy invariant) had no task to
+apply to, since the selected work (email verification on signup) never
+touched admin architecture. Full reasoning, per-item results, the
+counterfactual comparison, and the Experiment 003 comparison are recorded
+in the evidence log.
+
+**Evidence log:** [`docs/evidence/006-evidence-log.md`](../evidence/006-evidence-log.md)
+
+**Baseline commit:** `666744068dcd05fbe9210bddca3f220652c75579`
+(Ground Control, `.experiment-006-baseline.md`)
+
+**Implementation commit:** `6bd945df722d6bc327682865265915b4dc6a8db6`
+(Ground Control, "Add email verification on signup")
+
+**Invalidation status:** All Running Invalidation Checklist conditions
+remain clear. The project was selected before any historical material was
+inspected; the historical packet was drawn only from `docs/TECHNICAL.md`
+and not cherry-picked against a known current weakness; the baseline was
+mechanically frozen (committed) before the packet entered the execution
+context; no historical knowledge was created or altered for this
+experiment; Project OS v0.1 was not modified in producing this
+experiment.
+
+**Implication for Experiment 003 replication:** Experiment 003 remains
+SUPPORTED, with qualifications, on its own evidence. Experiment 006 is a
+negative replication of the same question in a different project. Taken
+together, the evidence for "within-project knowledge compounding" as a
+general, reliable effect is revised from a single strong-but-unreplicated
+result to **WEAK** — one supporting case and one non-supporting case,
+with plausible but unproven explanations for the divergence (task/
+knowledge alignment, and whether the target project's current
+documentation already contains the historical knowledge). See the
+evidence log for the full comparison.
+
+**Final status: CLOSED.**
