@@ -133,6 +133,48 @@ Project OS discussion, September 2026.
 
 ---
 
+### Retrospective Project OS
+
+Explore whether Project OS can be run retrospectively against completed or
+mature projects.
+
+Purpose:
+
+- reconstruct original intent and important decisions;
+- identify where Project OS would have challenged or stopped work;
+- identify scope drift and failure points;
+- extract reusable decisions and learning;
+- determine what should enter the Project OS/Eolas knowledge layer.
+
+This is different from the existing archaeology work: archaeology discovers
+patterns across projects; retrospective analysis evaluates an individual
+project through the Project OS lens.
+
+Origin:
+Project OS discussion, September 2026.
+
+---
+
+### Existing Project Adoption
+
+Explore whether an active existing project can be brought under Project OS
+without requiring it to have started there.
+
+Project OS should be capable of establishing a useful current baseline from
+the project's existing code, documentation, history and decisions, then guide
+work from that point forward.
+
+It should not require retrospective documentation for its own sake.
+
+Potential experiment:
+Use an existing active project as Experiment 002 to test whether Project OS
+can successfully adopt a project it did not create.
+
+Origin:
+Project OS discussion, September 2026.
+
+---
+
 ## Later / Unproven
 
 Potential capabilities that should NOT be built without stronger evidence.
