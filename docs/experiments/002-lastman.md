@@ -111,7 +111,6 @@ Evidence against the hypothesis includes:
 - Project OS requiring framework changes before it can operate on the
   existing project
 
-## Outcome
 
 ## Outcome
 
