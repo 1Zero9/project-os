@@ -82,6 +82,42 @@ Earlier Eolas project and repeated recreation across projects.
 
 ---
 
+### Compounding Project Knowledge
+
+Explore whether previous project work can provide a measurable head start to
+new, resumed or inherited projects.
+
+The objective is not to load complete historical repositories into project
+context.
+
+Project OS should determine whether relevant precedent can be selectively
+retrieved and applied so that previously earned knowledge reduces repeated
+product, design, architecture, security, infrastructure or implementation
+work.
+
+Questions to investigate:
+
+- Can useful precedent be extracted from previous projects?
+- Can project-specific decisions be distinguished from reusable patterns?
+- Can recurring Steve preferences be distinguished from one-off choices?
+- Can relevant precedent be retrieved without excessive context?
+- Does the retrieved knowledge materially improve the next project?
+- What work or decisions were genuinely avoided?
+- Can harmful, stale or irrelevant precedent be detected?
+- What is the context and token cost of obtaining the benefit?
+- Can inherited progress be meaningfully measured?
+
+This is the primary evidence question behind the longer-term Steve 2.0 and
+Eolas direction recorded in:
+
+`docs/strategy/CHECKPOINT-001.md`
+
+Do not build a full Eolas implementation merely to test this hypothesis.
+
+Origin:
+
+Strategic Checkpoint 001, September 2026.
+
 ### AI Resource Strategy
 
 Explore whether Project OS should decide not only what work should be performed,
@@ -155,33 +191,38 @@ Project OS discussion, September 2026.
 
 ---
 
+
+
 ### Existing Project Adoption
 
 Explore whether an active existing project can be brought under Project OS
 without requiring it to have started there.
 
-Project OS should be capable of establishing a useful current baseline from
-the project's existing code, documentation, history and decisions, then guide
-work from that point forward.
+**Experiment 002 — Lastman completed.**
 
-It should not require retrospective documentation for its own sake.
+Outcome:
 
-Potential experiment:
-Use an existing active project as Experiment 002 to test whether Project OS
-can successfully adopt a project it did not create.
+**SUPPORTED, with qualifications.**
 
-**Experiment 001 (LaunchCity) supports testing this next.** See
-`docs/experiments/001-launchcity.md`. Proposed Experiment 002 question:
+Experiment 002 demonstrated that Project OS v0.1 could establish sufficient
+current-state understanding of an independently developed active project,
+preserve inherited decisions, identify a consequential current decision and
+guide a proportionate intervention without reconstructing the project's full
+history.
 
-> Can Project OS v0.1 be introduced into an existing active project and
-> improve the next meaningful decision without requiring reconstruction of
-> the project's entire history?
+The experiment also exposed friction between existing-project adoption and
+v0.1's prescribed creation of a project-local `PROJECT-OS.md` artefact.
 
-The project has not yet been selected. This is not a promotion of Existing
-Project Adoption into a framework capability.
+Evidence:
+
+- `docs/experiments/002-lastman.md`
+- `docs/evidence/002-evidence-log.md`
+
+This remains evidence rather than automatic promotion into the framework.
 
 Origin:
-Project OS discussion, September 2026.
+
+Project OS discussion and Experiment 002, September 2026.
 
 ---
 
