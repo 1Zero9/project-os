@@ -1,9 +1,9 @@
 # Experiment 004 — Cross-Project Knowledge Transfer
 
 - **Experiment:** Cross-Project Knowledge Transfer
-- **Type:** Protocol Design (Gate 1 only — target and source not yet selected)
+- **Type:** Protocol Design + Target Selection (Gate 2 complete — source not yet selected)
 - **Project OS version tested:** v0.1
-- **Status:** Protocol locked, awaiting Gate 2
+- **Status:** Target selected (tally), awaiting Gate 3
 
 ## Experiment Question
 
@@ -498,7 +498,139 @@ subsequent decision, made only after this experiment closes.
 
 ---
 
-## Status at Gate 1
+## Gate 2 — Target Project Selection
 
-Protocol locked. No target project has been selected. No source project
-or source knowledge has been reviewed or selected. Gate 2 has not begun.
+Performed under Section 4 of this protocol. No source project or source
+knowledge was reviewed, searched for, or considered at any point during
+this selection. Only information needed to assess Section 4's criteria was
+examined for each candidate (repository activity, commit history, and
+top-level documentation/README describing what the project is).
+
+### Candidates Considered
+
+All candidates were drawn from the set of Steve's existing repositories
+(local checkouts under `~/Projects`, cross-referenced against
+`gh repo list 1Zero9`). Repositories already used as Project OS experiment
+subjects (LaunchCity, Lastman, Golf Club Tools) and the Project OS
+repository itself were excluded from consideration outright, since using
+one of them as the Experiment 004 target would not constitute a genuinely
+independent cross-project test.
+
+| Candidate | Last commit (relative to 2026-09-15) | Commit count | Existing context | Notes |
+|---|---|---|---|---|
+| **tally** | 2026-09-10 (5 days) | 227 | `AGENTS.md`, `CLAUDE.md`, `README.md`, `docs/` (user-guide, technical-overview, roadmap, ideas, reviews) | Household expense/subscription/utility tracker. Next.js + Prisma + PostgreSQL. Large, mature, actively worked commit history. |
+| vecta | 2026-09-03 (12 days) | 30 | `AGENTS.md`, `CLAUDE.md`, `README.md`, `docs/`, `e2e/` | Recruitment workspace product. Real and active, but a smaller commit history than tally. |
+| lucy | 2026-09-12 (3 days) | 30 | `AGENTS.md`, multiple planning docs (`BUILD_PLAN.md`, `MASTER.md`), `docs/` | Learning/notes workspace. Most recent single commit of any candidate, but a shorter overall history than tally. |
+| Marvin | 2026-08-05 (41 days) | 135 | `AGENTS.md`, `CLAUDE.md`, `docs/`, release tagged v1.0.0 | Household cooking/meal-planning app. Substantial and mature, but least recently active of the strong candidates. |
+| Runway | 2026-06-14 (93 days) | 87 | `README.md`, `docs/` | Ireland watch/release planner. Substantial but stale relative to today's date. |
+| life-admin-system | 2026-01-11 (247 days) | 26 | Multiple docs, but mixed Python/Next.js state | Long dormant; not clearly "currently active or about-to-start." |
+| Bookworm | 2026-05-27 (111 days) | 22 | `README.md`, release notes | Native Swift app; smaller history, stale relative to today. |
+| WinstonOnLine | 2026-09-07 (8 days) | 4 | `README.md` only | Recently active but only 4 commits — too early to supply a substantial baseline work packet. |
+| Vision | n/a | 0 (no git history found) | `README.md` | No usable commit history; cannot assess development stage. |
+| OCTO Objectives | n/a | no git repository | Various docs/scripts | Not under version control; state and history cannot be reliably assessed. |
+| PRODUCT-DESIGN-DIRECTOR | n/a | no git repository | Two markdown files only | Not a project in the sense the protocol requires (no code, no application). |
+| Technics | n/a | no git repository | Minimal scaffold | No meaningful existing state to assess. |
+| homealone | n/a | no git repository | Empty | No usable content. |
+
+### Selection Criteria Applied (Section 4)
+
+1. Real, currently active or about-to-start project work — not fabricated.
+2. A genuine, substantial baseline work packet must plausibly exist —
+   not a trivial or contrived task.
+3. Materially different in domain, core problem, and stage from any
+   project already used as a Project OS experiment subject.
+4. Not selected by first surveying candidate source projects for a
+   favourable pairing.
+
+### Selected Target
+
+**tally**
+
+### Reason for Selection
+
+- **Criterion 1 (real, active):** tally has the most recent substantial
+  commit activity of any strong candidate (last commit 2026-09-10, five
+  days before this selection) and by far the largest commit history (227
+  commits), indicating genuinely ongoing, non-trivial work rather than an
+  abandoned or barely-started repository.
+- **Criterion 2 (substantial baseline possible):** tally has a real
+  production-shaped application (Next.js, TypeScript, PostgreSQL/Prisma),
+  an existing `docs/roadmap.md` and `docs/ideas.md`, and a technical
+  overview document — sufficient material for a genuine, non-contrived
+  piece of target-project work at Gate 4.
+- **Criterion 3 (materially different / independent):** tally is a
+  household expense, subscription, and utility tracking application. This
+  domain and problem shape has no overlap with any project already used
+  as a Project OS experiment subject (a city/data app, a fundraiser
+  competition app, and a golf club MVP), satisfying the independence
+  requirement without needing to know anything about candidate source
+  knowledge.
+- **Criterion 4 (not paired to a convenient source):** selection was made
+  using only the table above — repository activity and top-level
+  documentation. No source project, no source repository, and no
+  candidate reusable knowledge was reviewed, searched for, or considered
+  at any point before or during this selection.
+
+### Rejected Candidates and Reasons
+
+- **vecta, lucy** — both real, active, and independent, but each has a
+  shorter overall commit history (30 commits each) than tally, making
+  tally the stronger candidate under Criterion 2 (more substantial
+  existing project state to draw a genuine baseline task from). Either
+  would have been an acceptable candidate on independence grounds alone;
+  they were not chosen because a stronger candidate existed on the
+  activity/substance criteria, not because of anything related to source
+  knowledge.
+- **Marvin, Runway** — both substantial and independent, but both are
+  materially less recently active than tally, weakening Criterion 1
+  ("currently active or about-to-start").
+- **life-admin-system, Bookworm** — both long dormant relative to the
+  current date; fail Criterion 1.
+- **WinstonOnLine** — recently active but only 4 commits; too early in
+  its life to support a substantial baseline work packet (Criterion 2).
+- **Vision, OCTO Objectives, PRODUCT-DESIGN-DIRECTOR, Technics,
+  homealone** — excluded for lack of a usable version-controlled history
+  or lack of a real application to assess (Criterion 1/2 cannot be
+  evaluated with confidence).
+- **LaunchCity, Lastman, Golf Club Tools, Project-OS** — excluded outright
+  as already-used Project OS experiment subjects; using any of them as
+  the Experiment 004 target would not constitute an independent
+  cross-project test (Criterion 3).
+
+### Known Limitations / Biases
+
+- The candidate pool was limited to Steve's own existing repositories.
+  This is consistent with Project OS's scope (a personal AI-native
+  development environment) but means the target was not drawn from a
+  wider, unbiased population of possible projects.
+- Recency and commit-count were used as the primary proxies for "real and
+  substantial." These are reasonable but imperfect proxies — a project
+  could have a long commit history without much remaining meaningful work,
+  or a short history while still being substantial. This limitation is
+  recorded rather than resolved, since resolving it would require deeper
+  inspection that risks drifting toward evaluating source-knowledge
+  suitability.
+- Steve's own familiarity with all candidate repositories, including
+  tally, cannot be fully separated from this selection. The selection
+  record above is deliberately criteria-first and table-based specifically
+  to make that reasoning auditable, but full elimination of assessor
+  familiarity is not claimed.
+
+### Confirmation
+
+- No source project was reviewed, searched for, or selected during this
+  selection.
+- No source knowledge was inspected, searched for, or considered during
+  this selection.
+- The target was not chosen because a convenient piece of transferable
+  knowledge was already known to exist for it — no such knowledge was
+  looked for.
+
+## Status at Gate 2
+
+Target selected: **tally**. Rationale recorded above per Section 4.
+
+Source project and source knowledge remain unselected. Gate 3 has not
+begun. The baseline work packet (Gate 4) has not been defined or started.
+Project OS v0.1 remains FROZEN; no framework file was modified in
+performing this selection.
