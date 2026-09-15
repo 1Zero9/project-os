@@ -1,9 +1,9 @@
 # Experiment 004 — Cross-Project Knowledge Transfer
 
 - **Experiment:** Cross-Project Knowledge Transfer
-- **Type:** Protocol Design + Target Selection (Gate 2 complete — source not yet selected)
+- **Type:** Protocol Design + Target + Source Selection (Gate 3 complete)
 - **Project OS version tested:** v0.1
-- **Status:** Target selected (tally), awaiting Gate 3
+- **Status:** Target (tally) and source knowledge packet selected, awaiting Gate 4
 
 ## Experiment Question
 
@@ -634,3 +634,267 @@ Source project and source knowledge remain unselected. Gate 3 has not
 begun. The baseline work packet (Gate 4) has not been defined or started.
 Project OS v0.1 remains FROZEN; no framework file was modified in
 performing this selection.
+
+---
+
+## Gate 3 — Source Knowledge Selection
+
+Performed under Section 5 of this protocol. No part of this selection
+inspected tally beyond the information already legitimately recorded at
+Gate 2 (household expense/subscription/utility tracker; Next.js + Prisma +
+PostgreSQL; substantial and active; existing roadmap/ideas/technical
+documentation; and the README excerpt read during Gate 2, which also
+described an "editorial light-mode" visual identity, passwordless
+magic-code authentication, and shared household workspaces/roles). No
+tally source code, issues, TODOs, further roadmap content, or
+architecture/UI/security/feature detail was inspected during this
+selection.
+
+### Source Projects Considered
+
+| Candidate source | What was examined | Outcome |
+|---|---|---|
+| **LaunchCity** (Experiment 001) | `docs/evidence/001-evidence-log.md` — explicit, evidenced, previously-extracted knowledge items | Used — see selected packet below |
+| **Golf Club Tools** (Experiment 003) | `docs/evidence/003-evidence-log.md` — explicit, evidenced knowledge items | Used — see selected packet below |
+| **Lastman** (Experiment 002) | `docs/evidence/002-evidence-log.md` — explicit, evidenced knowledge items | Candidate identified, deliberately not used — see Rejected Knowledge |
+| Marvin | Top-level structure of `docs/production-readiness.md` and `docs/operations-runbook.md` (headings and content, not code) | Rich, well-evidenced operational knowledge exists, deliberately not drawn from this round — see Rejected Knowledge |
+| Runway | Filenames only in `docs/` (`RUNWAY-CONTROLS.md`, `RUNWAY-BRIEF.md`, etc.) | Not examined in enough depth to extract a clean, well-evidenced knowledge item with confidence; excluded on coverage grounds |
+| vecta | Filenames only in `docs/` | Same as Runway — not examined in enough depth this round |
+| lucy | Filenames only in `docs/` (`ARCHITECTURE.md`, `SECURITY.md`, `DATA_MODEL.md`, etc.) | Same as Runway — not examined in enough depth this round |
+
+LaunchCity, Golf Club Tools, and Lastman were prioritised because their
+knowledge has already been extracted, evidenced, and given explicit
+provenance through this repository's own experiment evidence logs — the
+exact discipline Section 10 of this protocol requires — rather than
+requiring fresh extraction from a project not yet examined for this
+purpose.
+
+### Candidate Knowledge Items Considered
+
+| Item | Source | Category (Section 5) |
+|---|---|---|
+| Local vs. remote operational evidence must be distinguished before acting on it | LaunchCity (001), reinforced independently in Golf Club Tools (003) | Reusable knowledge — a verification discipline, not tied to either project's specific tooling |
+| Real-browser/runtime validation catches structural bugs invisible to static checks | LaunchCity (001) | Reusable knowledge — a verification discipline |
+| Larger autonomous work packets at meaningful decision boundaries outperform fine-grained approval loops | Golf Club Tools (003) | Reusable knowledge — a process/delegation discipline |
+| A frozen visual/creative direction can remain textually compliant while perceptually drifting | LaunchCity (001) | Candidate reusable knowledge — **rejected**, see below |
+| A missing role guard on a sensitive server action allowed unintended privilege reach | Lastman (002) | Candidate reusable knowledge — **rejected**, see below |
+| Production-readiness gates for authentication, rate-limiting, and session handling | Marvin | Candidate reusable knowledge — **rejected**, see below |
+| Golf Club Tools' Donabate-specific, question-first MVP scope | Golf Club Tools (003) | Project history / domain-specific — not a candidate; tied to that project's specific product decision |
+| LaunchCity's data-model reversal after live API validation | LaunchCity (001) | Implementation-specific detail — not a candidate; tied to a specific external API LaunchCity depended on |
+| "Write tests" / "validate input" style general practice | — | Generic advice — not a candidate; provides no meaningful transfer specific to any project |
+
+### Selected Source Knowledge Packet
+
+Three items, from two source projects, forming a coherent packet about
+**verifying and structuring work**, deliberately kept process-level rather
+than product- or architecture-level:
+
+#### Item 1 — Distinguish local/remote evidence before acting on it
+
+- **Source project:** LaunchCity (Experiment 001), independently
+  reinforced in Golf Club Tools (Experiment 003)
+- **Source artefact:** `docs/evidence/001-evidence-log.md` — "Local vs.
+  remote operational evidence must be distinguished before acting on it";
+  reinforced by `docs/evidence/003-evidence-log.md` — "A reported push did
+  not initially appear remotely"
+- **Original purpose/context:** In LaunchCity, Cloudflare KV tooling
+  returned local Miniflare-persisted state when run without an explicit
+  "remote" flag; this was mistaken for production state and used to
+  justify an unnecessary code change. In Golf Club Tools, a push reported
+  as successful did not initially appear in the remote repository until
+  checked directly.
+- **Knowledge extracted:** Before acting on operational evidence (a
+  deployment check, a data read, a push/commit confirmation), confirm it
+  reflects the actual target environment rather than a local, cached, or
+  merely-reported proxy for it.
+- **Why potentially transferable:** The discipline is stated independent
+  of either project's specific tooling (Cloudflare Miniflare/KV; a git
+  push confirmation) and recurred in two unrelated projects — this is
+  repeated, not single-experiment, evidence.
+- **Source-specific assumptions that must NOT transfer:** LaunchCity's
+  specific tool (Cloudflare KV/Miniflare) and flag behaviour; Golf Club
+  Tools' specific push/remote workflow. Tally's actual deployment and
+  verification tooling is unknown and must not be assumed to behave like
+  either.
+- **Confidence in extraction:** High — the lesson is stated explicitly in
+  both source evidence logs as a named observation, independent of the
+  specific incident used as evidence for it.
+
+#### Item 2 — Real-browser/runtime validation catches what static checks miss
+
+- **Source project:** LaunchCity (Experiment 001)
+- **Source artefact:** `docs/evidence/001-evidence-log.md` — "Real-browser
+  / runtime validation caught structural bugs invisible to type-check,
+  lint and build"
+- **Original purpose/context:** Two LaunchCity layout bugs (a flex-wrap
+  failure at desktop width; a missing wrapper element in an empty-state
+  fallback) were found only by deliberately rendering and forcing
+  edge/empty states in a real browser; `tsc`/lint/build gave no signal.
+- **Knowledge extracted:** Passing static checks (type-check, lint, build)
+  is necessary but not sufficient evidence that a UI is correct;
+  deliberately exercising edge and empty states in a real rendered
+  browser is a distinct verification step, not a redundant one.
+- **Why potentially transferable:** The lesson is about the *limits of
+  static verification generally*, not about LaunchCity's specific bugs,
+  components, or layout.
+- **Source-specific assumptions that must NOT transfer:** LaunchCity's
+  specific defects (flex-wrap behaviour, a particular wrapper element) or
+  its component structure. Only the higher-level verification practice is
+  extracted — not an expectation that Tally has the same bugs.
+- **Confidence in extraction:** High — the source evidence log states the
+  general observation explicitly, separate from the specific bugs offered
+  as evidence for it.
+
+#### Item 3 — Prefer fewer, larger checkpoints at decision boundaries over fine-grained approval loops
+
+- **Source project:** Golf Club Tools (Experiment 003)
+- **Source artefact:** `docs/evidence/003-evidence-log.md` — "Larger
+  autonomous work packets at meaningful decision boundaries outperformed
+  fine-grained approval loops"
+- **Original purpose/context:** A fine-grained
+  ChatGPT → Steve → local-worker → Steve → ChatGPT approval loop created
+  operational friction disproportionate to the value returned per round
+  trip; larger autonomous work packets, checked at meaningful decision
+  boundaries, worked substantially better across the same project.
+- **Knowledge extracted:** When structuring how work is delegated and
+  checked, prefer fewer, larger checkpoints placed at meaningful decision
+  boundaries over frequent fine-grained approval steps.
+- **Why potentially transferable:** This is a working-process lesson about
+  checkpoint granularity, independent of Golf Club Tools' domain (golf
+  club booking) or its specific multi-hop tool chain.
+- **Source-specific assumptions that must NOT transfer:** the specific
+  ChatGPT-integration/local-worker relay that produced the friction.
+  Tally's actual delegation or review workflow is unknown and must not be
+  assumed to resemble Golf Club Tools'.
+- **Confidence in extraction:** Medium — clearly stated, but a
+  single-experiment process observation rather than a technical or
+  product finding; "meaningful decision boundary" is itself flagged as a
+  Watch item in Strategic Checkpoint 002, not yet a precisely defined
+  concept.
+
+### Rejected Knowledge and Reasons
+
+- **A missing role guard on a sensitive server action allowed unintended
+  privilege reach (Lastman, Experiment 002).** This is a strong, real,
+  well-evidenced finding with clear provenance. It was deliberately
+  **not** selected because its plausible relevance to Tally cannot be
+  cleanly separated from Gate 2's legitimate but unavoidable exposure to
+  Tally's own "Shared Household Workspaces & Roles" feature. Selecting it
+  would create an unacceptable risk of the packet looking chosen to
+  address a feature already glimpsed in the target, rather than chosen
+  independently. This is a protocol-protective exclusion, not a judgement
+  that the knowledge lacks merit.
+- **A frozen visual/creative direction can remain textually compliant
+  while perceptually drifting (LaunchCity, Experiment 001).** Excluded for
+  the same reason: Tally's Gate 2 README excerpt described it as an
+  "editorial light-mode" application, and this item's relevance is
+  specifically about visual/creative-direction fidelity. Excluded to avoid
+  the appearance of a source item chosen because of a visual-identity
+  detail already visible from Gate 2.
+- **Production-readiness gates for authentication, rate-limiting, and
+  session handling (Marvin).** Marvin's `docs/production-readiness.md` and
+  `docs/operations-runbook.md` contain detailed, mature, well-evidenced
+  operational practice on the same technology stack as Tally
+  (Next.js/Prisma/Postgres). Excluded because its content — authentication
+  hardening, rate limiting, session handling — overlaps closely with
+  authentication/session details already visible in Tally's Gate 2 README
+  excerpt (passwordless magic-code authentication, PostgreSQL session
+  management). Using it would create the same appearance-of-targeting risk
+  as the two items above.
+- **Golf Club Tools' Donabate-specific, question-first MVP scope.**
+  Classified as project history / domain-specific decision, not
+  transferable knowledge — it is a specific product-scope decision tied to
+  that project's own circumstances, not a generalisable lesson.
+- **LaunchCity's data-model reversal after live API validation.**
+  Classified as implementation-specific detail — the lesson is tightly
+  coupled to a specific external API LaunchCity depended on; the general
+  form of the lesson ("validate assumptions against real varied data") was
+  judged too close to generic advice to add distinct value as a discrete
+  transfer item on top of Items 1 and 2 above, which already cover
+  verification discipline.
+- **Generic practice statements** (e.g. "write tests," "validate input")
+  were not treated as candidates at all — Section 5 of this protocol
+  explicitly excludes generic advice with no meaningful project-specific
+  transfer value, regardless of how correct the advice is.
+
+### Contamination Boundary
+
+Explicitly **not** being transferred into Tally:
+
+- LaunchCity's Cloudflare/Miniflare-specific tooling, its KV data model,
+  or any of its domain content (a city/local-data application)
+- LaunchCity's specific UI defects, component names, or layout structure
+- Golf Club Tools' domain (golf club booking/competition management),
+  branding, or feature requirements
+- Golf Club Tools' specific ChatGPT-integration/local-worker approval-chain
+  tooling
+- Any assumption that Tally's actual verification tooling, deployment
+  process, or delegation/review workflow resembles either source
+  project's
+- Any inference about Tally's architecture, authentication implementation,
+  UI framework specifics, or feature set beyond what Gate 2 already
+  legitimately recorded — this packet was not chosen to address, and
+  should not be read as addressing, any such detail
+- Lastman's and Marvin's rejected items above are excluded in full,
+  including any partial or adapted form of them
+
+### Known Limitations / Biases
+
+- The candidate pool was effectively limited to this repository's own
+  three completed Project OS experiments, plus a brief structural glance
+  at four other mature repositories (Marvin, Runway, vecta, lucy). The
+  latter three were not examined in enough depth to extract a
+  well-evidenced knowledge item with confidence, so nothing was drawn from
+  them this round — a coverage limitation, not a finding that they lack
+  useful knowledge.
+- Two strong, well-evidenced candidates (Lastman's role-guard finding;
+  LaunchCity's visual-drift finding) and one rich candidate source
+  (Marvin's production-readiness/operations documentation) were
+  deliberately excluded specifically because Gate 2's legitimate exposure
+  to Tally's README made their relevance impossible to cleanly separate
+  from target knowledge. This is a conservative, protocol-protective
+  choice. It may have excluded genuinely transferable knowledge out of
+  caution, and it means the selected packet is weighted toward
+  process/verification discipline rather than product or architecture
+  knowledge — a consequence of contamination avoidance, not a claim that
+  process knowledge is the only valid transfer category.
+- Item 3's underlying concept ("meaningful decision boundary") is itself
+  an unresolved Watch item from Strategic Checkpoint 002; using it as
+  transferred knowledge does not resolve that ambiguity, and the
+  knowledge-assisted work packet (Gate 5) should not assume the concept is
+  more precisely defined than it currently is.
+
+### Invalidation Check
+
+- Was tally inspected for weaknesses after Gate 2? **No** — only the
+  information already recorded at Gate 2 was referenced.
+- Was source knowledge chosen to solve a discovered tally problem? **No**
+  — the selected packet is process/verification discipline, deliberately
+  kept independent of tally's specific features. Two knowledge items and
+  one source project were explicitly excluded, rather than adapted or
+  softened, because their relevance could not be cleanly separated from
+  Gate 2 information — the conservative direction (exclude), not the
+  permissive one (use anyway), was taken in every ambiguous case.
+- Were evaluation criteria changed? **No** — Sections 1–14 of this
+  document are unmodified by this update.
+- Was source knowledge selected after seeing baseline output? **No** — no
+  baseline has been produced.
+- Was Project OS v0.1 modified to accommodate the experiment? **No.**
+
+No contamination condition was found. The experiment proceeds to Gate 4
+only in a subsequent, separate task.
+
+### Confirmation
+
+- tally was not inspected beyond the information already legitimately
+  recorded at Gate 2.
+- The tally baseline has not been performed and has not started.
+- No tally files were modified.
+- Project OS v0.1 remains FROZEN; no framework file was modified in
+  performing this selection.
+
+## Status at Gate 3
+
+Source knowledge selected: three items (two from LaunchCity/Experiment
+001, one from Golf Club Tools/Experiment 003), recorded above with full
+provenance. Gate 4 (baseline) has not begun.
