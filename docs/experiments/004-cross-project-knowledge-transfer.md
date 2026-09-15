@@ -1,9 +1,13 @@
 # Experiment 004 — Cross-Project Knowledge Transfer
 
 - **Experiment:** Cross-Project Knowledge Transfer
-- **Type:** Protocol Design + Target + Source Selection (Gate 3 complete)
+- **Type:** Protocol Design + Target + Source Selection + Baseline +
+  Knowledge-Assisted Work + Comparison + Classification (Gate 6 complete —
+  **CLOSED**)
 - **Project OS version tested:** v0.1
-- **Status:** Target (tally) and source knowledge packet selected, awaiting Gate 4
+- **Status:** Complete. Final classification: **PARTIALLY SUPPORTED**. See
+  `docs/evidence/004-evidence-log.md` for full comparison, contamination,
+  and invalidation analysis.
 
 ## Experiment Question
 
@@ -898,3 +902,87 @@ only in a subsequent, separate task.
 Source knowledge selected: three items (two from LaunchCity/Experiment
 001, one from Golf Club Tools/Experiment 003), recorded above with full
 provenance. Gate 4 (baseline) has not begun.
+
+---
+
+## Gate 4 — Baseline Complete
+
+Performed under Section 6 of this protocol, in the Tally repository, using
+only Tally's own legitimate context (README, `AGENTS.md`, `docs/`,
+`git log`, local `tsc`/`eslint`/`vitest`). No Project OS, prior-experiment,
+LaunchCity, or Golf Club Tools material was inspected.
+
+**Tally commit:** `9fc46cb` — `docs/experiment-004-baseline.md`.
+
+**Selected baseline work packet:** add unit tests for `src/lib/auth.ts`
+and `src/lib/backup.ts` (the two most consequential, currently untested
+logic paths); fix a README onboarding instruction (`db:push`) that
+contradicts the project's own documented database-safety rule.
+
+Full baseline record (current state, docs-vs-implementation check, quality
+checks, ranked risks, decisions/assumptions, uncertainty) is in that
+document at that commit. Not reproduced here; see
+`docs/evidence/004-evidence-log.md` Section 4 for the Gate 6 summary.
+
+## Gate 5 — Knowledge-Assisted Work Complete
+
+Performed under Section 7 of this protocol, in the Tally repository,
+against the Gate 4 baseline packet with the three Gate 3 knowledge items
+available.
+
+**Tally commit:** `fbae406` — `docs/experiment-004-transfer.md`.
+
+Item dispositions: Item 1 (local/remote evidence) — **ACCEPTED**. Item 2
+(runtime validation) — **ADAPTED**. Item 3 (fewer, larger checkpoints) —
+**ADAPTED**. Full disposition record, including the baseline-location
+deviation (restore id-remap logic found inline in
+`app/api/admin/backup/route.ts` rather than `src/lib/backup.ts`, extracted
+behaviour-preservingly), verification results (171/171 tests, clean
+tsc/lint, real-Next.js runtime smoke check), and contamination
+self-assessment are in that document at that commit. Not reproduced here;
+see `docs/evidence/004-evidence-log.md` Sections 6, 8, and 9 for the Gate
+6 review of these claims.
+
+## Gate 6 — Comparison, Classification and Closure
+
+Performed under Sections 8–11 of this protocol. Full comparison by
+predetermined criterion, individual knowledge-item assessment, baseline-
+deviation analysis, counterfactual analysis, contamination assessment,
+limitations, classification rationale, framework observations, watch
+items, and deferred items are recorded in
+**`docs/evidence/004-evidence-log.md`**.
+
+**Final classification: PARTIALLY SUPPORTED.**
+
+At least one material, traceable improvement was demonstrated (Item 2's
+real-Next.js runtime validation of a refactored route, which added
+evidence beyond static checks and mocked unit tests) with no contamination
+found (Section 11 of the evidence log: NO CONTAMINATION). However, the
+result is genuinely mixed rather than a clean positive: Items 1 and 3
+showed narrow, plausible-without-transfer effects rather than clearly
+transfer-specific ones, and the clearest positive item (Item 2) is
+entangled with a scope deviation (the backup-logic extraction) whose
+necessity was Tally-native rather than knowledge-driven. Per Section 11 of
+this protocol, a demonstrated-improvement-with-no-contamination result
+that is genuinely mixed in this way falls under PARTIALLY SUPPORTED, not
+SUPPORTED.
+
+**Invalidation review:** all six conditions in Section 12 of this protocol
+were checked and found **CLEAR** — no cherry-picking, no criteria changes,
+no baseline contamination, no source-knowledge selection after seeing
+baseline weaknesses, no sequence reordering, no v0.1 framework
+modification. Full table in the evidence log.
+
+**Project OS v0.1 remains FROZEN.** No framework file
+(`PRINCIPLES.md`, `templates/PROJECT-OS.md`, or any other v0.1 file) was
+read for modification purposes or modified at any gate of this experiment.
+Framework observations, promotion candidates, watch items, and deferred
+items arising from this experiment are recorded in the evidence log only
+(Sections 15–17), per Section 14 of this protocol, and are not
+incorporated here or anywhere in v0.1.
+
+## Status at Gate 6
+
+**Experiment 004 is CLOSED.** Final classification: **PARTIALLY
+SUPPORTED**. No further gates remain. Experiment 005 is not started by
+this update.
