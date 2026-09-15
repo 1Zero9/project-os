@@ -370,3 +370,48 @@ provenance and a contamination boundary recorded above. Phase 2 (baseline
 + transfer, in the RVR2026 repository) has not begun. Project OS v0.1
 remains FROZEN; no framework file was modified in producing this
 document.
+
+---
+
+## Phase 3 — Closure
+
+**Classification: NOT SUPPORTED.**
+
+The RVR2026 authorization extraction/tests (target implementation commit
+`a3d609aa2c870349e7820b5ecb47360e65d9b8eb`) were selected from
+target-native evidence (UAT-008, thin authz coverage) that predates this
+commit and would have happened without Marvin's packet — this result is
+excluded from evidence of transfer under the locked counterfactual
+discipline. Item 1 (DB-side pagination) was rejected with no resulting
+change; RVR2026's existing `findMany` calls already use `take` bounding.
+Item 2 (liveness/readiness split) produced a correctly identified but
+unimplemented insight — RVR2026's `/api/health` lacks a bounded timeout
+on its DB check — which the locked classification model does not treat
+as material improvement. No traceable material improvement was
+demonstrated; the result is not explained by contamination either, since
+none was found.
+
+**Contamination result:** none found. No Marvin-specific terminology,
+entities, domain concepts, constants, or assumptions entered the changed
+or referenced RVR2026 files.
+
+**Temporal-isolation assessment: B — methodological weakness.** The
+packet was locked before Phase 2 began (satisfying Phase 1's ordering
+requirement), but the single combined Phase 2 instruction exposed the
+executing agent to the packet before the baseline was frozen, with no
+mechanical boundary enforcing separation. Classification remains credible
+because the baseline (UAT-008, pre-existing in RVR2026's own history) is
+independently verifiable as target-native and neither packet item
+addresses authorization — but the boundary is weaker than an enforced
+separation would provide.
+
+**Lean-protocol result:** the three-phase / two-document structure
+preserved enough evidence for a confident classification without
+Experiment 004's six-gate apparatus. The control found too weak: no
+mechanical baseline-freeze boundary within Phase 2. Recorded as an
+observation only (see evidence log) — no framework change made.
+
+**Evidence log:** `docs/evidence/005-evidence-log.md`.
+
+**Final status: CLOSED. NOT SUPPORTED.** Project OS v0.1 remains FROZEN;
+`PRINCIPLES.md` and `templates/PROJECT-OS.md` were not modified.
