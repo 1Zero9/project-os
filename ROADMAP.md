@@ -275,6 +275,33 @@ unnecessary work in another project, or applying it retrospectively to
 another mature project reveals a consequential inherited assumption
 before implementation begins.
 
+**Candidate sub-items (v0.2 candidate, not promoted)**, from
+`docs/strategy/DELIVERY-LEARNING-002.md` — evidence that a documented
+decision being preserved is not the same as that decision having been
+authorised:
+
+- **Decision authority and provenance** — who proposed a material
+  direction, who had authority to approve it, and where the approval
+  event is recorded.
+- **Decision lifecycle** — candidate statuses (IDEA, EXPERIMENT,
+  PROVISIONAL, ACCEPTED, FROZEN, SUPERSEDED, REJECTED, UNCLEAR) and
+  transition rules under which implementation, assistant documentation
+  or repetition alone must not change a decision's status.
+- **Evidence completeness** — whether relevant mock-ups, conversations
+  or earlier specifications exist outside the repository, and whether
+  the repository is being mistaken for the complete history.
+- **Experimental-decision hardening** — detecting when an experiment has
+  been treated as a permanent requirement without a traceable approval
+  event (the LaunchCity image-free interpretation, later marked
+  SUPERSEDED by the founder in commit
+  `7e85dae3b35555c0ca1ed1b7e0a0d964fb235ff4`).
+- **Product/infrastructure proportionality** — whether recent work
+  packages are displacing completion of user-visible product value with
+  infrastructure-only work.
+- **Prompt and intervention learning signals** — prompts spent on
+  rework, on correcting a decision, or on documentation only, tracked as
+  learning signals rather than productivity targets.
+
 ---
 
 ## Later / Unproven
