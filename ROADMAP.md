@@ -226,6 +226,57 @@ Project OS discussion and Experiment 002, September 2026.
 
 ---
 
+### Stand-Back Review & Assumption Challenge
+
+Explore a lightweight gate that requires inherited assumptions and platform
+choices to be challenged before implementation, rather than after.
+
+Purpose: prevent momentum from preserving the wrong type of decision.
+Founder-direction delivery work on Golf Club Tools and LaunchCity showed
+that "already decided" was treated too easily as "previously validated" —
+inherited platform, cadence and access decisions were accepted, and an
+architectural challenge only happened after a diagnose-retry-deploy cycle
+had already run.
+
+Trigger points: before accepting a new project for delivery; before
+significant implementation begins; when inheriting an existing project;
+before adopting or preserving a platform decision; before creating a
+recurring operational cost; before acting on a failure that may indicate a
+deeper architectural problem.
+
+The gate distinguishes inherited decisions (accepted because they existed)
+from validated decisions (accepted because evidence supports them), and
+checks: authority and legitimacy (who owns the problem, do we have a real
+route to users and release); an assumption inventory (fact, constraint,
+preference, inherited decision, untested assumption, temporary
+implementation choice); a platform and dependency challenge (whether
+hosting, scheduling, cache and origin need to live on one platform); and a
+cheapest-disproof test that could run before implementation.
+
+Evidence:
+
+- Golf Club Tools — selected before confirming a valid user or release
+  route; the tool had only ever been an example, with no sponsoring
+  relationship.
+- LaunchCity — Cloudflare hosting/scheduling/caching, a 15-minute
+  refresh cadence, and anonymous API access were all inherited and
+  initially preserved unexamined. A production 429 was diagnosed and
+  patched with a retry before the platform decision itself was
+  questioned; a comparative spike then showed a GitHub-hosted request to
+  the same endpoint succeeding with almost unused quota, strengthening
+  an execution-environment hypothesis that a broader platform comparison
+  would have surfaced earlier.
+
+Full account: `docs/strategy/DELIVERY-LEARNING-001.md`.
+
+Status: candidate learning, not promoted. This is a v0.2 candidate
+requiring confirmation — either it prevents a material piece of
+unnecessary work in another project, or applying it retrospectively to
+another mature project reveals a consequential inherited assumption
+before implementation begins.
+
+---
+
 ## Later / Unproven
 
 Potential capabilities that should NOT be built without stronger evidence.
