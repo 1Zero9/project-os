@@ -1,6 +1,7 @@
 # Experiment 009 — Minimum v0.2 Delivery Loop Pilot
 
-**Status:** Pre-design; no project selected and no delivery started.
+**Status:** Phase 1 complete — early structural-proof evidence recorded; Phase
+2 prospective delivery validation not yet started.
 
 ## Question
 
@@ -72,3 +73,27 @@ faster and better.
 Freeze the selected project, founder source material, brief, budget, and
 classification criteria before the structural proof begins. Do not add a
 candidate control during the pilot to rescue its result.
+
+## Phase 1 — Early structural-proof case
+
+Vecta was used for a bounded early case after the founder supplied a direction
+for it to act as a quiet, sensible guide to a new job. It reached a committed,
+founder-visible structural proof using existing state, then stopped when the
+founder explicitly returned priority to Project OS. The case is recorded in
+[`docs/evidence/009-evidence-log.md`](../evidence/009-evidence-log.md).
+
+This is deliberately not classified as SUPPORTED, PARTIALLY SUPPORTED, or NOT
+SUPPORTED: it did not test an accepted finished outcome, direct-delivery
+comparison, or the full pilot boundary.
+
+## Phase 2 — Prospective delivery validation
+
+The next section of Experiment 009 is one fresh, bounded founder-owned piece
+of work. Before implementation, freeze its Delivery Brief, budget, acceptance
+evidence and classification criteria. Run the full procedure above through an
+accepted outcome or a stop condition.
+
+The founder's 80% idea-to-project ambition remains a long-term aspiration for
+weeks/months of demonstrated progress. Phase 2 does not attempt to prove it;
+it tests only whether the compact loop creates an earlier, better delivery
+decision than direct work.

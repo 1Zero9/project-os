@@ -361,6 +361,11 @@ and founder acceptance do not:
 - **Proof-and-Stop Gate** — one combined founder-visible proof, reproducibility
   and stop/rebaseline decision, tested prospectively on an unrelated project.
 
+The first bounded structural-proof case is recorded in
+`docs/evidence/009-evidence-log.md`. It is interim evidence only; the next
+step is a fresh prospective delivery validation, not Vecta expansion or v0.2
+promotion.
+
 - **Autonomy orchestration** — when a council role genuinely needs a
   separate agent versus a role pass in the main session, and whether an
   agent-written specification checked by another agent substitutes for a
