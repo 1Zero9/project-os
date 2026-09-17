@@ -24,6 +24,11 @@ After each action, record the observed result and the decision-relevant
 learning, then choose or revise the next bounded action from that learning.
 Project OS is a delivery-learning loop, not a progress diary.
 
+The earlier evidence has been converted into a reusable, linked
+[retrospective learning register](docs/strategy/LEARNING-REGISTER.md). Consult
+only the entry relevant to the live decision and record whether it changed the
+next action.
+
 Do not add a new control, agent role, platform, or document to rescue an
 experiment while it is running.
 
