@@ -1,344 +1,236 @@
-# Experiment 007: Autonomous LaunchCity Recovery
+# Experiment 007: Autonomous LaunchCity Recovery — Closure
 
 - **Date:** 17 September 2026
-- **Type:** Autonomy experiment (single founder prompt)
+- **Type:** Autonomy experiment (single founder prompt authorised the work)
 - **Project OS v0.1:** remains FROZEN; this record does not change it
-- **Product status:** founder reviewed it; not yet accepted (see §15). It is
-  **not** accepted, locked, frozen or shipped.
-- **Classification:** see §12 (autonomous delivery capability only)
+- **Classification: PARTIALLY SUPPORTED**
+- **Founder acceptance: NOT GRANTED**
 
 ---
 
 ## 1. Question
 
-Can Project OS, given one founder instruction, do all of the following?
+Given one founder instruction, can Project OS inspect an existing system,
+understand founder intent, organise the required expertise, make and
+verify changes autonomously, and deliver a genuinely reviewable result?
 
-- Inspect an existing system.
-- Understand founder intent.
-- Organise the required expertise.
-- Make and verify changes autonomously.
-- Deliver a result the founder can reproduce and review.
+## 2. Autonomy granted
 
-## 2. Autonomy granted and stop conditions
+Inspect both repositories; work on one isolated LaunchCity branch; write
+code, tests, fixtures and evidence; run builds, tests and browser
+automation; commit and push the branch after gates passed; up to two
+autonomous correction cycles. Not granted: deploy, merge to main, touch
+production KV/refresh/Cloudflare config, spend money, mark the result
+accepted.
 
-**Granted:**
-
-- inspect both repositories;
-- work on one LaunchCity experiment branch;
-- write code, tests, fixtures and evidence;
-- run browser automation, builds and tests;
-- commit, and push the branch after every gate passed;
-- use up to two correction cycles.
-
-**Not granted:**
-
-- deploy, merge, or touch main;
-- touch KV, the refresh endpoint or Cloudflare configuration;
-- spend money or use production LL2;
-- mark anything accepted;
-- rewrite v0.1.
-
-**Stop conditions:**
-
-- a source artefact is unreadable;
-- required authority is missing;
-- the work would cost money;
-- production data would change;
-- there is unresolved image legal risk;
-- two correction cycles fail;
-- council roles materially disagree.
-
-**Triggered:** none. The founder was asked no questions during execution.
-
-## 3. Council roles actually used
+## 3. Council roles used
 
 | Role | How it ran |
 |---|---|
-| Project OS lead | Main session. Owned scope, the Stand-Back review and correction authorisation. |
-| Product guardian | **Separate subagent.** Read Panel C, the failure screenshot and the current mobile render directly, and produced a 10-point pass/fail visual specification. |
-| Technical lead | Role pass in the main session, based on the code, git diff `ab27d15..b438fe8` and a baseline reproduction. |
-| Data and risk reviewer | Role pass in the main session: image sourcing, labelling and production isolation. |
-| Delivery engineer | Main session. |
-| Independent reviewer | **Separate subagent.** Worked from a fresh clone and the documented commands only. Ran its own Playwright scripts and builds, then later ran the hand-off test. |
+| Project OS lead | Main session |
+| Product guardian | Separate subagent — read Panel C and the failure screenshot, wrote a visual specification |
+| Technical lead, data/risk reviewer, delivery engineer | Main session (not independent of each other) |
+| Independent reviewer | Separate subagent — fresh clone, documented commands only; reviewed `17e7d13` and ran a hand-off test on `9c619c7` |
 
-**Limitation:** the technical lead, data and risk reviewer and delivery
-engineer were the same agent. Independence was achieved only for the
-product specification and for acceptance testing, which were the two
-failure points recorded in DELIVERY-LEARNING-003.
+## 4. Branch and production safeguards
 
-## 4. Stand-Back (summary)
+- LaunchCity: `experiment/007-autonomous-horizon-recovery`, final commit
+  `4c7283f`. `main` remained unchanged at `b438fe8`, locally and on
+  origin.
+- No KV mutation, no refresh endpoint call, no Cloudflare config change,
+  no deploy, no merge.
+- Review data is a committed fixture, gated to `next dev` plus an
+  explicit env var, verified absent from `.next` and `.open-next`
+  production build output.
 
-- **Audience:** space enthusiasts. They must see immediately what launches
-  next, when, and how certain that is.
-- **Sources:** Panel C and the 2026-09-17 failure screenshot. Both were
-  read directly.
-- **Inherited but unproven:**
-  - b438fe8's layout;
-  - the unbounded `overdue` list;
-  - the assumption that passing tests meant a working page;
-  - Experiment 008's uncommitted KV seed.
-- **Cost:** £0. No LL2 calls were needed.
-- **Current state:** reproduced from committed b438fe8 against the
-  founder's local cache. Desktop showed a crushed title and 13+ colliding
-  slots. Mobile showed 7 "awaiting update" rows and a text collision.
-- **Riskiest assumption:** that a committed review fixture could be both
-  reproducible for the founder and provably absent from production.
-- **Verdict:** proceed with conditions.
+## 5. Work performed
 
-## 5. Cheapest test
+- Reproduced the founder's failure screenshot from committed `b438fe8`
+  against the founder's local cache.
+- Rebuilt the Horizon and Launch Detail composition on top of `b438fe8`
+  (kept its honest-imagery contract, replaced only the layout).
+- Added a capped, chronologically ordered timeline (`buildHorizonRail`),
+  a shared status model, and a committed review-mode fixture with three
+  scenarios.
+- First independent review found 2 major and 4 minor defects; fixed in
+  one autonomous correction cycle (`5cd5da0`). A hand-off re-test on a
+  fresh clone then passed.
+- Founder review 1 rejected the visual result as not matching Panel C and
+  directed public-source imagery with credits on a separate page. A
+  founder-directed revision followed: photographic Earth backdrop, serif
+  type, filled pills, Detail tabs, an in-card header/menu, and a new
+  `/credits` page (`9cbeed3`, `4c7283f`). This revision was **not**
+  independently re-reviewed by a separate agent.
+- Founder review 2 again withheld acceptance, identifying further
+  concrete defects (oversized title, missing curved timeline, excess
+  empty hero space, sun flare competing with the next-launch marker,
+  over-applied serif type, an incompletely integrated Credits entry, and
+  outstanding mobile/Detail review). Per this prompt's instruction, no
+  further LaunchCity work was performed after that feedback.
 
-**Test:** put a marker-bearing dynamic import behind
-`NODE_ENV === "development" && LAUNCHCITY_REVIEW_MODE`, run `next build`,
-and grep the output.
+## 6. Founder interventions
 
-**Result:** the marker was absent from `.next`. A positive control (the
-same code without the `NODE_ENV` guard) put the marker in the server
-chunks. The approach held, and the probe was removed before
-implementation began. It took about 3 minutes.
+Three founder prompts were required, not one:
 
-## 6. Decisions made autonomously
+1. The original recovery instruction.
+2. A mid-session request to stand up the dev server for direct review.
+3. Visual rejection and redirection after seeing the first result.
 
-1. **Repair on top of b438fe8; do not revert.** Its image contract,
-   honest captions and disabled ingestion were sound and tested. The
-   failure was confined to the layout layer:
-   - the hero sat inside the timeline flex row;
-   - the overdue list had no limit;
-   - overdue launches were placed after NEXT.
+A fourth prompt then stopped implementation at the two-correction-cycle
+limit. This is routine intervention, not the "one founder prompt" the
+experiment question asked whether Project OS could work within.
 
-   Reverting to `ab27d15` would have lost that work and still delivered
-   no Panel C.
-2. **Composition.** Hero text on the left, the photo on the right, and a
-   CSS Earth limb behind both. Below that, a fixed five-slot timeline
-   (Panel C's 2 + NEXT + 2), in chronological order.
-3. **Overdue launches** go to the left of NEXT, never more than would hide
-   every flown launch. The rest sit behind a disclosure; none are dropped.
-4. **Review data.**
-   - Committed, illustrative fixture with a frozen clock and three
-     scenarios (imagery, no imagery, stale).
-   - A visible "Review mode · Demonstration data" banner.
-   - The Detail source line says "review demonstration data, not Launch
-     Library 2".
-5. **Imagery.**
-   - Two NASA-staff photos of Falcon 9 (NASA/Bill Ingalls and
-     NASA/Joel Kowsky), classed as vehicle-generic.
-   - Attached only to Falcon 9 fixture launches.
-   - Captioned "Representative vehicle image · <what it shows> — <credit>".
-   - Third-party (ULA, Rocket Lab, Boeing) images were rejected to avoid
-     licensing ambiguity.
-   - The Earth horizon is drawn in CSS, so no artwork licence is needed.
-6. **Isolation.** Review mode is gated at build time and verified absent
-   from both `.next` and `.open-next`. The LL2 adapter is unchanged
-   (`image: null`).
-7. **Deviations from Panel C.** No tagline, no menu, sections instead of
-   tabs (the frozen Detail direction), and short slot names.
+## 7. Reproducibility outcome
 
-## 7. Correction cycles
+**Supported, for what it verified.** A fresh clone of the *first*
+delivered commit (`9c619c7`) was independently rebuilt from documented
+commands alone, with matching screenshots, by a separate reviewer agent.
+The *final* commit (`4c7283f`) passed the same build/lint/test gates from
+a clean clone in the main session, but that check was not run by an
+independent agent, and the founder has not yet reproduced or accepted
+either state.
 
-**Cycles used: 1 of 2.** The independent review of `17e7d13` returned
-NEEDS CORRECTION:
+## 8. Visual outcome
 
-- 2 major defects:
-  - D1: Hold, overdue and partial-failure pills shared one colour;
-  - D2: the image credit was unreadable over a bright photo.
-- 4 minor defects:
-  - D3: title width;
-  - D4: the source line crossed the horizon arc (also found by the lead
-    in the comparison sheet);
-  - D5: a bare not-found page;
-  - D6: Detail wording.
-- 2 inaccurate README claims.
+**Not supported.** The founder's Panel C reading was wrong on the first
+delivery ("not what was envisioned in the brief") and required a
+founder-directed rebuild. Even after that rebuild, the founder's second
+review identified specific unresolved mismatches: an oversized technical
+launch title, a missing curved Horizon timeline, excessive empty hero
+space, a sun flare competing visually with the next-launch marker,
+over-applied serif typography, an incompletely integrated Credits entry,
+and mobile/Detail states still awaiting review. The product guardian and
+the independent reviewer both worked from the same agent-written
+specification, so neither role caught the misreading before it reached
+the founder.
 
-All were specific and bounded, and all were fixed in `5cd5da0`. The
-lead's own passes before that review also caught and fixed:
+## 9. Independent-review limitation
 
-- the limb curve crossing timeline labels;
-- the two image masks failing to combine in Chromium;
-- a 4-line mobile title;
-- a caption that implied the data came from LL2;
-- evidence PNG quantisation that turned the green pill grey.
+The independent reviewer verified the *first* delivered iteration
+(`17e7d13` → `5cd5da0` → hand-off on `9c619c7`) against a specification
+another agent had written from Panel C. It never reviewed the
+founder-directed second iteration (`9cbeed3`/`4c7283f`), which is the
+version the founder's second round of feedback addresses. Independent
+review coverage therefore does not extend to the version now sitting on
+the branch.
 
-## 8. Founder prompts required during execution
+## 10. Cost and usage evidence
 
-**None.** The experiment used one founder prompt.
+| Measure | Value |
+|---|---|
+| Wall-clock duration | ~1 hour 24 minutes |
+| API processing time | 38 minutes 22 seconds |
+| Estimated API-equivalent cost | $28.38 |
+| Requests | 107 |
+| Opus input tokens | 43.1k |
+| Opus output tokens | 216.6k |
+| Cache reads | 33.7M tokens |
+| Cache writes | 707.5k tokens |
+| Code changes (session-reported) | 513 lines added |
+| Founder prompts | 3 (plus this closure prompt) |
+| Correction cycles | 1 autonomous + 1 founder-directed revision |
+| Session allowance consumed | 59% |
+| Weekly allowance consumed | 55% |
+| Usage-credit position at review | €16.53 of €20 |
 
-## 9. Tangible result
+Subscription allowance, usage credits and API-equivalent cost are three
+separate measures of different things (a plan quota, a prepaid credit
+balance, and an estimated open-market equivalent price) and must not be
+summed or treated as interchangeable.
 
-In the LaunchCity branch `experiment/007-autonomous-horizon-recovery`, the
-founder can now run a Panel C Horizon and Launch Detail from a clean
-checkout:
+The founder's own estimate for direct one-to-one delivery of a comparable
+change was "a few hours." At ~$28 API-equivalent cost and 59% of a
+session allowance for a result still not accepted, cost proportionality
+to outcome is not demonstrated.
 
-```sh
-cd launchcity   # stop any `next dev` running in this directory first
-git fetch origin
-git checkout experiment/007-autonomous-horizon-recovery
-npm ci
-npm run review  # http://localhost:3007/
-```
+## 11. Supported claims
 
-**Scenarios:**
+- Autonomous role coordination (separate product-guardian and
+  independent-reviewer subagents actually ran, not merely role-played
+  in one transcript).
+- Isolated experiment branch, correctly scoped and never touching main.
+- Reproducible committed review mode (verified by an independent agent
+  for the first iteration).
+- Public-source imagery adopted with recorded provenance on request.
+- Automated validation (lint, types, 105 tests, two production build
+  targets) passing at every commit.
+- Independent review of an earlier iteration, including a genuine
+  correction cycle that fixed real defects.
+- Production protection held throughout (no KV, refresh, Cloudflare or
+  deploy action).
+- Meaningful improvement after founder feedback (photographic Panel C
+  elements adopted, credits page added) — improvement, not completion.
 
-- http://localhost:3007/
-- http://localhost:3007/?review=no-image
-- http://localhost:3007/?review=stale
+## 12. Unsupported claims
 
-**Detail pages:**
+- Accurate first-pass interpretation of Panel C.
+- Completion from one founder instruction (three were needed before this
+  closure prompt).
+- No routine founder intervention (a dev-server request and two rounds of
+  visual rejection were both routine, not exceptional).
+- Independent review of the final revision (never performed).
+- Founder acceptance (explicitly not granted, twice).
+- Proportionate delivery cost (~$28 API-equivalent and 59% of a session
+  for an unaccepted result).
+- Proven advantage over direct one-to-one delivery (the founder's own
+  "a few hours" estimate for hands-on work was not beaten or tested
+  against this session's cost).
 
-- http://localhost:3007/launch/review-f9-transporter (imagery, long name)
-- http://localhost:3007/launch/review-soyuz-progress (no image, overdue)
-- the other states listed in `launchcity/review/README.md`
+## 13. Learning for Project OS
 
-## 10. Reproducibility result
+An agent-written visual specification, checked by another agent working
+from the same source artefact, does not substitute for a founder
+checkpoint. Both roles shared one interpretation of Panel C and neither
+caught the misreading. Expensive rework proceeded without a cost or
+scope check between the two founder rounds. Model, cost and review-role
+choices were not deliberately allocated to task type — the same capable,
+expensive model ran every council role regardless of what it needed.
 
-**PASSED (independent agent).** The independent reviewer took a fresh
-clone of `9c619c7` and followed only the documented commands.
+## 14. Recommended next test
 
-- `npm ci` and `npm run review` needed nothing temporary, uncommitted or
-  already running.
-- Its own captures matched the committed screenshots (mean pixel
-  difference under 1/255, i.e. JPEG noise).
-- lint, `tsc`, 103/103 tests, `next build` and the OpenNext build all
-  passed.
-- No fixture data was found in `.open-next`, or in `.next` outside
-  `.next/dev`.
-- `next start` with the review variable set did not activate review mode.
-- Verdict: READY FOR FOUNDER REVIEW.
+Before any further autonomous LaunchCity work: a founder-visible
+checkpoint of the agent-written visual specification itself, run against
+Panel C before implementation starts — testing whether a cheap, early
+confirmation step (spec-level, not pixel-level) would have caught the
+misreading before the first full implementation pass, at a fraction of
+the cost of the rework that followed.
 
-**Remaining minor findings (not fixed):**
+## 15. Candidate v0.2 controls (recorded, not promoted)
 
-- The not-found page has no review banner, and its back link drops the
-  scenario.
-- On the 390px Hold Detail page, "UTC" wraps onto its own line.
+- Delivery-cost budget set before execution begins.
+- Model allocation by council role, not one model for every role.
+- A request- or agent-pass ceiling per experiment.
+- A context-size control to bound cache read/write growth.
+- A cost check gate before a second correction cycle is authorised.
+- Hard cap of two correction cycles (already applied this session).
+- A founder-visible checkpoint before any expensive rework pass begins.
+- Cost measured per accepted tangible result, not per commit.
+- A recorded comparison against expected direct-delivery effort, checked
+  at closure.
 
-**Not yet done:** reproduction by the founder. Only that confirms the
-hand-off (DELIVERY-LEARNING-003).
+### Model-allocation hypothesis (for testing, not a frozen rule)
 
-The branch was pushed to origin after this test. Main was not modified in
-either repository.
+- A capable lead model for short planning, Stand-Back review and
+  challenge.
+- A lower-cost implementation model for ordinary coding once direction is
+  set.
+- A low-cost model or deterministic tooling for mechanical checks (lint,
+  type, build, overflow/overlap screenshots).
+- No automatic default to the most expensive available model for every
+  council role.
 
-## 11. Duration
+## 16. Prompt ledger
 
-- Execution began at 11:43Z, with the repository state check.
-- The first founder-visible working result was at about 12:00Z.
-- The independent review and correction cycle finished at about 12:10Z.
-- The hand-off test passed at about 12:15Z; the branch was pushed at 12:16Z.
-- Total wall-clock time was about 35 minutes, in one session.
-- Prompt 024 (this prompt) is the only founder prompt.
+- Prompts issued before this closure: 24.
+- Completed: 22.
+- Running experiment now being closed: 1.
+- Unconfirmed/superseded: 1.
+- This closure is Prompt 025.
+- After this closure: 25 issued, 24 completed, 1 unconfirmed/superseded.
 
-## 12. Classification
+Prompt count remains a diagnostic signal, not a performance target.
 
-**SUPPORTED (provisional).** Within this session, Project OS did each of
-the following without founder input:
+---
 
-- reproduced the failure;
-- secured intent from the primary artefacts;
-- ran two independent roles;
-- found the root cause;
-- delivered a Panel C implementation;
-- passed one independent correction cycle and a clean-clone hand-off test.
-
-It did this with one founder prompt, one correction cycle, £0 spend and
-no production change.
-
-**Provisional because** an agent performed the hand-off test, and under
-DELIVERY-LEARNING-003 the founder's own reproduction is the real gate.
-
-**Downgrade conditions:**
-
-- to **NOT SUPPORTED** if the founder cannot reproduce the result with the
-  §9 commands;
-- to **PARTIALLY SUPPORTED** if it reproduces but materially misreads
-  Panel C.
-
-This classification concerns autonomous delivery. It is not founder
-acceptance of the design.
-
-## 13. Evidence
-
-**LaunchCity:**
-
-- `docs/evidence/009-autonomous-horizon-recovery/`
-  - final captures at 1440 and 390, including first-viewport captures;
-  - `comparison-panel-c-vs-branch.jpg`;
-  - `before-b438fe8-*` (the reproduced failure);
-- `docs/experiments/009-autonomous-horizon-recovery.md`;
-- `review/README.md` (fixture and image provenance, isolation).
-
-**Commits:**
-
-- `17e7d13` (implementation);
-- `5cd5da0` (correction cycle 1);
-- `9c619c7` (evidence).
-
-**Project OS:**
-
-- `docs/evidence/2026-09-17-launchcity-local-proof-failure.png` (input);
-- this record.
-
-## 14. Limitations
-
-- **Screenshots are not founder acceptance.** Visual acceptance of the
-  composition remains the founder's decision.
-- **Independence was partial.** Only two roles ran as separate agents,
-  and the product guardian's specification was written by an agent
-  interpreting Panel C, not by the founder.
-- **The review data is illustrative.** Real LL2 names and states were not
-  re-fetched. The founder's own local cache was only used to reproduce
-  the failure; it was not checked against the new layout.
-- **Production imagery is still off.** The branch shows imagery only in
-  review mode. Source, licence and attribution for production images are
-  still a founder decision.
-- **Review mode and `npm run dev` share one directory.** Next.js allows
-  one dev server per directory, so the founder's existing server on :3000
-  must be stopped first.
-- **No browser beyond Chromium was used.**
-
-## 15. Founder review (addendum, 17 September 2026)
-
-**Outcome:** the founder reproduced the branch locally (the dev server was
-set up at the founder's request) and reviewed it.
-
-**Founder's words:**
-
-1. "Not quite, it's not what was envisioned in the brief."
-2. "Images should be taken from public sources, and credit listed on a
-   separate page, same for any credits."
-3. "Not ready yet."
-
-**Reproduction worked. The reading of Panel C did not.** Point 1 meets the
-§12 downgrade condition, so this experiment is reclassified.
-
-**Classification: PARTIALLY SUPPORTED.** Autonomous delivery produced a
-working, reproducible, independently verified result, but it did not
-capture the founder's visual intent.
-
-**What was missed.** The product guardian's specification treated these as
-"adaptable" when they were central to Panel C:
-
-- the photographic Earth backdrop;
-- the serif type;
-- the Detail tabs;
-- the in-card header and menu.
-
-The independent reviewer then tested against that specification. Both
-roles were agents interpreting the same artefact, so the misreading passed
-through unchallenged.
-
-**Candidate learning.** For visual work, "adaptable" deviations from the
-source artefact need founder confirmation *before* implementation. An
-agent-written specification is not a substitute.
-
-**Response.** This was founder-directed rework, not an autonomous
-correction cycle. LaunchCity `9cbeed3` and `4c7283f`:
-
-- rebuilt the Horizon and Detail to follow Panel C literally;
-- added a public-source image library (`lib/imagery.ts`) and a `/credits`
-  page;
-- removed inline captions.
-
-Lint, tsc, 105 tests, `next build` and the OpenNext build all passed from a
-clean clone. The branch was pushed. There was no merge or deploy. This
-second pass was not independently re-reviewed by a separate agent; the
-founder's own review is the gate.
-
-**Founder prompts:** 3 in total (the original, the dev-server request, and
-this review).
+**Founder acceptance of the LaunchCity visual result has not been
+granted.** This record classifies autonomous delivery capability only.

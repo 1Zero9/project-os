@@ -331,6 +331,30 @@ in a few hours; a founder-reproduced local result
 (`docs/evidence/2026-09-17-launchcity-local-proof-failure.png`) that
 contradicted a prior agent report of practical completion.
 
+**Further candidate sub-items (v0.2 candidate, not promoted)**, from
+Experiment 007 (`docs/experiments/007-autonomous-launchcity-recovery.md`,
+PARTIALLY SUPPORTED) — evidence that autonomous role coordination and
+reproducibility can hold while visual interpretation, cost proportionality
+and founder acceptance do not:
+
+- **Autonomy orchestration** — when a council role genuinely needs a
+  separate agent versus a role pass in the main session, and whether an
+  agent-written specification checked by another agent substitutes for a
+  founder checkpoint (evidence: it did not — both roles shared one
+  misreading of the source artefact).
+- **Role-based model selection** — whether council roles need different
+  model capability levels rather than one expensive model for every role.
+- **Delivery-cost budgets** — a cost ceiling set before execution, and a
+  cost check before authorising a second correction cycle or rework pass.
+- **Context and request limits** — a request- or agent-pass ceiling and a
+  context-size control, to bound runaway cache growth.
+- **Reproducible hand-off** — confirmed working for the first iteration
+  (independently verified); not yet confirmed for a founder-directed
+  revision made after independent review had already run.
+- **Founder-visible acceptance** — a checkpoint before expensive rework
+  begins, not only before the process ends; cost measured per accepted
+  result, not per commit.
+
 ---
 
 ## Later / Unproven
