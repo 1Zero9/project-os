@@ -337,6 +337,22 @@ PARTIALLY SUPPORTED) — evidence that autonomous role coordination and
 reproducibility can hold while visual interpretation, cost proportionality
 and founder acceptance do not:
 
+**Intent fidelity candidates (v0.2 candidate, not promoted)**, from
+`docs/strategy/DELIVERY-LEARNING-004.md`:
+
+- **Intent Baseline** — approved sources mapped to stable, authority-owned
+  requirements and acceptance evidence.
+- **Fidelity Gate and Rebaseline Trigger** — a CORE-item completion block and
+  a stop/recovery path when intent drifts.
+- **Structural proof before detailed implementation** — founder-visible proof
+  of the required composition/structure before refinement.
+- **Source-to-requirement traceability and no silent omission** — every
+  authoritative requirement has status; deferral/supersession needs approval.
+- **Product acceptance separate from technical validation** — a passing build
+  cannot pass an unmet intent requirement.
+- **Cost against founder-accepted value** — pause when the budget is exceeded
+  without accepted tangible value.
+
 - **Autonomy orchestration** — when a council role genuinely needs a
   separate agent versus a role pass in the main session, and whether an
   agent-written specification checked by another agent substitutes for a
