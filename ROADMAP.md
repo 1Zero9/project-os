@@ -1,439 +1,157 @@
 # Project OS — Roadmap
 
-This document captures possible future capabilities discovered during the
-development of Project OS.
+## Direction
 
-Items here are hypotheses, not commitments.
+Project OS is working toward an aspirational outcome: a founder can bring an
+idea and, over time, receive substantial help to clarify, challenge, plan,
+prove and deliver it. The founder's roughly **80% idea-to-project** ambition is
+a direction for coming weeks and months, not a current capability claim or a
+target for any single experiment.
 
-Nothing moves from this roadmap into Project OS until evidence from projects,
-archaeology or experimentation demonstrates that it provides sufficient value.
+The immediate job is smaller: prove that Project OS helps an AI and founder
+reach better delivery decisions with less waste than direct work.
 
----
+Project OS v0.1 remains **FROZEN**. Nothing on this roadmap is promoted merely
+because it sounds useful or exists in a document.
 
-## Now — Foundation
+## Operating rule
 
-- Document Project OS origin
-- Establish governing principles
-- Conduct project archaeology
-- Identify recurring problems and successful patterns
-- Separate reusable knowledge from project-specific decisions
+Each roadmap item must state a small question, a bounded test, evidence needed
+to advance, and a stop condition. An experiment may support, partly support,
+or reject an idea. A rejected result is progress if it prevents more waste.
 
----
-
-## Explore
-
-Ideas that appear valuable but require evidence.
-
-### Project Council & Pre-mortem
-
-Use multiple specialist perspectives to challenge significant projects before
-implementation.
-
-Questions to investigate:
-- When does a council materially improve decisions?
-- Which roles provide genuinely different perspectives?
-- When is a lightweight pre-mortem sufficient?
-- How should disagreement be synthesised?
-- What is the minimum useful council?
-
-Origin:
-Lucy / Project OS discussion and workplace co-creation experience.
+Do not add a new control, agent role, platform, or document to rescue an
+experiment while it is running.
 
 ---
 
-### The Brake
+## Current — Complete one prospective delivery loop
 
-A process-control role designed to detect:
+### Milestone 1: Experiment 009, Phase 2
 
-- scope drift;
-- design fixation;
-- process fixation;
-- unnecessary review;
-- premature abstraction;
-- diminishing returns.
+**Question:** Can the compact Delivery Brief and Proof-and-Stop Gate lead to
+an accepted, founder-visible outcome on a small unrelated project with less
+overhead and fewer corrective interventions than direct AI-assisted work?
 
-The Brake must subtract work rather than create it.
+**Test:** Select one founder-owned, bounded piece of work; freeze the brief,
+budget, acceptance evidence and classification rules; build a structural proof;
+then either complete the accepted boundary or stop.
 
-Origin:
-Lucy design process and subsequent Project OS framework drift.
+**Evidence required to advance:** an accepted or explicitly stopped result,
+committed-state reproduction, founder-intervention count, delivery time/cost,
+and a credible direct-delivery comparison.
 
----
+**Stop conditions:** unclear authority, no meaningful user-visible outcome,
+second unaccepted correction, or budget exceeded without accepted value.
 
-### Eolas — Knowledge & Reuse Layer
+**Current state:** Phase 1 produced only a Vecta structural-proof case and is
+recorded as interim evidence. It does not classify the loop or justify Vecta
+expansion. See [Experiment 009](docs/experiments/009-minimum-v02-delivery-loop-pilot.md)
+and [Evidence Log 009](docs/evidence/009-evidence-log.md).
 
-Explore evolving Eolas into the knowledge layer of Project OS.
-
-Potential responsibilities:
-
-- decisions;
-- lessons;
-- proven patterns;
-- implementation examples;
-- anti-patterns;
-- reusable code candidates.
-
-Important distinction:
-
-Project OS governs.
-Eolas remembers.
-
-Origin:
-Earlier Eolas project and repeated recreation across projects.
+**Candidate used:** [Delivery Brief and Proof-and-Stop Gate](docs/candidates/V02-DELIVERY-BRIEF-AND-PROOF-GATE.md).
 
 ---
 
-### Compounding Project Knowledge
+## Next — Replicate before expanding
 
-Explore whether previous project work can provide a measurable head start to
-new, resumed or inherited projects.
+### Milestone 2: A second compact delivery loop
 
-The objective is not to load complete historical repositories into project
-context.
+**Question:** Does the compact loop help on a different type of bounded work,
+or was the first result project-specific?
 
-Project OS should determine whether relevant precedent can be selectively
-retrieved and applied so that previously earned knowledge reduces repeated
-product, design, architecture, security, infrastructure or implementation
-work.
+**Test:** Repeat Milestone 1 on a genuinely different founder-owned project or
+feature. Keep the same core loop; vary the project, not the rules.
 
-Questions to investigate:
+**Evidence required to advance:** two comparable outcomes showing that the
+brief/proof/stop sequence either prevented meaningful rework or produced an
+accepted result proportionately.
 
-- Can useful precedent be extracted from previous projects?
-- Can project-specific decisions be distinguished from reusable patterns?
-- Can recurring Steve preferences be distinguished from one-off choices?
-- Can relevant precedent be retrieved without excessive context?
-- Does the retrieved knowledge materially improve the next project?
-- What work or decisions were genuinely avoided?
-- Can harmful, stale or irrelevant precedent be detected?
-- What is the context and token cost of obtaining the benefit?
-- Can inherited progress be meaningfully measured?
+**Stop condition:** if either test shows the protocol adds effort without an
+earlier better decision, simplify it or stop treating it as a v0.2 candidate.
 
-This is the primary evidence question behind the longer-term Steve 2.0 and
-Eolas direction recorded in:
+### Milestone 3: Test one selective lesson at the point of decision
 
-`docs/strategy/CHECKPOINT-001.md`
+**Question:** Can one proven, relevant lesson help a live decision more than a
+short current-state investigation alone?
 
-Do not build a full Eolas implementation merely to test this hypothesis.
+**Test:** Before a consequential decision, record the target-native baseline;
+then introduce one traceable precedent and compare the decision, uncertainty,
+or work avoided.
 
-Origin:
+**Evidence required to advance:** a material difference attributable to the
+selected lesson, without loading broad project history or treating prior work
+as authority.
 
-Strategic Checkpoint 001, September 2026.
-
-### AI Resource Strategy
-
-Explore whether Project OS should decide not only what work should be performed,
-but what level and combination of AI capability the work deserves.
-
-Potential areas:
-
-- model selection;
-- provider selection;
-- reasoning level;
-- token / credit consumption;
-- cost;
-- latency;
-- context requirements;
-- specialist coding models;
-- multi-model review;
-- model diversity within Project Council;
-- escalation between model capability levels.
-
-Possible principle:
-
-> Spend intelligence where intelligence changes the outcome.
-
-Avoid permanently assigning named models or providers to roles.
-
-Prefer capability classes such as:
-
-- Fast
-- General
-- Reasoning
-- Coding
-- Research
-- Visual
-
-A future model registry could map available models onto these capabilities.
-
-Evidence to investigate:
-
-- Which models perform particular project tasks best?
-- When does a stronger model materially improve the result?
-- When is multi-model review valuable?
-- When does it merely multiply cost?
-- How many attempts were required?
-- Did another model need to repair the result?
-- Can Project OS learn effective model routing from previous projects?
-
-Origin:
-Project OS discussion, September 2026.
+**Stop condition:** if current-state investigation reaches the same answer as
+quickly, retain the lesson as archive material and do not build retrieval
+machinery around it.
 
 ---
 
-### Retrospective Project OS
+## Then — Decide the smallest v0.2
 
-Explore whether Project OS can be run retrospectively against completed or
-mature projects.
+### Milestone 4: v0.2 decision checkpoint
 
-Purpose:
+**Question:** After two prospective delivery cases and one selective-learning
+test, what is the smallest behaviour that has earned promotion?
 
-- reconstruct original intent and important decisions;
-- identify where Project OS would have challenged or stopped work;
-- identify scope drift and failure points;
-- extract reusable decisions and learning;
-- determine what should enter the Project OS/Eolas knowledge layer.
+**Test:** Compare outcomes against the evidence thresholds above. Remove
+overlapping candidates rather than combining every previous learning.
 
-This is different from the existing archaeology work: archaeology discovers
-patterns across projects; retrospective analysis evaluates an individual
-project through the Project OS lens.
+**Possible outcome:**
 
-Origin:
-Project OS discussion, September 2026.
+- retain one compact Delivery Brief and Proof-and-Stop Gate;
+- simplify it further;
+- keep Project OS as a learning archive while using direct delivery; or
+- pause and redesign if it remains slower than direct founder-builder work.
 
----
-
-
-
-### Existing Project Adoption
-
-Explore whether an active existing project can be brought under Project OS
-without requiring it to have started there.
-
-**Experiment 002 — Lastman completed.**
-
-Outcome:
-
-**SUPPORTED, with qualifications.**
-
-Experiment 002 demonstrated that Project OS v0.1 could establish sufficient
-current-state understanding of an independently developed active project,
-preserve inherited decisions, identify a consequential current decision and
-guide a proportionate intervention without reconstructing the project's full
-history.
-
-The experiment also exposed friction between existing-project adoption and
-v0.1's prescribed creation of a project-local `PROJECT-OS.md` artefact.
-
-Evidence:
-
-- `docs/experiments/002-lastman.md`
-- `docs/evidence/002-evidence-log.md`
-
-This remains evidence rather than automatic promotion into the framework.
-
-Origin:
-
-Project OS discussion and Experiment 002, September 2026.
+**Not an outcome:** automatically creating v0.2 agents, a dashboard, a
+knowledge platform, or an orchestration layer.
 
 ---
 
-### Stand-Back Review & Assumption Challenge
+## Evidence already retained
 
-Explore a lightweight gate that requires inherited assumptions and platform
-choices to be challenged before implementation, rather than after.
-
-Purpose: prevent momentum from preserving the wrong type of decision.
-Founder-direction delivery work on Golf Club Tools and LaunchCity showed
-that "already decided" was treated too easily as "previously validated" —
-inherited platform, cadence and access decisions were accepted, and an
-architectural challenge only happened after a diagnose-retry-deploy cycle
-had already run.
-
-Trigger points: before accepting a new project for delivery; before
-significant implementation begins; when inheriting an existing project;
-before adopting or preserving a platform decision; before creating a
-recurring operational cost; before acting on a failure that may indicate a
-deeper architectural problem.
-
-The gate distinguishes inherited decisions (accepted because they existed)
-from validated decisions (accepted because evidence supports them), and
-checks: authority and legitimacy (who owns the problem, do we have a real
-route to users and release); an assumption inventory (fact, constraint,
-preference, inherited decision, untested assumption, temporary
-implementation choice); a platform and dependency challenge (whether
-hosting, scheduling, cache and origin need to live on one platform); and a
-cheapest-disproof test that could run before implementation.
-
-Evidence:
-
-- Golf Club Tools — selected before confirming a valid user or release
-  route; the tool had only ever been an example, with no sponsoring
-  relationship.
-- LaunchCity — Cloudflare hosting/scheduling/caching, a 15-minute
-  refresh cadence, and anonymous API access were all inherited and
-  initially preserved unexamined. A production 429 was diagnosed and
-  patched with a retry before the platform decision itself was
-  questioned; a comparative spike then showed a GitHub-hosted request to
-  the same endpoint succeeding with almost unused quota, strengthening
-  an execution-environment hypothesis that a broader platform comparison
-  would have surfaced earlier.
-
-Full account: `docs/strategy/DELIVERY-LEARNING-001.md`.
-
-Status: candidate learning, not promoted. This is a v0.2 candidate
-requiring confirmation — either it prevents a material piece of
-unnecessary work in another project, or applying it retrospectively to
-another mature project reveals a consequential inherited assumption
-before implementation begins.
-
-**Candidate sub-items (v0.2 candidate, not promoted)**, from
-`docs/strategy/DELIVERY-LEARNING-002.md` — evidence that a documented
-decision being preserved is not the same as that decision having been
-authorised:
-
-- **Decision authority and provenance** — who proposed a material
-  direction, who had authority to approve it, and where the approval
-  event is recorded.
-- **Decision lifecycle** — candidate statuses (IDEA, EXPERIMENT,
-  PROVISIONAL, ACCEPTED, FROZEN, SUPERSEDED, REJECTED, UNCLEAR) and
-  transition rules under which implementation, assistant documentation
-  or repetition alone must not change a decision's status.
-- **Evidence completeness** — whether relevant mock-ups, conversations
-  or earlier specifications exist outside the repository, and whether
-  the repository is being mistaken for the complete history.
-- **Experimental-decision hardening** — detecting when an experiment has
-  been treated as a permanent requirement without a traceable approval
-  event (the LaunchCity image-free interpretation, later marked
-  SUPERSEDED by the founder in commit
-  `7e85dae3b35555c0ca1ed1b7e0a0d964fb235ff4`).
-- **Product/infrastructure proportionality** — whether recent work
-  packages are displacing completion of user-visible product value with
-  infrastructure-only work.
-- **Prompt and intervention learning signals** — prompts spent on
-  rework, on correcting a decision, or on documentation only, tracked as
-  learning signals rather than productivity targets.
-
-**Further candidate sub-items (v0.2 candidate, not promoted)**, from
-`docs/strategy/DELIVERY-LEARNING-003.md` — evidence that technical
-completion and founder-facing completion are not the same thing:
-
-- **Reproducible hand-off gate** — a task cannot be described as complete
-  unless the founder can reproduce it from the committed repository using
-  documented commands; agent-captured screenshots are supporting evidence,
-  not acceptance evidence.
-- **Founder-visible proof gate** — for visual work, the founder must see
-  the actual result before further documentation, deployment or
-  decision-status advancement.
-- **Independent acceptance** — the implementation agent cannot be the sole
-  acceptance tester of its own output.
-- **Two-correction stop trigger** — two consecutive corrective prompts
-  trigger a pause and founder review before more work continues.
-- **Expected delivery budget** — record an expected direct-delivery
-  duration before starting; if the process exceeds that budget without
-  visible value, pause and reassess.
-- **Tangible-value measurement** — count only a founder-visible working
-  result, a user-visible production improvement, or work conclusively
-  avoided before implementation; documentation, tests and investigations
-  are supporting work, not tangible value by themselves.
-
-Evidence: two days of Project OS-guided LaunchCity/Golf Club Tools work
-that a direct one-to-one session was assessed as likely to have completed
-in a few hours; a founder-reproduced local result
-(`docs/evidence/2026-09-17-launchcity-local-proof-failure.png`) that
-contradicted a prior agent report of practical completion.
-
-**Further candidate sub-items (v0.2 candidate, not promoted)**, from
-Experiment 007 (`docs/experiments/007-autonomous-launchcity-recovery.md`,
-PARTIALLY SUPPORTED) — evidence that autonomous role coordination and
-reproducibility can hold while visual interpretation, cost proportionality
-and founder acceptance do not:
-
-**Intent fidelity candidates (v0.2 candidate, not promoted)**, from
-`docs/strategy/DELIVERY-LEARNING-004.md`:
-
-- **Intent Baseline** — approved sources mapped to stable, authority-owned
-  requirements and acceptance evidence.
-- **Fidelity Gate and Rebaseline Trigger** — a CORE-item completion block and
-  a stop/recovery path when intent drifts.
-- **Structural proof before detailed implementation** — founder-visible proof
-  of the required composition/structure before refinement.
-- **Source-to-requirement traceability and no silent omission** — every
-  authoritative requirement has status; deferral/supersession needs approval.
-- **Product acceptance separate from technical validation** — a passing build
-  cannot pass an unmet intent requirement.
-- **Cost against founder-accepted value** — pause when the budget is exceeded
-  without accepted tangible value.
-
-**Minimum v0.2 delivery-loop pilot (v0.2 candidate, not promoted)**, from
-`docs/experiments/009-minimum-v02-delivery-loop-pilot.md`:
-
-- **Delivery Brief** — one concise, authority-owned record of outcome, core
-  requirements, structural proof, acceptance evidence and budget.
-- **Proof-and-Stop Gate** — one combined founder-visible proof, reproducibility
-  and stop/rebaseline decision, tested prospectively on an unrelated project.
-
-The first bounded structural-proof case is recorded in
-`docs/evidence/009-evidence-log.md`. It is interim evidence only; the next
-step is a fresh prospective delivery validation, not Vecta expansion or v0.2
-promotion.
-
-- **Autonomy orchestration** — when a council role genuinely needs a
-  separate agent versus a role pass in the main session, and whether an
-  agent-written specification checked by another agent substitutes for a
-  founder checkpoint (evidence: it did not — both roles shared one
-  misreading of the source artefact).
-- **Role-based model selection** — whether council roles need different
-  model capability levels rather than one expensive model for every role.
-- **Delivery-cost budgets** — a cost ceiling set before execution, and a
-  cost check before authorising a second correction cycle or rework pass.
-- **Context and request limits** — a request- or agent-pass ceiling and a
-  context-size control, to bound runaway cache growth.
-- **Reproducible hand-off** — confirmed working for the first iteration
-  (independently verified); not yet confirmed for a founder-directed
-  revision made after independent review had already run.
-- **Founder-visible acceptance** — a checkpoint before expensive rework
-  begins, not only before the process ends; cost measured per accepted
-  result, not per commit.
+| Finding | Current reading | Evidence |
+|---|---|---|
+| Bounded current-state understanding can guide an existing project | Partially demonstrated | [Experiment 002](docs/experiments/002-lastman.md) |
+| Within-project context can reduce repeated restatement | Partially demonstrated; not yet general | [Experiments 003](docs/experiments/003-compounding-project-knowledge.md) and [006](docs/experiments/006-within-project-knowledge-replication.md) |
+| Cross-project knowledge transfer reliably improves delivery | Not demonstrated | [Experiments 004](docs/experiments/004-cross-project-knowledge-transfer.md) and [005](docs/experiments/005-cross-project-product-architecture-transfer.md) |
+| Technical validation alone proves product acceptance | Contradicted by evidence | [Delivery Learning 003](docs/strategy/DELIVERY-LEARNING-003.md) |
+| A founder-visible structural proof should precede detailed product work | Plausible; needs prospective validation | [Delivery Learning 004](docs/strategy/DELIVERY-LEARNING-004.md) and [Experiment 009](docs/experiments/009-minimum-v02-delivery-loop-pilot.md) |
+| Autonomous multi-agent delivery is necessary or cost-effective | Not demonstrated | [Experiment 007](docs/experiments/007-autonomous-launchcity-recovery.md) |
 
 ---
 
-## Later / Unproven
+## Parked until evidence changes
 
-Potential capabilities that should NOT be built without stronger evidence.
+These are possibilities, not workstreams. Do not start them while the compact
+delivery loop is unproven.
 
-- Automated project bootstrap
-- Agent orchestration
-- Dynamic skill selection
-- Model routing
-- AI budget management
-- Reusable internal code packages
-- Project health scoring
-- Automated process-drift detection
-- Cross-project learning
-- Automated Eolas ingestion
+- Multi-agent councils and autonomous orchestration
+- Automated project bootstrap, dynamic skill selection, and model routing
+- Eolas as a knowledge platform or automated knowledge ingestion
+- AI-budget management systems, project-health scoring, and drift dashboards
+- Cross-project product/architecture transfer as a default practice
+- A full decision registry, permanent process-control role, or standalone
+  “Brake” agent
 
-These are deliberately parked.
+They may be reconsidered only when a completed delivery test identifies the
+specific missing capability and shows that a smaller existing control cannot
+address it.
 
----
+## How the 80% aspiration advances
 
-## Promoted
+The aspiration progresses through demonstrated behaviours, not feature count:
 
-Ideas move here only after sufficient evidence exists to make them part of
-Project OS.
+1. **Clarify:** turn an idea into an authority-owned, bounded outcome.
+2. **Prove:** show the founder a small structural result before expensive work.
+3. **Deliver:** complete an accepted boundary from committed state.
+4. **Repeat:** do this on different projects with proportionate cost.
+5. **Compound:** reuse only lessons that demonstrably improve the next
+   decision.
+6. **Delegate:** add specialist capability only after a recurring bottleneck is
+   observed and bounded.
 
-For each promoted item record:
-
-- Evidence
-- Projects demonstrating the need
-- Decision record
-- Implementation location
-- Date promoted
-
-None yet.
-
----
-
-## Rejected
-
-Ideas that were investigated and deliberately not adopted belong here.
-
-Rejection is useful knowledge.
-
-For each rejected item record:
-
-- Idea
-- Why it appeared useful
-- Evidence examined
-- Why it was rejected
-- Conditions that might justify reconsideration
-
-None yet.
+Project OS earns more autonomy only as these behaviours become repeatable.
