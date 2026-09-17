@@ -302,6 +302,35 @@ authorised:
   rework, on correcting a decision, or on documentation only, tracked as
   learning signals rather than productivity targets.
 
+**Further candidate sub-items (v0.2 candidate, not promoted)**, from
+`docs/strategy/DELIVERY-LEARNING-003.md` — evidence that technical
+completion and founder-facing completion are not the same thing:
+
+- **Reproducible hand-off gate** — a task cannot be described as complete
+  unless the founder can reproduce it from the committed repository using
+  documented commands; agent-captured screenshots are supporting evidence,
+  not acceptance evidence.
+- **Founder-visible proof gate** — for visual work, the founder must see
+  the actual result before further documentation, deployment or
+  decision-status advancement.
+- **Independent acceptance** — the implementation agent cannot be the sole
+  acceptance tester of its own output.
+- **Two-correction stop trigger** — two consecutive corrective prompts
+  trigger a pause and founder review before more work continues.
+- **Expected delivery budget** — record an expected direct-delivery
+  duration before starting; if the process exceeds that budget without
+  visible value, pause and reassess.
+- **Tangible-value measurement** — count only a founder-visible working
+  result, a user-visible production improvement, or work conclusively
+  avoided before implementation; documentation, tests and investigations
+  are supporting work, not tangible value by themselves.
+
+Evidence: two days of Project OS-guided LaunchCity/Golf Club Tools work
+that a direct one-to-one session was assessed as likely to have completed
+in a few hours; a founder-reproduced local result
+(`docs/evidence/2026-09-17-launchcity-local-proof-failure.png`) that
+contradicted a prior agent report of practical completion.
+
 ---
 
 ## Later / Unproven
