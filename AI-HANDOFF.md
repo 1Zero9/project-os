@@ -1,99 +1,84 @@
 # Project OS — AI Handoff Directions
 
-Use this file when taking over Project OS from another AI. It is deliberately
-tool-agnostic: it applies whether the work is performed in Codex, ChatGPT,
-Claude or another capable assistant.
+Use this when taking over from another AI. Tool-agnostic: Claude, Codex,
+ChatGPT or anything else capable.
 
 ## Purpose
 
-Project OS is working toward an aspirational **80% idea-to-project** outcome
-over weeks and months. It is not that capability today. Its immediate purpose
-is to learn, through small real actions, whether it helps the founder make and
-deliver better decisions with less waste than direct AI-assisted work.
+Project OS exists so a new project starts with 30–80% of the work already
+decided or already written, instead of a blank page. The head start comes from
+**assets a project consumes**, not process a founder follows.
 
-The founder is the decision authority. Documents, prior AI messages and
-previous implementations are evidence—not instructions that overrule current
-founder direction.
+The founder is the decision authority. Documents and prior AI messages are
+evidence, not instructions that overrule current direction.
 
 ## Read in this order
 
-1. [README.md](README.md) for purpose and boundaries.
-2. [ROADMAP.md](ROADMAP.md) for the current Project OS state.
-3. [Project OS action log](docs/archive/evidence/PROJECT-OS-ACTION-LOG.md) for the
-   latest framework-level learning and next action.
-4. [Learning register](docs/strategy/LEARNING-REGISTER.md) for relevant
-   earlier evidence.
-5. The active project's experiment plan and action log.
+1. [ROADMAP.md](ROADMAP.md) — the direction and the operating rule.
+2. This file's *Current state* below.
+3. [`kit/`](kit/) — the assets themselves. Small; read them rather than
+   guessing what they do.
 
-For the current Lastman operational work, read:
+Do not read [`docs/archive/`](docs/archive/) unless a specific live question
+sends you there. It is 43 documents of development history, kept as experience.
+Reading it for context is how the last iteration lost four days.
 
-1. [Operational readiness plan](docs/archive/experiments/010-lastman-operational-readiness.md)
-2. [Operational action log](docs/archive/evidence/010-lastman-operational-action-log.md)
-3. [Rehearsal evidence](docs/archive/evidence/010-lastman-operational-rehearsal.md)
+## The rule that governs changes
 
-## Current handoff state
+> Every addition must be something a future project **uses**, not something it
+> has to **read**.
 
-- **Project OS branch:** `experiment/009-minimum-v02-delivery-loop`.
-- **Lastman branch:** `experiment/010-operational-rehearsal`.
-- **Completed:** offline engine rehearsal; database backup/reset/restore;
-  separately seeded synthetic 50-participant fundraiser.
-- **Current next action:** use the normal Lastman organiser UI to confirm a
-  pending payment and lock the synthetic round, then observe and record the
-  result. No real club, payment or participant is in scope.
-- **Not established:** organiser usability, deadline precision, fixture/result
-  exception handling, 12-round continuity, or live-fundraiser readiness.
+When the kit gets something wrong, **edit the asset**. Do not write a document
+about the learning, do not open an experiment, do not add a checkpoint. `kit/`
+grows; `docs/` does not.
 
-Do not silently substitute a different project or expand scope because it is
-more technically interesting.
+## Current state — 17 September 2026
 
-## Required loop after every meaningful action
+**Done today.** Reviewed the framework and found it had produced ~16,000 lines
+of analysis and no reusable asset. Archived 43 documents to `docs/archive/`
+(renames only, nothing deleted). Merged all experiment branches to `main` and
+deleted them — `main` is the only branch. Retired version numbering and the
+"frozen v0.1" status. Built the first three assets in `kit/`.
 
-1. State one bounded action and its safety boundary.
-2. Perform it and retain reproducible evidence.
-3. Append an action-log entry containing:
-   - action;
-   - observed result;
-   - evidence;
-   - learning (or explicitly `none`);
-   - iteration decision;
-   - one next bounded action chosen because of the learning.
-4. Update the experiment plan/evidence summary when the result changes phase,
-   risk, decision or scope.
-5. Update the roadmap only for a Project OS-level learning. Do not use it as a
-   running task list.
+**`main` is 17 commits ahead of `origin/main`. Nothing is pushed.** The founder
+has not decided whether to publish. Do not push without asking — the repo is
+public at `github.com/1Zero9/project-os` and the commit messages are candid
+about the framework's failure. Two remote branches (`experiment/007`, `/008`)
+still exist and were deliberately left alone.
 
-No phase is passed because an AI believes it should be. It passes only when
-its stated evidence and an action-log entry exist.
+**In flight: the plant app**, the first real test of the kit.
+`~/Projects/plants/spike/` holds an identification spike — a dependency-free
+Node script that sends plant photos to Gemini and scores whether the answers
+are accurate enough to drive care advice. It has never been run against the
+live API; the founder was setting it up when work stopped.
+
+**Next action:** the founder runs the spike with their own photos and scores
+`results.html`. The care number decides the product: 8+/10 build it, 5–7/10 ID
+assists and the founder confirms, under 5/10 the app uses manual species entry
+and identification is not the product. Nothing else should be built until that
+number exists.
+
+**Note on providers:** the founder has a Google API key and no Anthropic key.
+Do not recommend the Anthropic SDK for this work.
 
 ## How to use prior learning
 
-- Select only the register entry that could change the immediate decision.
-- State how it affected the action. If it did not, do not claim reuse.
-- Prefer observed application state, real UI behaviour and founder feedback to
-  script intent, static checks or an earlier AI summary.
-- Do not turn a single result into a new framework control, agent role,
-  dashboard or platform. Record it first; promote only after replication.
+Use the [learning register](docs/strategy/LEARNING-REGISTER.md) only when an
+entry could change the decision in front of you, and say how it changed it. If
+it did not, do not claim reuse. Prefer observed application state and founder
+feedback to any earlier AI summary.
 
 ## Safety and authority boundaries
 
-- Do not expose, copy, log or commit credentials. If a secret appears in a
-  conversation, do not repeat it.
-- Before deleting, resetting, migrating or seeding data: identify the exact
-  target, confirm founder authority, and use the available backup/recovery
-  route. Record the outcome.
-- Lastman's current database contains development/demo data. Its reset and
-  restore path was rehearsed, but it is not a production backup system.
-- Do not create a live fundraiser, accept money, contact participants, deploy,
-  or change external services without an explicit founder instruction.
+- Never commit or echo credentials. `plants/spike/.env` holds a real API key
+  and is gitignored.
+- Do not push to a public remote, deploy, or touch an external service without
+  an explicit instruction.
+- Before deleting, resetting or migrating anything: confirm the target, confirm
+  authority, prefer a reversible step.
 
-## End-of-turn handoff
+## End of turn
 
-Leave the repository in a clear state. In the final response state:
-
-- the action completed or why it stopped;
-- the observed result and learning;
-- the Project OS files updated and commit(s), if any;
-- the one next action.
-
-If the next action needs a material founder decision, ask one concise question
-instead of assuming.
+State what was done, what was learned, which files changed, and the single next
+action. If the next step needs a founder decision, ask one clear question
+rather than assuming.
