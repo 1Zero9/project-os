@@ -3,7 +3,7 @@
 - **Date:** 17 September 2026
 - **Type:** Autonomy experiment (single founder prompt)
 - **Project OS v0.1:** remains FROZEN; this record does not change it
-- **Product status:** LaunchCity branch is ready for founder review. It is
+- **Product status:** founder reviewed it; not yet accepted (see §15). It is
   **not** accepted, locked, frozen or shipped.
 - **Classification:** see §12 (autonomous delivery capability only)
 
@@ -291,3 +291,54 @@ acceptance of the design.
   one dev server per directory, so the founder's existing server on :3000
   must be stopped first.
 - **No browser beyond Chromium was used.**
+
+## 15. Founder review (addendum, 17 September 2026)
+
+**Outcome:** the founder reproduced the branch locally (the dev server was
+set up at the founder's request) and reviewed it.
+
+**Founder's words:**
+
+1. "Not quite, it's not what was envisioned in the brief."
+2. "Images should be taken from public sources, and credit listed on a
+   separate page, same for any credits."
+3. "Not ready yet."
+
+**Reproduction worked. The reading of Panel C did not.** Point 1 meets the
+§12 downgrade condition, so this experiment is reclassified.
+
+**Classification: PARTIALLY SUPPORTED.** Autonomous delivery produced a
+working, reproducible, independently verified result, but it did not
+capture the founder's visual intent.
+
+**What was missed.** The product guardian's specification treated these as
+"adaptable" when they were central to Panel C:
+
+- the photographic Earth backdrop;
+- the serif type;
+- the Detail tabs;
+- the in-card header and menu.
+
+The independent reviewer then tested against that specification. Both
+roles were agents interpreting the same artefact, so the misreading passed
+through unchallenged.
+
+**Candidate learning.** For visual work, "adaptable" deviations from the
+source artefact need founder confirmation *before* implementation. An
+agent-written specification is not a substitute.
+
+**Response.** This was founder-directed rework, not an autonomous
+correction cycle. LaunchCity `9cbeed3` and `4c7283f`:
+
+- rebuilt the Horizon and Detail to follow Panel C literally;
+- added a public-source image library (`lib/imagery.ts`) and a `/credits`
+  page;
+- removed inline captions.
+
+Lint, tsc, 105 tests, `next build` and the OpenNext build all passed from a
+clean clone. The branch was pushed. There was no merge or deploy. This
+second pass was not independently re-reviewed by a separate agent; the
+founder's own review is the gate.
+
+**Founder prompts:** 3 in total (the original, the dev-server request, and
+this review).
