@@ -21,10 +21,12 @@ The question tested was deliberately smaller:
 - Test branch: `experiment/010-operational-rehearsal`
 - Test commit: `9bc66bb`
 - Added command: `npm run test:rehearsal`
-- Database use: none. The configured database is a hosted Prisma Postgres
-  instance with the generic database name `postgres`; its disposable status
-  was not established, so it was not seeded, queried for business data, or
-  changed.
+- Database use during rehearsal: none. The founder subsequently confirmed this
+  is the Vercel/Prisma Postgres database for Lastman. A read-only inventory
+  found 5 users, 2 competitions, 2 seasons, 2 leagues, 560 source fixtures and
+  9 applied migrations. It is therefore an existing development/demo
+  environment, not an automatically disposable blank database; it was not
+  seeded, migrated or changed for this rehearsal.
 
 The new rehearsal adapter is deliberately in memory. It invokes the actual
 functions in `lib/engine.ts` while replacing only the database calls those
@@ -75,4 +77,3 @@ the application UI, Prisma migrations, cron hosting, or real operator flow.
 
 The appropriate next step is a disposable-environment rehearsal, not a
 three-month live club fundraiser.
-

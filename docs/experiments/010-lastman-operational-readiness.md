@@ -17,9 +17,9 @@ migrations; seed only synthetic Premier League fixtures and accounts; document
 how the database is deleted after the run. Take and restore one backup before
 any user-flow testing.
 
-**Pass evidence:** independent connection string, migration log, synthetic
-seed record, successful restore, and no use of the current ambiguous hosted
-database.
+**Pass evidence:** independent disposable connection string (or an explicit
+backup-and-reset protocol for the existing non-empty Vercel/Prisma development
+database), migration log, synthetic seed record, and successful restore.
 
 **Stop condition:** environment ownership or deletion/recovery procedure is
 unclear.
@@ -98,4 +98,3 @@ Lastman is suitable for a real 50-member, three-month campaign only when
 Tests 0–3 pass and the club independently accepts the Test 4 operating terms.
 Passing the existing offline rehearsal is necessary evidence, but does not
 meet this decision rule.
-
