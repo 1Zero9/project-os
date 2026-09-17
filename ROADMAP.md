@@ -353,6 +353,14 @@ and founder acceptance do not:
 - **Cost against founder-accepted value** — pause when the budget is exceeded
   without accepted tangible value.
 
+**Minimum v0.2 delivery-loop pilot (v0.2 candidate, not promoted)**, from
+`docs/experiments/009-minimum-v02-delivery-loop-pilot.md`:
+
+- **Delivery Brief** — one concise, authority-owned record of outcome, core
+  requirements, structural proof, acceptance evidence and budget.
+- **Proof-and-Stop Gate** — one combined founder-visible proof, reproducibility
+  and stop/rebaseline decision, tested prospectively on an unrelated project.
+
 - **Autonomy orchestration** — when a council role genuinely needs a
   separate agent versus a role pass in the main session, and whether an
   agent-written specification checked by another agent substitutes for a
