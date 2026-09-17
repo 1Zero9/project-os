@@ -36,8 +36,16 @@ scheduled → needs a server or cron.
 **4. Does anything happen when the user isn't there?** Reminders, digests,
 scheduled jobs → cron + push/email. If not, skip all of it.
 
-**5. What's the riskiest unknown?** Build the smallest thing that tests that
+**5. Does it need a paid service or API key?** Ask which the user already has
+before recommending one — do not assume a provider. An available key beats a
+marginally better service every time at this stage.
+
+**6. What's the riskiest unknown?** Build the smallest thing that tests that
 first — before any layout, branding or colour work.
+
+When a feature's accuracy or quality is the thing everything else depends on,
+that is the riskiest unknown, and the first build is a throwaway script that
+measures it — not the app around it.
 
 ## Defaults, once the above is settled
 
@@ -53,6 +61,7 @@ Only apply what steps 1–4 actually justified.
 | Scheduled work | Vercel cron | a long-running server |
 | Tests | Vitest; Playwright only for critical flows | 100% coverage |
 | Static site | plain HTML/CSS or Astro | Next.js |
+| AI features | whichever provider the user already has a key for | assuming a provider |
 
 These are starting points to override, not rules. Say so when overriding.
 
