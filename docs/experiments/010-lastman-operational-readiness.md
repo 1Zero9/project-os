@@ -2,6 +2,14 @@
 
 **Status:** Planned. No live campaign is authorised by this plan.
 
+## Progress recording rule
+
+After every meaningful rehearsal action, append a dated entry to the
+[operational action log](../evidence/010-lastman-operational-action-log.md).
+Each entry must state the action boundary, observed result, reproducible
+evidence, decision and exactly one next action. A phase is not complete until
+its pass evidence and action-log entry both exist.
+
 ## Aim
 
 Establish whether Lastman can safely support a small, supervised club pilot.
@@ -40,6 +48,11 @@ to recover the run.
 
 **Stop condition:** an organiser cannot finish a standard step without code,
 SQL, or developer intervention.
+
+**Current phase:** data preparation is complete. Next is the organiser UI
+sequence: confirm a pending payment, inspect active/pending counts, lock the
+round, verify autopicks, record results, settle, inspect the audit trail and
+export the account data.
 
 ## Test 2 — Time, fixture and exception rehearsal
 
@@ -98,3 +111,12 @@ Lastman is suitable for a real 50-member, three-month campaign only when
 Tests 0–3 pass and the club independently accepts the Test 4 operating terms.
 Passing the existing offline rehearsal is necessary evidence, but does not
 meet this decision rule.
+
+## Phase sequence
+
+| Phase | Outcome to earn | Required recording point |
+|---|---|---|
+| 1 — One-round UI operation | An organiser completes the normal first-round flow with synthetic data | After payment confirmation, after lock, and after settlement/export |
+| 2 — Rules and exception operation | Deadline, postponement, correction, void, repeat/restriction and wipeout outcomes are observed and approved | One entry per exception and one decision on the deadline rule |
+| 3 — Compressed continuity | Twelve synthetic rounds can be operated and handed over without developer rescue | Per-round compact log plus a final reconciliation entry |
+| 4 — Pilot decision | A named club can accept the operating, money and support terms of a limited pilot | Explicit go/no-go decision; no implied approval |

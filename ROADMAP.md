@@ -117,6 +117,7 @@ knowledge platform, or an orchestration layer.
 |---|---|---|
 | Bounded current-state understanding can guide an existing project | Partially demonstrated | [Experiment 002](docs/experiments/002-lastman.md) |
 | Offline rules testing is sufficient to approve a live fundraiser | Contradicted: it supports engine confidence only | [Lastman rehearsal evidence](docs/evidence/010-lastman-operational-rehearsal.md) |
+| A recoverable synthetic environment can support the next operational test | Demonstrated for Lastman's development database; not production backup evidence | [Lastman action log](docs/evidence/010-lastman-operational-action-log.md) |
 | Within-project context can reduce repeated restatement | Partially demonstrated; not yet general | [Experiments 003](docs/experiments/003-compounding-project-knowledge.md) and [006](docs/experiments/006-within-project-knowledge-replication.md) |
 | Cross-project knowledge transfer reliably improves delivery | Not demonstrated | [Experiments 004](docs/experiments/004-cross-project-knowledge-transfer.md) and [005](docs/experiments/005-cross-project-product-architecture-transfer.md) |
 | Technical validation alone proves product acceptance | Contradicted by evidence | [Delivery Learning 003](docs/strategy/DELIVERY-LEARNING-003.md) |
