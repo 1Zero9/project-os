@@ -166,3 +166,13 @@ The aspiration progresses through demonstrated behaviours, not feature count:
    observed and bounded.
 
 Project OS earns more autonomy only as these behaviours become repeatable.
+
+## Cross-AI continuity
+
+Any AI taking over work must follow [AI handoff directions](AI-HANDOFF.md):
+read the current evidence first, work one bounded action at a time, and record
+the result, learning and iteration decision before proceeding.
+
+Project OS-level changes are recorded in the
+[Project OS action log](docs/evidence/PROJECT-OS-ACTION-LOG.md); product
+actions remain in their own experiment logs.

@@ -146,23 +146,17 @@ costs more than the value it creates, Project OS itself is the problem.
 
 ## Current Status
 
-Project OS is experimental.
+Project OS is experimental. Its 80% idea-to-project ambition is aspirational,
+not a present capability claim. Project OS v0.1 remains frozen while a smaller
+v0.2 delivery loop is tested.
 
-Two controlled experiments have been completed using real projects:
+Current work is a synthetic operational rehearsal for Lastman: the rules
+engine and development-database recovery path have passed bounded checks; the
+next evidence is an organiser completing one normal UI round. This is not yet
+approval for a real fundraiser.
 
-- **Experiment 001 — LaunchCity**
-- **Experiment 002 — Lastman**
-
-Both provided supporting evidence with qualifications.
-
-The current framework version, **Project OS v0.1**, remains frozen while it is
-tested.
-
-The next major research question is **Compounding Project Knowledge**:
-
-> Can useful precedent from previous projects be selectively applied to another
-> project in a way that reduces repeated work and improves decisions without
-> excessive context or token cost?
+For a reliable cross-AI starting point, read [AI-HANDOFF.md](AI-HANDOFF.md),
+then [ROADMAP.md](ROADMAP.md) and the linked active experiment documents.
 
 Capabilities discussed elsewhere in this repository — including Eolas,
 Project Council, specialist AI workforce orchestration, automated project
