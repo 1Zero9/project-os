@@ -146,17 +146,21 @@ costs more than the value it creates, Project OS itself is the problem.
 
 ## Current Status
 
-Project OS is experimental. Its 80% idea-to-project ambition is aspirational,
-not a present capability claim. Project OS v0.1 remains frozen while a smaller
-v0.2 delivery loop is tested.
+Project OS is early. Its 30–80% head-start ambition is a direction, not a
+present capability claim.
 
-Current work is a synthetic operational rehearsal for Lastman: the rules
-engine and development-database recovery path have passed bounded checks; the
-next evidence is an organiser completing one normal UI round. This is not yet
-approval for a real fundraiser.
+The first phase produced sixteen thousand lines of analysis and no asset a
+future project could use. That record is kept as experience in
+[`docs/archive/`](docs/archive/), and the work has moved to building things a
+project actually consumes. The first of those is [`kit/`](kit/): a capability
+index of previous projects, and a `new-project` skill that shapes an idea into
+the smallest sufficient stack and names the precedent to lift from.
+
+The governing rule is now that every addition must be something a future
+project **uses**, not something it has to **read**.
 
 For a reliable cross-AI starting point, read [AI-HANDOFF.md](AI-HANDOFF.md),
-then [ROADMAP.md](ROADMAP.md) and the linked active experiment documents.
+then [ROADMAP.md](ROADMAP.md).
 
 Capabilities discussed elsewhere in this repository — including Eolas,
 Project Council, specialist AI workforce orchestration, automated project

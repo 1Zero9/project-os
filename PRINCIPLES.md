@@ -174,4 +174,7 @@ These principles reflect evidence available following:
 They do not validate the broader Steve 2.0 vision or capabilities currently
 listed as hypotheses in the Project OS roadmap.
 
-Project OS v0.1 remains **FROZEN**.
+Version numbering and the "frozen v0.1" status have been retired. Freezing is a
+stability guarantee for dependents, and this framework has none — it was
+ceremony borrowed from software that did not exist. These principles change
+when evidence says they should, and not otherwise.
