@@ -77,3 +77,26 @@ the application UI, Prisma migrations, cron hosting, or real operator flow.
 
 The appropriate next step is a disposable-environment rehearsal, not a
 three-month live club fundraiser.
+
+## Test 0 update — 17 September 2026
+
+The founder authorised use of the existing Vercel/Prisma development
+environment. A full local JSON snapshot was created outside Git, then the
+database was reset through its nine migrations and restored from that snapshot.
+Post-restore counts matched the snapshot for users, competitions, seasons,
+leagues, source fixtures, entries, picks and fixtures.
+
+This establishes a recoverable rehearsal baseline for this environment. It
+does not make the backup mechanism a production backup service, and it does
+not establish live-fundraiser readiness.
+
+## Test 1 preparation — 17 September 2026
+
+A separately named synthetic fundraiser was added without replacing the
+restored data: 50 participants, 49 active entries, 6 pending-payment entries,
+35 submitted picks and an open first round. The repository's lint, production
+build and offline engine rehearsal all passed after seeding.
+
+The remaining Test 1 work is an organiser-led normal-UI operation of the
+round: payment confirmation, lock/autopicks, result entry, settlement, audit
+inspection and export. It has not yet been claimed as passed.
