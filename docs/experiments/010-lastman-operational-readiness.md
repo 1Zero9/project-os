@@ -7,8 +7,10 @@
 After every meaningful rehearsal action, append a dated entry to the
 [operational action log](../evidence/010-lastman-operational-action-log.md).
 Each entry must state the action boundary, observed result, reproducible
-evidence, decision and exactly one next action. A phase is not complete until
-its pass evidence and action-log entry both exist.
+evidence, learning, iteration decision and exactly one next action. The next
+action must respond to the learning, even when that means stopping or changing
+the plan. A phase is not complete until its pass evidence and action-log entry
+both exist.
 
 ## Aim
 

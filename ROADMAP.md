@@ -20,6 +20,10 @@ Each roadmap item must state a small question, a bounded test, evidence needed
 to advance, and a stop condition. An experiment may support, partly support,
 or reject an idea. A rejected result is progress if it prevents more waste.
 
+After each action, record the observed result and the decision-relevant
+learning, then choose or revise the next bounded action from that learning.
+Project OS is a delivery-learning loop, not a progress diary.
+
 Do not add a new control, agent role, platform, or document to rescue an
 experiment while it is running.
 
