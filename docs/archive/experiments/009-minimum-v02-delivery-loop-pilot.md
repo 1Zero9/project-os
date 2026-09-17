@@ -5,7 +5,7 @@
 
 ## Question
 
-Can the compact [Delivery Brief and Proof-and-Stop Gate](../candidates/V02-DELIVERY-BRIEF-AND-PROOF-GATE.md)
+Can the compact [Delivery Brief and Proof-and-Stop Gate](../../candidates/V02-DELIVERY-BRIEF-AND-PROOF-GATE.md)
 produce an accepted, founder-visible result on an unrelated project with less
 overhead and fewer corrective interventions than ordinary direct AI-assisted
 delivery?

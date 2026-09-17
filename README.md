@@ -175,8 +175,8 @@ Key documents include:
 - [`PRINCIPLES.md`](PRINCIPLES.md) — evidence-derived governing principles;
 - [`ROADMAP.md`](ROADMAP.md) — hypotheses and areas requiring investigation;
 - [`PRODUCT-OS-ORIGIN.md`](PRODUCT-OS-ORIGIN.md) — where the project came from;
-- [`docs/experiments/`](docs/experiments/) — controlled Project OS experiments;
-- [`docs/evidence/`](docs/evidence/) — evidence captured from those experiments;
+- [`docs/experiments/`](docs/archive/experiments/) — controlled Project OS experiments;
+- [`docs/evidence/`](docs/archive/evidence/) — evidence captured from those experiments;
 - [`docs/strategy/`](docs/strategy/) — longer-term strategic direction.
 
 The repository intentionally distinguishes between what has been

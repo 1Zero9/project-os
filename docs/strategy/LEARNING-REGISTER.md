@@ -12,8 +12,8 @@ authority or a reason to add process.
   conflicting historical direction.
 - **Result:** Existing artefacts enabled useful current-state understanding,
   but did not reliably establish what the founder currently intended.
-- **Evidence:** [Delivery Learning 002](DELIVERY-LEARNING-002.md) and
-  [Experiment 002 evidence](../evidence/002-evidence-log.md).
+- **Evidence:** [Delivery Learning 002](../archive/strategy/DELIVERY-LEARNING-002.md) and
+  [Experiment 002 evidence](../archive/evidence/002-evidence-log.md).
 - **Learning:** Context can inform a decision; only the authorised founder or
   owner can establish its direction.
 - **Iteration decision:** Before consequential work, record a short
@@ -26,8 +26,8 @@ authority or a reason to add process.
 - **Earlier action:** Completed process and technical work on LaunchCity.
 - **Result:** The work did not produce a reproducible, founder-accepted
   outcome despite implementation evidence.
-- **Evidence:** [Delivery Learning 003](DELIVERY-LEARNING-003.md) and
-  [Experiment 009 evidence](../evidence/009-evidence-log.md).
+- **Evidence:** [Delivery Learning 003](../archive/strategy/DELIVERY-LEARNING-003.md) and
+  [Experiment 009 evidence](../archive/evidence/009-evidence-log.md).
 - **Learning:** Build, lint and tests are necessary evidence, not acceptance.
 - **Iteration decision:** Require a founder-visible proof, committed
   reproduction and explicit acceptance or stop before calling a delivery
@@ -41,7 +41,7 @@ authority or a reason to add process.
   browser/runtime on LaunchCity.
 - **Result:** Perceptual drift and runtime defects were found that text,
   type-checking, lint and build did not reveal.
-- **Evidence:** [Experiment 001 evidence](../evidence/001-evidence-log.md).
+- **Evidence:** [Experiment 001 evidence](../archive/evidence/001-evidence-log.md).
 - **Learning:** Written descriptions and static checks can conceal meaningful
   divergence.
 - **Iteration decision:** Validate the actual user surface and confirm which
@@ -55,8 +55,8 @@ authority or a reason to add process.
   Tools and replicated selected knowledge later.
 - **Result:** It reduced restatement and sometimes avoided work, but inherited
   knowledge was not automatically authoritative or current.
-- **Evidence:** [Experiment 003 evidence](../evidence/003-evidence-log.md)
-  and [Experiment 006 evidence](../evidence/006-evidence-log.md).
+- **Evidence:** [Experiment 003 evidence](../archive/evidence/003-evidence-log.md)
+  and [Experiment 006 evidence](../archive/evidence/006-evidence-log.md).
 - **Learning:** Retained context is useful only when its source, relevance and
   currency are checked at the decision point.
 - **Iteration decision:** Keep a short, linked learning record; introduce one
@@ -70,8 +70,8 @@ authority or a reason to add process.
   unrelated projects.
 - **Result:** Some individual items were useful, but general transfer was at
   best partly supported and was vulnerable to contamination and added effort.
-- **Evidence:** [Experiment 004 evidence](../evidence/004-evidence-log.md)
-  and [Experiment 005 evidence](../evidence/005-evidence-log.md).
+- **Evidence:** [Experiment 004 evidence](../archive/evidence/004-evidence-log.md)
+  and [Experiment 005 evidence](../archive/evidence/005-evidence-log.md).
 - **Learning:** Prior projects are an archive of possible questions, not a
   default solution library.
 - **Iteration decision:** Use a targeted current-state investigation first;
@@ -86,7 +86,7 @@ authority or a reason to add process.
   compliant yet failed to preserve the intended outcome.
 - **Result:** The control problem was fidelity to intent, not merely missing
   documentation.
-- **Evidence:** [Delivery Learning 004](DELIVERY-LEARNING-004.md).
+- **Evidence:** [Delivery Learning 004](../archive/strategy/DELIVERY-LEARNING-004.md).
 - **Learning:** A frozen record can still drift from the outcome the founder
   recognises; early visible proof is a cheaper correction point.
 - **Iteration decision:** Prefer a small proof and a stop/rebaseline decision
@@ -101,7 +101,7 @@ authority or a reason to add process.
 - **Result:** Restore counts matched, but maintenance scripts initially failed
   because they did not load `.env.local`; the observed data also corrected an
   intended pick count.
-- **Evidence:** [Lastman action log](../evidence/010-lastman-operational-action-log.md).
+- **Evidence:** [Lastman action log](../archive/evidence/010-lastman-operational-action-log.md).
 - **Learning:** Recovery and operational scripts need direct rehearsal, and
   observed state outranks implementation intention.
 - **Iteration decision:** Keep the backup/reset/restore path in the rehearsal

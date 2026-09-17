@@ -15,7 +15,7 @@ decision → next action**.
 - **Result:** Any AI now has a stated reading order, current Lastman state,
   required action-learning loop, authority/safety limits and end-of-turn
   handoff format.
-- **Evidence:** [AI handoff directions](../../AI-HANDOFF.md).
+- **Evidence:** [AI handoff directions](../../../AI-HANDOFF.md).
 - **Learning:** Earlier material was strong as evidence but weak as a
   time-efficient takeover guide; an AI switching in could mistake history for
   current authority or skip the action-log requirement.

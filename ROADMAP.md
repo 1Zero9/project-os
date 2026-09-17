@@ -55,8 +55,8 @@ second unaccepted correction, or budget exceeded without accepted value.
 
 **Current state:** Phase 1 produced only a Vecta structural-proof case and is
 recorded as interim evidence. It does not classify the loop or justify Vecta
-expansion. See [Experiment 009](docs/experiments/009-minimum-v02-delivery-loop-pilot.md)
-and [Evidence Log 009](docs/evidence/009-evidence-log.md).
+expansion. See [Experiment 009](docs/archive/experiments/009-minimum-v02-delivery-loop-pilot.md)
+and [Evidence Log 009](docs/archive/evidence/009-evidence-log.md).
 
 **Candidate used:** [Delivery Brief and Proof-and-Stop Gate](docs/candidates/V02-DELIVERY-BRIEF-AND-PROOF-GATE.md).
 
@@ -124,14 +124,14 @@ knowledge platform, or an orchestration layer.
 
 | Finding | Current reading | Evidence |
 |---|---|---|
-| Bounded current-state understanding can guide an existing project | Partially demonstrated | [Experiment 002](docs/experiments/002-lastman.md) |
-| Offline rules testing is sufficient to approve a live fundraiser | Contradicted: it supports engine confidence only | [Lastman rehearsal evidence](docs/evidence/010-lastman-operational-rehearsal.md) |
-| A recoverable synthetic environment can support the next operational test | Demonstrated for Lastman's development database; not production backup evidence | [Lastman action log](docs/evidence/010-lastman-operational-action-log.md) |
-| Within-project context can reduce repeated restatement | Partially demonstrated; not yet general | [Experiments 003](docs/experiments/003-compounding-project-knowledge.md) and [006](docs/experiments/006-within-project-knowledge-replication.md) |
-| Cross-project knowledge transfer reliably improves delivery | Not demonstrated | [Experiments 004](docs/experiments/004-cross-project-knowledge-transfer.md) and [005](docs/experiments/005-cross-project-product-architecture-transfer.md) |
-| Technical validation alone proves product acceptance | Contradicted by evidence | [Delivery Learning 003](docs/strategy/DELIVERY-LEARNING-003.md) |
-| A founder-visible structural proof should precede detailed product work | Plausible; needs prospective validation | [Delivery Learning 004](docs/strategy/DELIVERY-LEARNING-004.md) and [Experiment 009](docs/experiments/009-minimum-v02-delivery-loop-pilot.md) |
-| Autonomous multi-agent delivery is necessary or cost-effective | Not demonstrated | [Experiment 007](docs/experiments/007-autonomous-launchcity-recovery.md) |
+| Bounded current-state understanding can guide an existing project | Partially demonstrated | [Experiment 002](docs/archive/experiments/002-lastman.md) |
+| Offline rules testing is sufficient to approve a live fundraiser | Contradicted: it supports engine confidence only | [Lastman rehearsal evidence](docs/archive/evidence/010-lastman-operational-rehearsal.md) |
+| A recoverable synthetic environment can support the next operational test | Demonstrated for Lastman's development database; not production backup evidence | [Lastman action log](docs/archive/evidence/010-lastman-operational-action-log.md) |
+| Within-project context can reduce repeated restatement | Partially demonstrated; not yet general | [Experiments 003](docs/archive/experiments/003-compounding-project-knowledge.md) and [006](docs/archive/experiments/006-within-project-knowledge-replication.md) |
+| Cross-project knowledge transfer reliably improves delivery | Not demonstrated | [Experiments 004](docs/archive/experiments/004-cross-project-knowledge-transfer.md) and [005](docs/archive/experiments/005-cross-project-product-architecture-transfer.md) |
+| Technical validation alone proves product acceptance | Contradicted by evidence | [Delivery Learning 003](docs/archive/strategy/DELIVERY-LEARNING-003.md) |
+| A founder-visible structural proof should precede detailed product work | Plausible; needs prospective validation | [Delivery Learning 004](docs/archive/strategy/DELIVERY-LEARNING-004.md) and [Experiment 009](docs/archive/experiments/009-minimum-v02-delivery-loop-pilot.md) |
+| Autonomous multi-agent delivery is necessary or cost-effective | Not demonstrated | [Experiment 007](docs/archive/experiments/007-autonomous-launchcity-recovery.md) |
 
 ---
 
@@ -174,5 +174,5 @@ read the current evidence first, work one bounded action at a time, and record
 the result, learning and iteration decision before proceeding.
 
 Project OS-level changes are recorded in the
-[Project OS action log](docs/evidence/PROJECT-OS-ACTION-LOG.md); product
+[Project OS action log](docs/archive/evidence/PROJECT-OS-ACTION-LOG.md); product
 actions remain in their own experiment logs.

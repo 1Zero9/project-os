@@ -19,7 +19,7 @@ founder direction.
 
 1. [README.md](README.md) for purpose and boundaries.
 2. [ROADMAP.md](ROADMAP.md) for the current Project OS state.
-3. [Project OS action log](docs/evidence/PROJECT-OS-ACTION-LOG.md) for the
+3. [Project OS action log](docs/archive/evidence/PROJECT-OS-ACTION-LOG.md) for the
    latest framework-level learning and next action.
 4. [Learning register](docs/strategy/LEARNING-REGISTER.md) for relevant
    earlier evidence.
@@ -27,9 +27,9 @@ founder direction.
 
 For the current Lastman operational work, read:
 
-1. [Operational readiness plan](docs/experiments/010-lastman-operational-readiness.md)
-2. [Operational action log](docs/evidence/010-lastman-operational-action-log.md)
-3. [Rehearsal evidence](docs/evidence/010-lastman-operational-rehearsal.md)
+1. [Operational readiness plan](docs/archive/experiments/010-lastman-operational-readiness.md)
+2. [Operational action log](docs/archive/evidence/010-lastman-operational-action-log.md)
+3. [Rehearsal evidence](docs/archive/evidence/010-lastman-operational-rehearsal.md)
 
 ## Current handoff state
 
