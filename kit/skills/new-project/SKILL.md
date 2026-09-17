@@ -1,0 +1,89 @@
+---
+name: new-project
+description: Shape a new project before building it — decide platform, storage, auth and hosting, and find reusable precedent in the user's existing projects. Use when the user describes a new idea they want to build ("I want to build X", "new project for Y", "thinking about making Z"), or asks what stack or platform something should use.
+---
+
+# New Project
+
+Turn an idea into a shaped project with the smallest sufficient stack, plus the
+precedent to lift from. **Recommend less, not more.** The best outcome is often
+"you don't need a database for this".
+
+## How to run it
+
+Infer every answer you can from the idea itself. **Ask only what genuinely
+changes the recommendation** — usually one or two questions, never a
+questionnaire. Then give the shape, the precedent and the first step.
+
+Do not write a spec, a plan document, or a project-OS file. Shape it, then build.
+
+## The decision sequence
+
+Work down. Each answer prunes what follows.
+
+**1. Who uses it?** Just you → no auth, no accounts, no multi-tenancy. A known
+small group → one shared password or magic link. Public/customers → real auth.
+
+**2. Does state outlive the session?** No → no database. Use component state or
+a JSON file. Yes, single user → SQLite file or the browser (IndexedDB /
+localStorage). Yes, shared between people or devices → hosted Postgres.
+
+**3. Where does it run?** Read on a phone → PWA (installable, works offline).
+Desktop-only utility → native or a local script; a web app may be the wrong
+shape. Public/marketing → static site, no framework needed. Long-running or
+scheduled → needs a server or cron.
+
+**4. Does anything happen when the user isn't there?** Reminders, digests,
+scheduled jobs → cron + push/email. If not, skip all of it.
+
+**5. What's the riskiest unknown?** Build the smallest thing that tests that
+first — before any layout, branding or colour work.
+
+## Defaults, once the above is settled
+
+Only apply what steps 1–4 actually justified.
+
+| Need | Default | Don't reach for |
+|---|---|---|
+| Web app | Next 16 + React 19 + TS + App Router + Tailwind | a new framework to learn |
+| Shared data | Postgres + Prisma | Postgres for a single-user tool |
+| Local/single-user data | SQLite or IndexedDB | a hosted database |
+| Auth | next-auth | rolling your own |
+| Hosting | Vercel | anything needing setup time |
+| Scheduled work | Vercel cron | a long-running server |
+| Tests | Vitest; Playwright only for critical flows | 100% coverage |
+| Static site | plain HTML/CSS or Astro | Next.js |
+
+These are starting points to override, not rules. Say so when overriding.
+
+## Finding precedent
+
+Read `INDEX.md` next to this skill (~50 lines — read it, don't grep the whole
+portfolio). Match on the `capabilities` column: `auth, payments, email, push,
+charts, csv, upload, cron, ai, pwa, motion, tests, e2e, api, schema, vercel,
+cloudflare`.
+
+Then name the specific project and file to lift from, and **read that file only
+when it's about to be used**. Copy the code into the new project — never add a
+dependency on another project.
+
+If nothing matches, say so plainly. A wrong precedent costs more than none.
+
+## Output
+
+Keep it short. No headings-heavy report.
+
+- **Shape** — one line: what this is and what it runs on.
+- **Stack** — only what's justified, with a one-clause reason each.
+- **Skip** — what this project does *not* need, and why. This is the valuable part.
+- **Lift from** — project → file → what it gives you.
+- **First step** — the one thing to build that tests the riskiest unknown.
+
+Then offer to build it. Don't wait for approval of a plan that isn't written down.
+
+## Guardrails
+
+- No branding, naming or colour work until the product shape is settled.
+- If the idea is close to an existing project, ask whether this is a new project
+  or a feature of that one before scaffolding anything.
+- If the answer is "this doesn't need building", say that.
