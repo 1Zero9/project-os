@@ -33,6 +33,7 @@ repository already demonstrated at length.
 | `kit/skills/new-project` | Shapes an idea into the smallest sufficient stack and names the precedent to lift. Installed at `~/.claude/skills/` |
 | `kit/skills/visual-change` | Changes how something looks without the review-reject loop: authoritative intent, isolated proof confirmed before implementing, then verification against the real surface |
 | `kit/skills/inherit-project` | Takes over something built elsewhere — an AI site builder, an old repo, a handover — and finds the next decision rather than rebuilding it |
+| `kit/skills/audience-check` | Checks whether a thing is written for the person meant to read it, and fixes it when it is not — the failure no test catches |
 
 Also live: [`PRINCIPLES.md`](PRINCIPLES.md), the
 [Delivery Brief and Proof-and-Stop Gate](docs/candidates/V02-DELIVERY-BRIEF-AND-PROOF-GATE.md),
@@ -52,6 +53,9 @@ new asset because the kit had nothing for that entry point.
 
 All three of the README's entry points — a new idea, an existing project, an
 inherited external product — have now been exercised at least once.
+
+Both new assets came the same way: a real project hit something the kit had no
+answer for, and the gap was the evidence. Neither was planned.
 
 What to watch for, and what each signal means:
 

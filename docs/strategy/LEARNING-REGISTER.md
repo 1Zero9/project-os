@@ -211,6 +211,53 @@ authority or a reason to add process.
   in order, the line the method rests on, the unaffiliated statement, and a
   guard that the invented pillars have not crept back.
 
+## 12. "It's very good, but…" means mis-aimed, not under-built
+
+- **Earlier action:** Rewrote Learn2Learn's homepage with the founder's real
+  method, replacing the framework the generator had invented. Tests passed,
+  the design was good, the content was finally true.
+- **Result:** The founder's reaction was that it reads as *a parent's view,
+  not a twelve-year-old's* — "they will get bored right at the start." He was
+  right, and nothing in the build could have caught it. The page opened with
+  "Starting secondary school asks a lot of a young person": written *about* a
+  child rather than *to* one.
+- **Evidence:** `~/Projects/Learn2Learn`, and the kid-view proof built after.
+- **Learning:** Correctness and craft do not imply fit. A thing can be
+  well-made and aimed at the wrong reader, and no test, lint or build catches
+  it. The tell is an owner saying it is good but not quite right and being
+  unable to finish the sentence — that is usually competence plus mis-aim,
+  which is easier to feel than to name.
+- **Iteration decision:** When the owner cannot name what is missing, diagnose
+  and propose rather than asking them to specify. Three rounds here each
+  started with a position — the shrink needs to be measured in minutes, there
+  is no worked example, the vocabulary is unexplained — and each was accepted
+  or sharpened. Handing the question back would have cost the same rounds and
+  produced adjectives.
+- **Next use:** [[audience-check]] in the kit. Name the reader as one specific
+  person, read the first screen as them, and where two readers genuinely exist,
+  build two linked surfaces rather than one averaged page.
+
+## 13. Generic is not the opposite of specific — switchable is
+
+- **Earlier action:** Built the kid view around one worked example
+  (photosynthesis across a school week), because a child can copy an example
+  but not a diagram. The founder's note: *"example should be generic."*
+- **Result:** The obvious reading — make the example abstract — would have
+  destroyed the thing that made it work. What the request actually meant was
+  "don't tie it to one subject". Building a pool of twelve concrete examples
+  across four subjects, picked at random on load and switchable by the reader,
+  satisfied both.
+- **Learning:** When an example is too narrow, the instinct is to abstract it.
+  That trades the specific for the general and loses the concreteness that was
+  carrying it. A pool of concrete instances, shown one at a time, is generic in
+  *coverage* while staying concrete in *experience*. The cost is a data array.
+- **Iteration decision:** Before generalising anything that works because it is
+  specific, check whether the ask is for breadth rather than abstraction. They
+  are different fixes and only one of them keeps the value.
+- **Next use:** Recorded in [[audience-check]]. Applies to examples, defaults,
+  sample data, onboarding content — anywhere one concrete case is doing the
+  explaining.
+
 ## What is not learned yet
 
 - Project OS can deliver an accepted outcome faster or better than direct
