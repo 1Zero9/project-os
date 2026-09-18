@@ -52,11 +52,21 @@ Node script that sends plant photos to Gemini and scores whether the answers
 are accurate enough to drive care advice. It has never been run against the
 live API; the founder was setting it up when work stopped.
 
-**Next action:** the founder runs the spike with their own photos and scores
-`results.html`. The care number decides the product: 8+/10 build it, 5–7/10 ID
-assists and the founder confirms, under 5/10 the app uses manual species entry
-and identification is not the product. Nothing else should be built until that
-number exists.
+**Deferred, deliberately.** Running the spike means gathering and scoring ten
+photos, which the founder judged too slow to be the blocking step. Work moved
+forward on an explicit assumption instead: **identification gets the care
+category right ~8/10.** If that proves wrong it changes how plants are entered,
+not the care logic. Revisit when photos are convenient, not before.
+
+`~/Projects/plants/care-model.mjs` is the result — watering intervals and room
+placement computed from window aspect, date and latitude, with test data for a
+plausible Irish house. Runnable: `node care-model.mjs 2026-12-21`. The test
+data immediately caught a NaN bug that made every room read "low" in winter,
+which is the argument for test data over more planning.
+
+**Next action:** the founder's call — either wrap the care engine in something
+usable, or correct the model's numbers against real plant knowledge. The engine
+is deliberately separate from any app so it can be checked on its own.
 
 **Note on providers:** the founder has a Google API key and no Anthropic key.
 Do not recommend the Anthropic SDK for this work.
