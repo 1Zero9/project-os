@@ -19,10 +19,21 @@ kit's copy is for reference and reuse, not the source of truth.
 
 ```html
 <a href="https://www.1zero9.com" target="_blank" rel="noopener noreferrer" aria-label="Built by 1Zero9">
-  <img src="/109-logo-circle-white2.png" alt="" width="16" height="16" />
+  <img src="/109-logo-circle-white2.png" alt="" width="28" height="28" />
   Built by 1Zero9
 </a>
 ```
+
+**Render the mark at 28×28px** (in CSS if the framework's image component
+scales it, or directly in the `width`/`height` attributes with a plain
+`<img>`). This is a specific number, not a rough one: the reference
+implementation (RVR2026's `Footer.tsx`) passes `width={16} height={16}` to
+`next/image` as loader hints, then overrides the actual rendered size to 28px
+via `className="h-7 w-7"` (Tailwind: 7 × 4px). Learn2Learn copied the visible
+`16` as the literal pixel size and shipped the mark at half the reference's
+size before this was caught and fixed. When copying an implementation that
+uses a framework-specific sizing mechanism, check what size actually renders,
+not the first number in the markup.
 
 Icon and text both inside the link, alongside whatever else the footer says.
 Use a plain `<img>`, not a framework image component, unless the project's own

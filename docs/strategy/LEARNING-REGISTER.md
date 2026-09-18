@@ -269,7 +269,7 @@ authority or a reason to add process.
   QualFM, SWGOH and others, byte-identical, sourced from
   `1Zero9Studio/public/images/`. The convention's wording was followed
   correctly; the convention itself was incomplete.
-- **Evidence:** `~/Projects/Learn2Learn` commit `b3da261`, and
+- **Evidence:** `~/Projects/Learn2Learn` commits `b3da261` and `dd69105`, and
   `~/Projects/RVR2026/components/layout/Footer.tsx` as the reference
   implementation checked before changing anything.
 - **Learning:** A convention stated as text without its artefact will be
@@ -277,13 +277,28 @@ authority or a reason to add process.
   fresh chance to drift from what other projects actually do. Checking a live
   reference before building found the real pattern in one fetch; guessing from
   the words alone had already produced something plausible but incomplete.
+- **Second round, same finding:** even with the right reference open, the mark
+  still shipped at half size (`dd69105`). RVR2026's `Footer.tsx` passes
+  `width={16} height={16}` to `next/image` as loader hints, then overrides the
+  rendered size to 28px via `className="h-7 w-7"`. The `16` was copied as the
+  literal pixel size because it was the first number visible in the markup;
+  the override that actually determines the rendered size was a separate line,
+  easy to miss when reading for "what values do I copy." Caught only by
+  measuring the rendered box in a browser before shipping, not by rereading
+  the reference more carefully.
 - **Iteration decision:** Where a convention has a physical asset — a logo, an
   icon, a font file — the asset goes in `kit/assets/`, not just a description
-  of it. Copy from there into new projects instead of re-describing it.
+  of it. Copy from there into new projects instead of re-describing it. And
+  when a reference implementation uses a framework-specific sizing mechanism
+  (Tailwind classes, CSS overriding HTML attributes, a loader prop that isn't
+  the display size), measure what actually renders rather than trusting the
+  first number in the source — frameworks routinely separate "size hint" from
+  "size", and copying markup literally carries that split across incorrectly.
 - **Next use:** `kit/CONVENTIONS.md`'s build-credit section now carries the
-  actual markup and the logo files it references. Any future visual or brand
-  convention should be checked the same way: find a live example first,
-  match it, then generalise into the convention — not the other way round.
+  actual markup, the correct 28×28 size, and this specific trap named
+  explicitly. Any future visual or brand convention should be checked the same
+  way: find a live example first, match it, measure the rendered result, then
+  generalise into the convention — not stop at "found a reference."
 
 ## What is not learned yet
 

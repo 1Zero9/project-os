@@ -91,6 +91,12 @@ Screenshot both states into the project's evidence directory if it has one.
   them, and check.
 - If a shared component looks wrong in a new context, check what surface its
   styles assume before overriding it.
+- **When copying a reference implementation, measure the rendered result, not
+  the first number in its markup.** A framework's sizing props are often a
+  loader hint, not the display size (`next/image`'s `width`/`height` can be
+  overridden by a `className`) — copying the visible attribute without the
+  override that actually controls it silently halves or doubles the result.
+  Confirm with `getBoundingClientRect()` before shipping.
 - **Anything that swaps content in place needs a fixed box.** A dial, carousel,
   tab panel or detail pane fed by real data will resize as the content changes
   and the page will jump under the cursor. Reserve the height and clamp the
