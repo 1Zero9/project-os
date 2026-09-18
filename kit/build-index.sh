@@ -44,6 +44,8 @@ for d in */; do
     grep -qs '"next-pwa"\|"workbox"\|"serwist"' "$pkg" && tags="$tags pwa"
     grep -qs '"framer-motion"' "$pkg" && tags="$tags motion"
     grep -qs '"vitest"\|"jest"' "$pkg" && tags="$tags tests"
+    # node:test / tsx --test leaves no dependency to find, only a script.
+    grep -qs '"test": *"[^"]*--test' "$pkg" && tags="$tags tests"
     grep -qs '"@playwright/test"\|"cypress"' "$pkg" && tags="$tags e2e"
     grep -qs '"tailwindcss"' "$pkg" && tags="$tags tailwind"
   else
@@ -54,6 +56,8 @@ for d in */; do
 
   # --- file-based signals ---
   [ -f "${d}vercel.json" ] && grep -qs '"crons"' "${d}vercel.json" && tags="$tags cron"
+  grep -qs "schedule:" "${d}".github/workflows/*.yml "${d}".github/workflows/*.yaml 2>/dev/null && tags="$tags cron ci"
+  [ -d "${d}.github/workflows" ] && tags="$tags ci"
   [ -f "${d}public/manifest.json" ] || [ -f "${d}app/manifest.ts" ] && tags="$tags pwa"
   ls "${d}app/api" >/dev/null 2>&1 && tags="$tags api"
   [ -d "${d}prisma" ] && tags="$tags schema"

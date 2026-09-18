@@ -109,6 +109,33 @@ authority or a reason to add process.
 - **Next use:** Complete the organiser UI round, recording state before and
   after payment confirmation, lock/autopick and settlement.
 
+## 8. Diagnose the calling environment before replacing the dependency
+
+- **Earlier action:** LaunchCity had served stale data for ~14 hours. The
+  obvious reading was that Launch Library 2 was the wrong data source, and the
+  founder proposed switching to another provider.
+- **Result:** The provider was fine. LL2 rate-limits per IP and Cloudflare
+  Workers share outbound egress, so the throttling keyed on the *calling
+  environment*, not on LaunchCity's own volume (8–12 requests/hour against a
+  15/hour allowance). A GitHub runner read the identical endpoint successfully
+  at 18:04:31Z with 1 of 15 requests used; the Cloudflare cron got 429 on the
+  same endpoint at 18:15:33Z. Moving only the ingestion restored freshness on
+  its first run.
+- **Evidence:** [Rate-limiting incident](../../../launchcity/docs/incidents/2026-09-16-scheduled-refresh-rate-limiting.md)
+  and [refresh-platform review](../../../launchcity/docs/architecture/2026-09-16-refresh-platform-review.md),
+  where a provider swap was assessed as Option E and explicitly rejected.
+- **Learning:** When a third-party dependency starts failing, establish
+  whether the problem is *who serves the request* or *where it originates*
+  before replacing anything. A provider swap costs a new adapter, new
+  normalisation and new tests, and carries the same fault to the new provider
+  if the environment is the cause.
+- **Iteration decision:** Reach for a paired measurement — the same request
+  from two environments at nearly the same moment — before any migration. It
+  is cheap and it is decisive.
+- **Next use:** Watch whether the scheduled GitHub runs hold the ~15 minute
+  cadence; GitHub delays runs under load, and the 30-minute staleness
+  threshold absorbs one missed cycle but not several.
+
 ## What is not learned yet
 
 - Project OS can deliver an accepted outcome faster or better than direct
@@ -116,4 +143,6 @@ authority or a reason to add process.
 - The 80% idea-to-project aspiration is achievable.
 - Lastman can run a fair, reliable three-month, 50-member fundraiser.
 - A multi-agent, knowledge-platform or automation layer is justified.
+- Whether the compact loop holds on work that is not visual — every case so
+  far has been a design or layout outcome.
 
