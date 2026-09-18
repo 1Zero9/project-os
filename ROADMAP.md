@@ -27,6 +27,7 @@ repository already demonstrated at length.
 
 | Asset | What it does |
 |---|---|
+| `kit/CONVENTIONS.md` | Standing rules applied without being asked: the 1Zero9 build credit, adding finished sites to the portfolio, subdomains under 1zero9.com |
 | `kit/build-index.sh` | Regenerates a capability index of `~/Projects` |
 | `kit/INDEX.md` | 47 projects, ~5KB — answers "have I built this before?" without loading repos |
 | `kit/skills/new-project` | Shapes an idea into the smallest sufficient stack and names the precedent to lift. Installed at `~/.claude/skills/` |

@@ -91,6 +91,12 @@ Few questions, and only the forking ones. Reliably useful:
   the real one is usually narrower and changes the form.
 - **What would make it worth having?** Often much less than what exists.
 
+## Conventions
+
+Read `CONVENTIONS.md` in the kit before shipping anything: the 1Zero9 build
+credit, adding the finished site to the portfolio, and where new sites live.
+Apply them without being asked.
+
 ## Guardrails
 
 - Do not port it to your usual stack because the stack is unfamiliar. Working

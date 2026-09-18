@@ -90,6 +90,12 @@ Keep it short. No headings-heavy report.
 
 Then offer to build it. Don't wait for approval of a plan that isn't written down.
 
+## Conventions
+
+Read `CONVENTIONS.md` in the kit before shipping anything: the 1Zero9 build
+credit, adding the finished site to the portfolio, and where new sites live.
+Apply them without being asked.
+
 ## Guardrails
 
 - No branding, naming or colour work until the product shape is settled.
