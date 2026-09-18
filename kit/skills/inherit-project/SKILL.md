@@ -54,7 +54,26 @@ and everyone has learned to ignore it. Run the tests, check whether they
 failed before your change, and replace them with tests of the actual product
 rather than deleting them.
 
-## 5. Find the next decision, not the next task
+## 5. Cutting the cord is a build change, not a delete
+
+When the artefact moves off the platform that generated it, expect hooks in
+places that have nothing to do with the product — and expect removing them to
+break the build, so verify rather than assume.
+
+In Learn2Learn the platform reached into four files: a hosting config declaring
+bindings, a build plugin whose only job was copying that config into `dist`, an
+auth module that could only work behind the platform's own request headers, and
+a dev-server workaround for the platform's sandbox. Deleting the hosting config
+alone broke the build, because the Vite config imported it — to choose between
+two empty arrays.
+
+So: find every reference before deleting anything (`grep` the filename across
+the repo), remove the indirection rather than recreating a stub to satisfy it,
+and run a full build with none of the platform's files present. Deleting the
+old hosted copy afterwards matters too — otherwise the generated version stays
+online, contradicting the real one and usually outranking it.
+
+## 6. Find the next decision, not the next task
 
 The output of this skill is a decision, not a build. Often it is:
 

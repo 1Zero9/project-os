@@ -14,7 +14,7 @@ Clenicacare | next14 | 2025-11-20 | 27 | api,email,tailwind | Next.js App Router
 Ground Control | next16+drizzle | 2026-09-15 | 168 | ci,pwa,tailwind,tests | Your family's shared mission control — a calendar, sticky-note board, and
 IMS | next14 | 2026-03-07 | 58 | api,tailwind | A private Next.js application to practise for the **IMS Programme Manager** interview at M
 Knowledge Generator | - | - | - |  | —
-Learn2Learn | react+drizzle | 2026-08-08 | 28 | tailwind,tests | A clean full-stack starter running on
+Learn2Learn | react+drizzle | 2026-09-18 | 26 | tailwind,tests | Four phases for learning anything, built around a normal school week — for the
 LearningThroughMotion | next16 | 2026-02-21 | 105 | api,tailwind | This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](http
 Marvin | next15+prisma | 2026-08-05 | 286 | api,ci,pwa,schema,tests,upload,vercel | Marvin is a private household cooking, cookbook, meal-planning, and health companion built
 MeidaGuide | react | - | - |  | A personal Ireland-only media guide: Sky/live TV listings, streaming availability, and a t
@@ -41,7 +41,7 @@ eolas | next14+prisma | 2026-08-02 | 174 | schema,tests | Eolas is a local-first
 golf-club-tools | - | 2026-09-16 | 14 |  | —
 homealone | - | - | - |  | —
 lastman | next16+prisma | 2026-09-17 | 96 | api,auth,cron,pwa,schema,tailwind,vercel | A reusable fundraising platform for Last Man Standing competitions. Payments happen outsid
-launchcity | next16 | 2026-09-18 | 149 | api,ci,cloudflare,cron,tests | A public website that lists and tracks space launches from commercial launch companies, na
+launchcity | next16 | 2026-09-18 | 150 | api,ci,cloudflare,cron,tests | A public website that lists and tracks space launches from commercial launch companies, na
 life-admin-system | python | 2026-01-11 | 83 |  | **AI-powered document capture that turns family paperwork into actionable intelligence wit
 lucy | next? | 2026-09-12 | 258 | cloudflare | **Your learning workspace.**  
 mater-ims-projects | - | - | - |  | —
