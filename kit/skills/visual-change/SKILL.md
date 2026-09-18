@@ -91,3 +91,13 @@ Screenshot both states into the project's evidence directory if it has one.
   them, and check.
 - If a shared component looks wrong in a new context, check what surface its
   styles assume before overriding it.
+- **Anything that swaps content in place needs a fixed box.** A dial, carousel,
+  tab panel or detail pane fed by real data will resize as the content changes
+  and the page will jump under the cursor. Reserve the height and clamp the
+  text; keep the full value in a `title` attribute and on its own page, so it
+  is abbreviated rather than hidden.
+- **When a box resizes, measure its children, not the box.** The obvious
+  culprit is usually wrong. A panel swinging 395–530px looked like a long
+  title or a long description; both were fixed and it still moved. Logging
+  every child's height found it immediately: a wrapping three-item facts row
+  that was 55px, 113px or 171px depending on how the values broke.

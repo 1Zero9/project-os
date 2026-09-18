@@ -136,6 +136,31 @@ authority or a reason to add process.
   cadence; GitHub delays runs under load, and the 30-minute staleness
   threshold absorbs one missed cycle but not several.
 
+## 9. GitHub Actions `schedule` will not hold a short cadence
+
+- **Earlier action:** Moved LaunchCity's data ingestion to a GitHub Actions
+  workflow on a `*/15 * * * *` schedule, to get off Cloudflare's rate-limited
+  egress. A manual run proved the path end to end.
+- **Result:** The schedule then fired **zero times in its first hour**.
+  Configuration was correct throughout — workflow `active`, Actions enabled,
+  public repo, default branch — so nothing was misconfigured. GitHub documents
+  `schedule` as best-effort and says it "can be delayed during periods of high
+  load", which in practice drops short intervals entirely.
+- **Evidence:** `gh run list` showed only the `workflow_dispatch` run;
+  production returned to `stale` 56 minutes after the manual refresh.
+- **Learning:** A successful manual run proves the *path*, not the *cadence*.
+  They are separate claims and need separate evidence. GitHub's scheduler is
+  suitable for hourly-or-slower work, and load peaks at the top of the hour,
+  so an offset minute (`17 * * * *`) is materially more reliable than `0`.
+- **Iteration decision:** Ask what cadence the product actually needs before
+  engineering for the one that was assumed. Here the honest answer was "not
+  often", which turned a scheduler problem into a two-line target change
+  instead of a Cloudflare-triggers-GitHub bridge that was about to be built.
+- **Next use:** Any scheduled job on a free tier — tally, RVR2026 and astra all
+  run crons. Where a true short cadence is genuinely required, separate the
+  trigger from the execution: a reliable clock (Cloudflare cron) firing a
+  `repository_dispatch` into the environment with the clean egress.
+
 ## What is not learned yet
 
 - Project OS can deliver an accepted outcome faster or better than direct
