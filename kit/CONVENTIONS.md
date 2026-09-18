@@ -6,14 +6,33 @@ work. Apply them without being asked.
 
 ## Every site carries a build credit
 
-In the footer of any site built for or by 1Zero9:
+In the footer of any site built for or by 1Zero9: the logo mark, not text
+alone. Learn2Learn shipped text-only first ("Built by 1Zero9", no image) and
+had to be corrected once the real pattern was found on a live reference
+(rivervalleyrangers.ie, via `~/Projects/RVR2026/components/layout/Footer.tsx`).
 
-```
-Built by 1Zero9 → https://www.1zero9.com
+The mark is `kit/assets/109-logo-circle-white2.png` (white on transparent, for
+a dark footer) or `109-logo-circle1.png` (black on transparent, for a light
+one) — copy whichever matches the footer's background into the project's
+`public/`. Canonical source is `~/Projects/1Zero9Studio/public/images/`; the
+kit's copy is for reference and reuse, not the source of truth.
+
+```html
+<a href="https://www.1zero9.com" target="_blank" rel="noopener noreferrer" aria-label="Built by 1Zero9">
+  <img src="/109-logo-circle-white2.png" alt="" width="16" height="16" />
+  Built by 1Zero9
+</a>
 ```
 
-Alongside whatever else the footer says. Add a test for it where the project
-has a test suite, so it cannot quietly disappear in a redesign.
+Icon and text both inside the link, alongside whatever else the footer says.
+Use a plain `<img>`, not a framework image component, unless the project's own
+`next/image` (or equivalent) is known to work in production — Learn2Learn's
+vinext build silently dropped both `next/link` and would very likely have
+mishandled `next/image` the same way; check before trusting it, don't assume.
+
+Add a test for the credit where the project has a test suite (asserting on
+"Built by" text and the `1zero9.com` href is enough — don't assert on exact
+markup), so it cannot quietly disappear in a redesign.
 
 ## Every finished site goes in the portfolio
 

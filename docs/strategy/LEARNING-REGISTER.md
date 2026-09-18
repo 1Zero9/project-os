@@ -258,6 +258,33 @@ authority or a reason to add process.
   sample data, onboarding content — anywhere one concrete case is doing the
   explaining.
 
+## 14. A named convention without its artefact gets invented, not followed
+
+- **Earlier action:** `CONVENTIONS.md` said every 1Zero9 site carries a build
+  credit and gave the text — "Built by 1Zero9 → https://www.1zero9.com" — but
+  not the actual mark. Learn2Learn's footer shipped as plain text, no logo.
+- **Result:** The founder asked for it to match a live reference
+  (rivervalleyrangers.ie). The real pattern turned out to be a logo image
+  inside the link, not text alone — already established across RVR2026,
+  QualFM, SWGOH and others, byte-identical, sourced from
+  `1Zero9Studio/public/images/`. The convention's wording was followed
+  correctly; the convention itself was incomplete.
+- **Evidence:** `~/Projects/Learn2Learn` commit `b3da261`, and
+  `~/Projects/RVR2026/components/layout/Footer.tsx` as the reference
+  implementation checked before changing anything.
+- **Learning:** A convention stated as text without its artefact will be
+  reimplemented from description each time, and each reimplementation is a
+  fresh chance to drift from what other projects actually do. Checking a live
+  reference before building found the real pattern in one fetch; guessing from
+  the words alone had already produced something plausible but incomplete.
+- **Iteration decision:** Where a convention has a physical asset — a logo, an
+  icon, a font file — the asset goes in `kit/assets/`, not just a description
+  of it. Copy from there into new projects instead of re-describing it.
+- **Next use:** `kit/CONVENTIONS.md`'s build-credit section now carries the
+  actual markup and the logo files it references. Any future visual or brand
+  convention should be checked the same way: find a live example first,
+  match it, then generalise into the convention — not the other way round.
+
 ## What is not learned yet
 
 - Project OS can deliver an accepted outcome faster or better than direct
