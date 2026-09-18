@@ -161,6 +161,56 @@ authority or a reason to add process.
   trigger from the execution: a reliable clock (Cloudflare cron) firing a
   `repository_dispatch` into the environment with the clean egress.
 
+## 10. A generator given an idea will invent the substance, confidently
+
+- **Earlier action:** Pointed Project OS at Learn2Learn — a site built by
+  ChatGPT from an idea, never returned to, no repo, no hosting of its own.
+  The third entry point the README named ("an inherited or external product")
+  and the first one ever tested.
+- **Result:** The site was one 155-line file: a name, a brand mark, a palette,
+  a tagline, and a four-pillar framework — Understand / Organise / Practise /
+  Grow — stated as though it were the founder's method. It was not. The real
+  method was four different phases mapped onto a school week, with a loop back
+  to the classroom and one line carrying the whole idea ("the more familiar it
+  gets, the smaller it gets"). Nothing on the page distinguished the invented
+  part from the decided part.
+- **Evidence:** `~/Projects/Learn2Learn`, commits `f9e2e5b` (generated) and
+  `20dfb54` (corrected).
+- **Learning:** Generated work fills the gap where the thinking should be, in
+  the thinking's own voice. It is not wrong in an obvious way — it is
+  plausible, well written and confident, which is exactly what makes it
+  durable. Months later the founder could not tell which parts they had
+  decided. This is the drift problem originating at **creation**, not during
+  implementation, which is where Project OS had only ever looked for it.
+- **Iteration decision:** Treat every framework, principle or process in
+  generated work as unverified until its owner confirms it. Ask "is this
+  actually yours?" before building anything on top of it.
+- **Next use:** Any inherited artefact — and note the founder's own
+  `FOUNDER-DIRECTION.md` names this pattern in his own words ("I would often
+  begin with the branding... before working out the product itself"). AI site
+  builders do not cause that failure mode; they make it faster, prettier and
+  therefore harder to notice.
+
+## 11. Generated projects arrive with a red test suite
+
+- **Earlier action:** Ran `npm test` on the inherited Learn2Learn project.
+- **Result:** 2 tests, 2 failures. Checked against the original commit: they
+  failed there too. The scaffold's tests assert the *placeholder* state — a
+  loading skeleton and a "Your site is taking shape" title — so they broke the
+  instant the site was built, and had been red from day one.
+- **Evidence:** `git stash` comparison recorded in the commit message of
+  `20dfb54`.
+- **Learning:** A suite that has never passed teaches its owner to ignore
+  suites. The failure is not the tests being wrong; it is that nobody could
+  tell, because red was the normal state.
+- **Iteration decision:** On any inherited project, run the tests early and
+  check whether they failed *before* your change. Replace scaffold tests with
+  tests of the actual product rather than deleting them — on a content-led
+  site, that means asserting the content.
+- **Next use:** Learn2Learn now has 5 passing tests covering the four phases
+  in order, the line the method rests on, the unaffiliated statement, and a
+  guard that the invented pillars have not crept back.
+
 ## What is not learned yet
 
 - Project OS can deliver an accepted outcome faster or better than direct

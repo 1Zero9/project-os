@@ -31,6 +31,7 @@ repository already demonstrated at length.
 | `kit/INDEX.md` | 47 projects, ~5KB — answers "have I built this before?" without loading repos |
 | `kit/skills/new-project` | Shapes an idea into the smallest sufficient stack and names the precedent to lift. Installed at `~/.claude/skills/` |
 | `kit/skills/visual-change` | Changes how something looks without the review-reject loop: authoritative intent, isolated proof confirmed before implementing, then verification against the real surface |
+| `kit/skills/inherit-project` | Takes over something built elsewhere — an AI site builder, an old repo, a handover — and finds the next decision rather than rebuilding it |
 
 Also live: [`PRINCIPLES.md`](PRINCIPLES.md), the
 [Delivery Brief and Proof-and-Stop Gate](docs/candidates/V02-DELIVERY-BRIEF-AND-PROOF-GATE.md),
@@ -42,10 +43,14 @@ and the [learning register](docs/strategy/LEARNING-REGISTER.md).
 scheduled next asset. An asset is built when a real project demands it, and the
 demand is the evidence.
 
-Used so far on a plant care app (shaping) and on LaunchCity's Horizon
-(visual change, accepted after two prior attempts were rejected). Both
-produced corrections to the assets rather than documents about the
-corrections.
+Used so far on a plant care app (shaping), LaunchCity's Horizon (visual
+change, accepted after two prior attempts were rejected) and Learn2Learn (a
+ChatGPT-built site inherited with no repo). Each produced corrections to the
+assets rather than documents about the corrections, and the third produced a
+new asset because the kit had nothing for that entry point.
+
+All three of the README's entry points — a new idea, an existing project, an
+inherited external product — have now been exercised at least once.
 
 What to watch for, and what each signal means:
 
