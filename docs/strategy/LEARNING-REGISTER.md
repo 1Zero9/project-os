@@ -300,6 +300,36 @@ authority or a reason to add process.
   way: find a live example first, match it, measure the rendered result, then
   generalise into the convention — not stop at "found a reference."
 
+## 15. "It loaded" is not "it works" — the production build is a different program
+
+- **Earlier action:** Learn2Learn's kid/parent navigation was built and
+  checked in the dev server: page rendered, no console errors, looked right.
+- **Result:** Deployed, the links did nothing. A framework helper
+  (`next/link`, via vinext) threw inside production-only prefetch code and
+  silently swallowed every click — no error surfaced to the visitor, no
+  console warning on first load, URL simply never changed. Reproduced with an
+  automated `.click()` against the live site; a `.goto()`-only check would
+  never have caught it, because the page itself loaded fine.
+- **Evidence:** `~/Projects/Learn2Learn` commit `5cbd893`. Also earlier in the
+  same project: a separate `next/link` crash existed only in *dev* (`Invalid
+  hook call`, fixed by deduping React in Vite) and was gone by the time the
+  production bug appeared — two different bugs in the same component, each
+  visible in only one of the two environments.
+- **Learning:** A dev server and a production build are not the same program.
+  Framework compatibility shims are exactly where they diverge, because dev
+  and prod often take different code paths for the identical feature (fast
+  refresh vs. static generation, HMR vs. bundling, different prefetch
+  strategies). "It renders in dev" is evidence the markup is right; it is not
+  evidence the interaction works once deployed.
+- **Iteration decision:** Before trusting a deploy, drive the actual
+  interaction — not just page load — against a local production build
+  (`build` then `start`, not `dev`). This is one command more than checking
+  dev alone, and it is the step that actually would have caught this before
+  shipping to production and needing a second round.
+- **Next use:** Added to [[visual-change]]'s verification checklist directly.
+  Applies to any click, form submission, or state change — the class of bug
+  is silent by nature, so "the console is clean" alone will not surface it.
+
 ## What is not learned yet
 
 - Project OS can deliver an accepted outcome faster or better than direct

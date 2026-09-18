@@ -77,6 +77,15 @@ present. Before calling it done:
       around it. Check the longest, emptiest and most awkward real values.
 - [ ] Measure the thing you are claiming. "They do not overlap" is a number
       you can read out of `getBoundingClientRect()`, not a judgement.
+- [ ] **Test interactions against the actual production build, not just
+      dev.** A dev server and a production build can run different code
+      paths for the same feature. Learn2Learn's internal links worked in dev
+      after an unrelated fix, then silently did nothing once deployed — a
+      framework helper threw inside its own production-only prefetch logic
+      and swallowed every click, with no error visible to a visitor. A page
+      loading is not evidence a click works; drive the actual interaction
+      (`.click()`, not just `.goto()`) against a local production build
+      before trusting a deploy.
 
 Screenshot both states into the project's evidence directory if it has one.
 
@@ -97,6 +106,15 @@ Screenshot both states into the project's evidence directory if it has one.
   overridden by a `className`) — copying the visible attribute without the
   override that actually controls it silently halves or doubles the result.
   Confirm with `getBoundingClientRect()` before shipping.
+- **CSS specificity is fought per property, not per rule.** A highly specific
+  selector that never declares a given property does not block a less
+  specific rule that does declare it — the less specific rule simply wins
+  that property by default, because nothing else is competing for it. `h1.big
+  em { color: red }` looks like it should own everything about that element,
+  but a plain `h1 em { font-family: serif }` elsewhere still sets the font,
+  silently. If an element is rendering with a property you never set on its
+  own rule, look for another selector — of any specificity — that does set
+  it, rather than assuming inheritance from the parent.
 - **Anything that swaps content in place needs a fixed box.** A dial, carousel,
   tab panel or detail pane fed by real data will resize as the content changes
   and the page will jump under the cursor. Reserve the height and clamp the
