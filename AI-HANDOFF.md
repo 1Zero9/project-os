@@ -83,8 +83,21 @@ production deploy at `f1.1zero9.com`. What it produced for the kit:
   incremental-cache backend wired up (`open-next.config.ts` +
   `NEXT_INC_CACHE_R2_BUCKET`) or it silently falls back to full
   server-rendering every request, which only breaks under real concurrent
-  traffic (Cloudflare error 1102). **Confirmed the same empty config exists on
-  `launchcity` too** — not fixed there yet, the founder's call on when.
+  traffic (Cloudflare error 1102). Confirmed the same empty config existed on
+  `launchcity`, the only other project on this stack — **fixed there too,
+  same day, both verified by load test.**
+
+**`eolas` (`~/Projects/eolas`) is parked, same day.** It predates Project-OS
+and pursued the same mission — reusable accelerators, avoid paying to
+regenerate the same foundations — but as a whole separate running system
+(own web app, worker, Postgres DB, staged-approval pipeline): exactly the
+"monolith head start" architecture this framework's no-monolith guardrail
+already rejects. Its actual content was real though: 4 of its 6 accelerators
+extracted into `kit/assets/` (`cookie-session-auth`, `prisma-postgres-
+starter`, `pwa-shell`, `ai-provider-wrapper-gemini`), fixing a real
+forgeable-session-cookie bug in `cookie-session-auth` while porting it. Its
+own README now says so and points here. Nothing in `~/Projects/eolas` was
+deleted.
 
 A one-off portfolio catalog (all ~48 projects, categorised, consolidation
 candidates flagged — the Rivervalley Rangers cluster has five separate

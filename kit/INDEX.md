@@ -30,12 +30,12 @@ WinstonOnLine | node+drizzle | 2026-09-07 | 37 |  | A personal web portal revisi
 astra | next16+prisma | 2026-02-18 | 698 | auth,charts,ci,cron,e2e,schema,tailwind,vercel | ASTRA has evolved into an **AI agent-led security platform**. A layered base (identity, RB
 chewing_gum | swift | 2026-09-02 | 44 | ci | Bubbly sticky notes that live at the edge of your screen. A native macOS app
 dashboard | next14 | 2026-01-31 | 28 |  | —
-eolas | next14+prisma | 2026-08-02 | 174 | schema,tests | Eolas is a local-first idea-to-project system. It captures ideas, records validation decis
+eolas | next14+prisma | 2026-09-19 | 174 | schema,tests | Superseded by [Project-OS](../Project-OS) (`~/Projects/Project-OS`), which
 f1 | next16 | 2026-09-19 | 50 | cloudflare,tailwind,tests | The full history of Formula 1 — every race, driver, constructor and circuit
 golf-club-tools | - | 2026-09-16 | 14 |  | —
 homealone | - | - | - |  | —
 lastman | next16+prisma | 2026-09-17 | 96 | api,auth,cron,pwa,schema,tailwind,vercel | A reusable fundraising platform for Last Man Standing competitions. Payments happen outsid
-launchcity | next16 | 2026-09-18 | 150 | api,ci,cloudflare,cron,tests | A public website that lists and tracks space launches from commercial launch companies, na
+launchcity | next16 | 2026-09-19 | 150 | api,ci,cloudflare,cron,tests | A public website that lists and tracks space launches from commercial launch companies, na
 life-admin-system | python | 2026-01-11 | 83 |  | **AI-powered document capture that turns family paperwork into actionable intelligence wit
 lucy | next? | 2026-09-12 | 258 | cloudflare | **Your learning workspace.**  
 mater-ims-projects | - | - | - |  | —
