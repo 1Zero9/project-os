@@ -56,7 +56,8 @@ Only apply what steps 1–4 actually justified.
 | Web app | Next 16 + React 19 + TS + App Router + Tailwind | a new framework to learn |
 | Shared data | Postgres + Prisma | Postgres for a single-user tool |
 | Local/single-user data | SQLite or IndexedDB | a hosted database |
-| Auth | next-auth | rolling your own |
+| Auth (public/customers) | next-auth | rolling your own |
+| Auth (a known small group) | `kit/assets/cookie-session-auth/` | next-auth (heavier than the tier needs) |
 | Hosting | Vercel | anything needing setup time |
 | Scheduled work | Vercel cron | a long-running server |
 | Tests | Vitest; Playwright only for critical flows | 100% coverage |
@@ -84,6 +85,22 @@ encodes three real failures from F1's fetch script (fixed backoff alone,
 under-paced retry-after handling, an uncaught network-level exception that
 lost 20 minutes of otherwise-complete work) so the next project doesn't
 re-earn them one at a time.
+
+Four more assets, extracted from eolas's accelerators when it was parked
+(2026-09-19 — see AI-HANDOFF.md):
+
+- `kit/assets/cookie-session-auth/` — the single-password, cookie-gated auth
+  step 1 of this skill calls for ("a known small group → one shared password
+  or magic link"). The original eolas version set the cookie's value to the
+  literal string `"true"` — forgeable from a browser console. Fixed here to
+  sign it with an HMAC before use.
+- `kit/assets/prisma-postgres-starter.ts` — the dev-hot-reload-safe Prisma
+  client singleton.
+- `kit/assets/pwa-shell/` — installable PWA baseline (manifest, offline
+  service worker, registration component).
+- `kit/assets/ai-provider-wrapper-gemini.ts` — a minimal fetch-based Gemini
+  wrapper for a project using a Google key. Check the model name against
+  Google's current docs before trusting the default — it drifts.
 
 ## Output
 
