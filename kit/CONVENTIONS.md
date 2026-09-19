@@ -6,23 +6,31 @@ work. Apply them without being asked.
 
 ## Every site gets a real favicon, not the create-next-app default
 
-Checked F1, LaunchCity, Marvin and lastman (2026-09-19): all four shipped
-the byte-identical stock `favicon.ico` `create-next-app` generates —
-literally the same file, never replaced. A default favicon is as visible a
-"this wasn't finished" signal as a default page title, and it's cheap to
-fix: an `app/icon.tsx` using `next/og`'s `ImageResponse` generates one from
-the project's own real visual identity (a confirmed accent colour, an
-existing mark) as code, not a binary asset nobody can diff. F1's uses the
-real marshal's SC board on its kerb-red field; LaunchCity's draws its
+Fixed on F1 and LaunchCity (2026-09-19): both shipped the byte-identical
+stock `favicon.ico` `create-next-app` generates, actually being served as
+the browser tab icon. A default favicon is as visible a "this wasn't
+finished" signal as a default page title, and it's cheap to fix: an
+`app/icon.tsx` using `next/og`'s `ImageResponse` generates one from the
+project's own real visual identity (a confirmed accent colour, an existing
+mark) as code, not a binary asset nobody can diff. F1's uses the real
+marshal's SC board on its kerb-red field; LaunchCity's draws its
 horizon-arc-plus-launch-marker straight from the homepage's own
 `--lc-horizon`/`--lc-accent` tokens rather than inventing an unrelated icon.
-Delete the stock `favicon.ico` when adding one — Next.js prefers a file
-convention like `icon.tsx` but a leftover `favicon.ico` sitting alongside it
-can still win depending on Next.js version, so don't leave both.
 
-Only do this once a project's visual identity is actually confirmed — same
-guardrail as everything else in `new-project`'s "no branding until the shape
-is settled." A neutral project doesn't need a custom favicon yet either.
+**Check what's actually being served, not just whether a stock file
+exists.** Marvin and lastman were both wrongly flagged here at first — each
+still has the identical leftover `app/favicon.ico` on disk, but each also
+has an explicit `icons:` entry in its `layout.tsx` metadata pointing at a
+real custom logo, which wins and is what actually renders; the stock file
+is orphaned dead weight, not a live bug. Confirm by checking `metadata.icons`
+(or fetching the page and reading its actual `<link rel="icon">` tag), never
+by a leftover file's presence alone — a project can carry a stale unused
+file and still be doing this correctly.
+
+Only add a custom icon once a project's visual identity is actually
+confirmed — same guardrail as everything else in `new-project`'s "no
+branding until the shape is settled." A neutral project doesn't need a
+custom favicon yet either.
 
 ## Every site carries a build credit
 

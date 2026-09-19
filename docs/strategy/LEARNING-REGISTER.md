@@ -66,6 +66,13 @@ authority or a reason to add process.
   Response: `kit/CONVENTIONS.md`'s new "a fallback path must never show more
   than the success path" guardrail exists because of this, not just the
   register entry.
+- **Recurrence (favicon check, 2026-09-19):** Flagged Marvin and lastman as
+  having the same default-favicon problem as F1/LaunchCity, based on finding
+  the same leftover file on disk — without checking whether each project's
+  `layout.tsx` metadata already overrode it with a real custom icon (both
+  did). A file's presence answered "was a stock file ever generated," not
+  "what actually renders" — the fourth time in this project checking a
+  built artefact stood in for checking the real, current behavior.
 
 ## 4. Stored knowledge helps only with provenance, freshness and selection
 
