@@ -46,13 +46,25 @@ scheduled next asset. An asset is built when a real project demands it, and the
 demand is the evidence.
 
 Used so far on a plant care app (shaping), LaunchCity's Horizon (visual
-change, accepted after two prior attempts were rejected) and Learn2Learn (a
-ChatGPT-built site inherited with no repo). Each produced corrections to the
-assets rather than documents about the corrections, and the third produced a
-new asset because the kit had nothing for that entry point.
+change, accepted after two prior attempts were rejected), Learn2Learn (a
+ChatGPT-built site inherited with no repo), and F1 (blank-slate `new-project`
+entry point, first end-to-end production incident diagnosed and fixed). Each
+produced corrections to the assets rather than documents about the
+corrections, and two of the four (Learn2Learn, F1) each produced a new kit
+asset because the kit had nothing for that entry point.
 
 All three of the README's entry points — a new idea, an existing project, an
 inherited external product — have now been exercised at least once.
+
+F1 also confirmed something the other three hadn't tested: `new-project`'s
+branding guardrail held under real pressure — the founder handed over a
+strong, specific visual idea (his own initials doubling as F1's Safety Car
+signal) partway through, and the skill correctly parked it until the shape
+was proven, then reopened it only on explicit request. And it surfaced a real
+gap none of the other three did: a portfolio-wide OpenNext/Cloudflare deploy
+bug (no incremental-cache backend configured, confirmed present on LaunchCity
+too) that only shows up under real concurrent traffic — a clean deploy log
+says nothing about whether the cache is actually being read at request time.
 
 Both new assets came the same way: a real project hit something the kit had no
 answer for, and the gap was the evidence. Neither was planned.

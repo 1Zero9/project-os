@@ -48,6 +48,13 @@ authority or a reason to add process.
   source is authoritative before relying on a result.
 - **Next use:** Perform Test 1 through Lastman's normal organiser UI and use
   observed counts/audit output rather than seed-script claims.
+- **Recurrence (F1, 2026-09-18):** Confirmed a JSON data file had the right
+  value, then told the founder "the page already shows this correctly"
+  without fetching that page. Same failure mode, different project — proof
+  that recording a learning here does not make it self-enforcing. Response:
+  the check is now a named guardrail in `kit/skills/visual-change/SKILL.md`
+  ("A UI claim needs the rendered page, not the data file that feeds it"),
+  not left as register text alone.
 
 ## 4. Stored knowledge helps only with provenance, freshness and selection
 

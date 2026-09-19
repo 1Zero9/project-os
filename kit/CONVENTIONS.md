@@ -72,3 +72,42 @@ taking them replaces it.
 
 Attaching a Cloudflare custom domain creates the DNS record automatically;
 there is nothing to add by hand.
+
+## Every OpenNext/Cloudflare deploy needs its incremental cache wired up
+
+`defineCloudflareConfig({})` (the default from scaffolding) has no
+incremental-cache backend. Without one, the build's prerendered static HTML
+never reaches the deployed Worker — every request, on every route, falls
+back to a full server-side render from scratch. Under concurrent load that's
+expensive enough to blow Cloudflare's per-request CPU budget: error 1102,
+surfacing as 503s and hung connections that get *worse* under real traffic,
+not better. Found on F1 (2026-09-19) by load-testing the live site and
+reproducing a ~50% failure rate under sustained requests; confirmed the same
+empty config exists on **launchcity** too — this is a portfolio-wide gap in
+how these have been scaffolded, not a one-off.
+
+Fix, in `open-next.config.ts`:
+
+```ts
+import { defineCloudflareConfig } from "@opennextjs/cloudflare";
+import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
+
+export default defineCloudflareConfig({
+  incrementalCache: r2IncrementalCache,
+});
+```
+
+Plus an R2 binding in `wrangler.jsonc`:
+
+```jsonc
+"r2_buckets": [
+  { "binding": "NEXT_INC_CACHE_R2_BUCKET", "bucket_name": "<project>-incremental-cache" }
+]
+```
+
+`opennextjs-cloudflare deploy` creates the bucket and populates it from the
+build's prerendered output automatically — nothing else to run by hand.
+Verify it actually worked by load-testing the live site (sequential requests
+across several routes, not just one check), not just by confirming the
+deploy succeeded: a clean deploy log says nothing about whether the cache is
+actually being read at request time.

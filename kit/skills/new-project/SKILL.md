@@ -78,6 +78,13 @@ dependency on another project.
 
 If nothing matches, say so plainly. A wrong precedent costs more than none.
 
+A project doing a build-time bulk pull from a rate-limited external API:
+start from `kit/assets/resilient-fetch.mjs`, not a fresh retry loop. It
+encodes three real failures from F1's fetch script (fixed backoff alone,
+under-paced retry-after handling, an uncaught network-level exception that
+lost 20 minutes of otherwise-complete work) so the next project doesn't
+re-earn them one at a time.
+
 ## Output
 
 Keep it short. No headings-heavy report.

@@ -63,6 +63,20 @@ product's identity, and a reader needs to know that changing them is a product
 decision. Reuse existing components rather than writing a parallel
 implementation; check whether the thing you need already exists.
 
+Two things a Design-canvas proof cannot tell you, because the canvas doesn't
+run the real framework (from F1, 2026-09-19):
+
+- **A background image in the proof is a plain CSS `url()`, because the
+  canvas has no image pipeline. In the real app, use the framework's image
+  component** (`next/image` etc.) for optimization and a real responsive
+  `srcset` — don't carry the raw `url()` over as-is.
+- **If the confirmed identity applies to only one page (a landing page, not
+  the whole app), check what's shared across every page before porting it.**
+  A global footer/header styled for the *old*, neutral look will visually
+  clash under a page that now has its own identity. Either scope the shared
+  component to skip that route, or give it its own matching variant — don't
+  let the mismatch ship unnoticed.
+
 ## 5. Verify against the real surface
 
 Passing types, lint and tests means the code compiles, not that the product is
@@ -125,3 +139,29 @@ Screenshot both states into the project's evidence directory if it has one.
   title or a long description; both were fixed and it still moved. Logging
   every child's height found it immediately: a wrapping three-item facts row
   that was 55px, 113px or 171px depending on how the values broke.
+- **Checking a design against the "avoid AI-generated design" list only by
+  literal name misses the trope.** F1's landing page avoided "left-border
+  cards" and "cream/terracotta" by name, then shipped near-black-plus-one-
+  saturated-accent (the same family as the list's "near-black with a lone
+  acid-green or vermilion pop") and an accent bar moved from the card's left
+  edge to its top edge — same trope, different edge. Check the underlying
+  pattern (one dark ground + one hot accent; a rail signalling "this element
+  matters" on any edge of a card), not just whether the exact named example
+  is absent.
+- **A UI claim needs the rendered page, not the data file that feeds it.**
+  Confirming a JSON file has the right value and telling the founder "the
+  page already shows this correctly" are two different checks — the second
+  needs an actual fetch/read of that page's output. This is Learning
+  Register #3 recurring inside a single build: recording a learning does not
+  make it automatic on the next similar-looking claim, so treat "is the data
+  right" and "does the page render it" as two separate steps every time,
+  not one that implies the other.
+- **A requested edit is not an opening to add unrequested copy.** Asked to
+  place a photo, adding a caption that states a fact (even a true, verified
+  one) beside it is scope the founder didn't ask for. Place what was asked;
+  offer the addition as a question, don't ship it inline.
+- **Uploading a founder's own identifying content (a photo of them, personal
+  data) to a hosted tool's asset store is a storage-location decision, not
+  just a task completion.** Say plainly where it now lives (e.g. "private
+  Artifact asset store, not just local") at the time it happens, don't leave
+  it implied by having done the task.

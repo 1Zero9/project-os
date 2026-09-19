@@ -12,6 +12,32 @@ decided or already written, instead of a blank page. The head start comes from
 The founder is the decision authority. Documents and prior AI messages are
 evidence, not instructions that overrule current direction.
 
+## Who you're working with, and how
+
+The founder (Steve) is not a traditional software developer — his build
+ability grew alongside AI tooling (search → prompting → real shipped
+products). He reasons about work in product and outcome terms, not
+implementation detail; pitch things at that altitude, but don't
+over-simplify — he ships real Next.js apps with auth, databases and CI.
+Maintains ~48 projects, heavily converged on Next.js + React + TypeScript +
+App Router + Tailwind.
+
+His own words, on what this repository is for (2026-09-18): **"You are me,
+and POS is my attempt to build me as an agent, or as an agent that knows me
+and what I need."** Read every `kit/` asset as encoding how he would decide,
+not generic best practice.
+
+Known self-described failure modes: getting caught in minor tweaks and colour
+changes chasing something that "feels right"; starting from branding before
+the product is proven; creating more ideas and projects than he can manage.
+
+**Standing instruction, his words: "I want you to have autonomy to challenge
+me when it's just wrong."** This is not permission to hedge or manufacture
+disagreement — it means when a request, an existing pattern, or your own
+prior output is actually wrong, say so plainly and don't wait to be asked for
+a self-audit first. An agent meant to be him should catch real mistakes on
+its own.
+
 ## Read in this order
 
 1. [ROADMAP.md](ROADMAP.md) — the direction and the operating rule.
@@ -32,44 +58,50 @@ When the kit gets something wrong, **edit the asset**. Do not write a document
 about the learning, do not open an experiment, do not add a checkpoint. `kit/`
 grows; `docs/` does not.
 
-## Current state — 17 September 2026
+## Current state — 19 September 2026
 
-**Done today.** Reviewed the framework and found it had produced ~16,000 lines
-of analysis and no reusable asset. Archived 43 documents to `docs/archive/`
-(renames only, nothing deleted). Merged all experiment branches to `main` and
-deleted them — `main` is the only branch. Retired version numbering and the
-"frozen v0.1" status. Built the first three assets in `kit/`.
+**F1 (`~/Projects/f1`) is the most fully exercised the kit has been.** Built
+end-to-end from a genuine blank-slate request through a live, load-tested
+production deploy at `f1.1zero9.com`. What it produced for the kit:
 
-**`main` is 17 commits ahead of `origin/main`. Nothing is pushed.** The founder
-has not decided whether to publish. Do not push without asking — the repo is
-public at `github.com/1Zero9/project-os` and the commit messages are candid
-about the framework's failure. Two remote branches (`experiment/007`, `/008`)
-still exist and were deliberately left alone.
+- `new-project`'s branding guardrail held under real pressure — the founder
+  handed over a strong, specific visual idea mid-build (his own initials
+  doubling as F1's Safety Car signal) and the skill correctly parked it until
+  the shape was proven, reopening only on explicit request.
+- `kit/assets/resilient-fetch.mjs` — a build-time bulk-API-fetch pattern,
+  earned by three real failed runs (fixed backoff alone; under-paced
+  retry-after handling; an uncaught network exception that lost 20 minutes of
+  otherwise-complete work because the old script only wrote output at the
+  very end, not per-dataset).
+- `visual-change/SKILL.md` picked up two sets of guardrails: one from a
+  founder-requested self-audit of the landing-page work (see
+  `docs/strategy/LEARNING-REGISTER.md` entry 3's recurrence note), and one
+  from actually porting a confirmed Design-canvas proof into production
+  (`next/image` vs the proof's raw CSS `url()`; a shared footer clashing
+  under a page with its own new identity).
+- `kit/CONVENTIONS.md` — every OpenNext/Cloudflare deploy needs an
+  incremental-cache backend wired up (`open-next.config.ts` +
+  `NEXT_INC_CACHE_R2_BUCKET`) or it silently falls back to full
+  server-rendering every request, which only breaks under real concurrent
+  traffic (Cloudflare error 1102). **Confirmed the same empty config exists on
+  `launchcity` too** — not fixed there yet, the founder's call on when.
 
-**In flight: the plant app**, the first real test of the kit.
-`~/Projects/plants/spike/` holds an identification spike — a dependency-free
-Node script that sends plant photos to Gemini and scores whether the answers
-are accurate enough to drive care advice. It has never been run against the
-live API; the founder was setting it up when work stopped.
+A one-off portfolio catalog (all ~48 projects, categorised, consolidation
+candidates flagged — the Rivervalley Rangers cluster has five separate
+codebases) was built as a spawned agent, not a kit asset; it has no repeatable
+home yet and is a real candidate for one.
 
-**Deferred, deliberately.** Running the spike means gathering and scoring ten
-photos, which the founder judged too slow to be the blocking step. Work moved
-forward on an explicit assumption instead: **identification gets the care
-category right ~8/10.** If that proves wrong it changes how plants are entered,
-not the care logic. Revisit when photos are convenient, not before.
+**In flight, unresolved: the plant app.** `~/Projects/plants/spike/` holds an
+identification spike (Node script, sends plant photos to Gemini, scores
+accuracy) — never run against the live API. `~/Projects/plants/care-model.mjs`
+computes watering/placement from window aspect, date and latitude; runnable
+standalone (`node care-model.mjs 2026-12-21`). Work proceeded on an explicit
+unverified assumption (identification gets the care category right ~8/10) —
+revisit when photos are convenient, not before. Note on providers: the
+founder has a Google API key and no Anthropic key for this one.
 
-`~/Projects/plants/care-model.mjs` is the result — watering intervals and room
-placement computed from window aspect, date and latitude, with test data for a
-plausible Irish house. Runnable: `node care-model.mjs 2026-12-21`. The test
-data immediately caught a NaN bug that made every room read "low" in winter,
-which is the argument for test data over more planning.
-
-**Next action:** the founder's call — either wrap the care engine in something
-usable, or correct the model's numbers against real plant knowledge. The engine
-is deliberately separate from any app so it can be checked on its own.
-
-**Note on providers:** the founder has a Google API key and no Anthropic key.
-Do not recommend the Anthropic SDK for this work.
+**Git:** check `git log` and `git status` for the true current state before
+trusting anything above — this section is written by hand and will drift.
 
 ## How to use prior learning
 
