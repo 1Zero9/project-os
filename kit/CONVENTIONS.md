@@ -32,6 +32,23 @@ confirmed — same guardrail as everything else in `new-project`'s "no
 branding until the shape is settled." A neutral project doesn't need a
 custom favicon yet either.
 
+A third failure mode, found on Learn2Learn: a real, reachable custom asset
+(`public/favicon.svg`, 200 on direct request) that nothing in the page
+actually linked to — no `<link rel="icon">` in the rendered head at all, so
+browsers fell back to a 404'd `/favicon.ico` and showed nothing. "The file
+exists and loads" is not the same claim as "the page uses it." It also
+wasn't even the project's own mark to begin with — a generic asset,
+probably scaffold leftover — so the fix used the site's actual existing nav
+badge (a 1px-bordered circle with "L²") instead of wiring up the wrong
+thing correctly.
+
+Surveyed ~15 active Next.js projects this way on 2026-09-19 (checking
+`metadata.icons` and the rendered `<link rel="icon">` tag, not just file
+presence): only F1, LaunchCity and Learn2Learn actually needed fixing.
+RVR2026, lastman, tally, vecta, Ground Control, Marvin, astra, QualFM,
+golf-club-tools and lucy were all already doing this correctly — worth
+knowing before assuming this convention has more to find than it does.
+
 ## Every site carries a build credit
 
 In the footer of any site built for or by 1Zero9: the logo mark, not text
