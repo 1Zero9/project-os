@@ -99,6 +99,22 @@ forgeable-session-cookie bug in `cookie-session-auth` while porting it. Its
 own README now says so and points here. Nothing in `~/Projects/eolas` was
 deleted.
 
+**`1Zero9Studio` (the founder's own portfolio site) got the same "review
+through the kit's own lens" treatment, same day, and found two more real
+things:** F1 and LaunchCity were both missing from it despite `CONVENTIONS.md`'s
+own rule that every finished site goes in the portfolio — added, with real
+screenshots. And a genuine fail-open bug: `getLiveProjects()` filtered out
+archived/hidden/draft projects on success, then returned the complete
+unfiltered list on any database error — plus a second, separate unguarded
+path one function away (a direct-by-slug lookup that skipped visibility
+checks entirely). Both fixed and verified against a real database failure;
+see `kit/CONVENTIONS.md`'s new fallback-path guardrail and
+`docs/strategy/LEARNING-REGISTER.md` entry 3's second recurrence note.
+**Correction, in case it's still floating around: the site's `/admin` panel
+is real and working** (25 managed projects, live thumbnails) — an earlier
+theory in this same session, based on three wrong database connection
+strings, wrongly concluded it had probably never worked at all. It has.
+
 A one-off portfolio catalog (all ~48 projects, categorised, consolidation
 candidates flagged — the Rivervalley Rangers cluster has five separate
 codebases) was built as a spawned agent, not a kit asset; it has no repeatable

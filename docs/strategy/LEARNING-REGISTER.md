@@ -55,6 +55,17 @@ authority or a reason to add process.
   the check is now a named guardrail in `kit/skills/visual-change/SKILL.md`
   ("A UI claim needs the rendered page, not the data file that feeds it"),
   not left as register text alone.
+- **Recurrence (1Zero9Studio, 2026-09-19):** Fixed a fail-open bug (a
+  visibility filter skipped on the database's error path), confirmed it with
+  a passing local test, and reported it as done. It wasn't — a second,
+  separate unguarded path to the same content sat one function away, and
+  only clicking through the actual live site after the "fix" revealed the
+  first one hadn't changed anything visible. A passing unit test of the
+  function you touched is not the same claim as "the live site now behaves
+  correctly," and this is the third time that gap has cost real turns.
+  Response: `kit/CONVENTIONS.md`'s new "a fallback path must never show more
+  than the success path" guardrail exists because of this, not just the
+  register entry.
 
 ## 4. Stored knowledge helps only with provenance, freshness and selection
 

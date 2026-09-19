@@ -114,3 +114,27 @@ Verify it actually worked by load-testing the live site (sequential requests
 across several routes, not just one check), not just by confirming the
 deploy succeeded: a clean deploy log says nothing about whether the cache is
 actually being read at request time.
+
+## A fallback path must never show more than the success path would
+
+If content is filtered for visibility (archived, hidden, draft, unpublished
+— anything that shouldn't reach the public site), and that filtering
+depends on a call that can fail (a database, an external API), the failure
+path must apply the same filtering, not skip it. A `catch` that returns the
+raw, unfiltered list "just to keep the site up" fails **open**: the one time
+that code path actually runs — the failure — is exactly when it serves
+things nobody meant to be public.
+
+Found on 1Zero9Studio (2026-09-19): `getLiveProjects()` filtered out
+archived/hidden/draft projects on success, then on a database error
+returned the complete unfiltered list instead. A second, separate copy of
+the same mistake sat one function away — the per-page lookup had its own
+direct fallback that never checked visibility at all, so a project excluded
+from every listing was still reachable by going straight to its URL. Two
+different unguarded paths to the same content, in the same file, found only
+by clicking through the live site after fixing the first one and finding it
+made no visible difference.
+
+The fix in both cases was the same: extract the visibility check into its
+own function, call it on every path out, including the ones that only run
+when something else has already gone wrong.
