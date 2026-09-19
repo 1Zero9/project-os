@@ -82,9 +82,12 @@ back to a full server-side render from scratch. Under concurrent load that's
 expensive enough to blow Cloudflare's per-request CPU budget: error 1102,
 surfacing as 503s and hung connections that get *worse* under real traffic,
 not better. Found on F1 (2026-09-19) by load-testing the live site and
-reproducing a ~50% failure rate under sustained requests; confirmed the same
-empty config exists on **launchcity** too — this is a portfolio-wide gap in
-how these have been scaffolded, not a one-off.
+reproducing a ~50% failure rate under sustained requests. The same empty
+config existed on **launchcity**, the only other project on this stack —
+fixed there the same day, also verified by load test. Both confirmed clean
+as of 2026-09-19; a new OpenNext/Cloudflare project should still be checked
+the same way (`grep defineCloudflareConfig({})`, then load-test if it's
+non-trivial) rather than assumed fine on the strength of a clean deploy log.
 
 Fix, in `open-next.config.ts`:
 
