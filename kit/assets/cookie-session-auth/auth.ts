@@ -9,7 +9,11 @@
  * and run `document.cookie = "app-session=true"` and be in, without ever
  * knowing the password. Fixed here by signing the cookie value with an
  * HMAC of a server-only secret, so knowing the cookie's NAME (which is
- * visible in the browser) is not enough to forge a valid value.
+ * visible in the browser) is not enough to forge a valid value. RVR 2014
+ * Team Admin (2026-09-20) also proved that a signature alone is incomplete:
+ * the server must reject an expired signed value, not rely only on the
+ * browser honouring cookie expiry. Never use a fallback password or treat an
+ * unknown role/value as privileged.
  *
  * Copy this into the new project - don't import it as a dependency.
  */
@@ -20,11 +24,12 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 
 export const AUTH_COOKIE_NAME = "app-session";
 const SESSION_VALUE = "true"; // the payload being signed; only the signature matters
+export const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
 
 function getSecret(): string {
   const secret = process.env.AUTH_SESSION_SECRET;
-  if (!secret) {
-    throw new Error("AUTH_SESSION_SECRET is not configured.");
+  if (!secret || secret.length < 32) {
+    throw new Error("AUTH_SESSION_SECRET must be configured with at least 32 random characters.");
   }
   return secret;
 }
@@ -40,7 +45,11 @@ function verify(cookieValue: string | undefined): boolean {
   if (dot === -1) return false;
   const value = cookieValue.slice(0, dot);
   const mac = cookieValue.slice(dot + 1);
-  if (value !== SESSION_VALUE) return false;
+  const parts = value.split(".");
+  if (parts.length !== 2) return false;
+  const [sessionValue, expiresAt] = parts;
+  if (sessionValue !== SESSION_VALUE || !/^\d+$/.test(expiresAt)) return false;
+  if (Number(expiresAt) <= Math.floor(Date.now() / 1000)) return false;
   const expected = createHmac("sha256", getSecret()).update(value).digest("hex");
   const a = Buffer.from(mac);
   const b = Buffer.from(expected);
@@ -57,7 +66,8 @@ export function getExpectedAuthPassword(): string {
 
 /** The signed cookie value to set after a successful password check. */
 export function signedSessionValue(): string {
-  return sign(SESSION_VALUE);
+  const expiresAt = Math.floor(Date.now() / 1000) + SESSION_MAX_AGE_SECONDS;
+  return sign(`${SESSION_VALUE}.${expiresAt}`);
 }
 
 export function isAuthenticatedRequest(request: NextRequest): boolean {

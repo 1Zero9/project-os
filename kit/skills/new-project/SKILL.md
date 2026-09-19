@@ -56,6 +56,7 @@ Only apply what steps 1–4 actually justified.
 | Web app | Next 16 + React 19 + TS + App Router + Tailwind | a new framework to learn |
 | Shared data | Postgres + Prisma | Postgres for a single-user tool |
 | Local/single-user data | SQLite or IndexedDB | a hosted database |
+| Private single-owner web workspace | deployment-level protection | a second, app-level account/role system |
 | Auth (public/customers) | next-auth | rolling your own |
 | Auth (a known small group) | `kit/assets/cookie-session-auth/` | next-auth (heavier than the tier needs) |
 | Hosting | Vercel | anything needing setup time |
@@ -93,7 +94,10 @@ Four more assets, extracted from eolas's accelerators when it was parked
   step 1 of this skill calls for ("a known small group → one shared password
   or magic link"). The original eolas version set the cookie's value to the
   literal string `"true"` — forgeable from a browser console. Fixed here to
-  sign it with an HMAC before use.
+  sign it with an HMAC and server-verified expiry before use. Require a real
+  environment password and secret—never embed a fallback credential. If the
+  project has roles, make the role part of a signed session and fail closed
+  for unknown roles; a plain JSON cookie is not authorization.
 - `kit/assets/prisma-postgres-starter.ts` — the dev-hot-reload-safe Prisma
   client singleton.
 - `kit/assets/pwa-shell/` — installable PWA baseline (manifest, offline

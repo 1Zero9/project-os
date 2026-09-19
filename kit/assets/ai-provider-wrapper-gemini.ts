@@ -2,17 +2,15 @@
  * Minimal fetch-based wrapper around Gemini's generateContent API - no SDK
  * dependency, typed config/request errors. From eolas (parked 2026-09-19).
  *
- * CHECK THE MODEL NAME BEFORE USING. The original hardcoded
- * "gemini-1.5-flash", which is almost certainly stale by the time this is
- * read - model names drift fast and a wrong-but-valid-looking string here
- * fails at request time, not at review time. Verify the current model name
- * against Google's own docs before trusting this default.
+ * The default was checked against Google's model documentation on 2026-09-19.
+ * Model availability changes, so set GEMINI_MODEL explicitly when a project
+ * needs a different capability or has a longer support horizon.
  *
  * Requires GEMINI_API_KEY in the environment; GEMINI_MODEL optionally
  * overrides the model.
  */
 
-const DEFAULT_MODEL = "gemini-1.5-flash"; // verify current before using - see note above
+const DEFAULT_MODEL = "gemini-2.5-flash";
 
 export class GeminiConfigError extends Error {}
 export class GeminiRequestError extends Error {}

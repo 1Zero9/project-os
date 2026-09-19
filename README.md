@@ -2,7 +2,8 @@
 
 > **Every project should make the next project cheaper, faster and better.**
 
-Project OS is a personal AI-native product-development operating system.
+Project OS is a personal product-development kit for working effectively with
+AI.
 
 It is an attempt to solve a problem I repeatedly encounter when building
 software with AI: every new project still starts too close to zero.
@@ -16,7 +17,24 @@ Project OS explores whether that knowledge can compound.
 
 ---
 
-## The Idea
+## What exists now
+
+The kit is deliberately small and directly consumable:
+
+- a compact portfolio index for finding real precedent without loading every
+  repository;
+- skills for shaping a new project, taking over an inherited one, making a
+  visual change, and checking audience fit;
+- copy-and-adapt assets for resilient API ingestion, small-group auth,
+  Prisma/Postgres, PWAs, and Gemini;
+- conventions earned from deployed projects, including safe fallbacks and
+  OpenNext/Cloudflare caching.
+
+These assets have been exercised on real work: a blank-slate F1 build,
+LaunchCity, Learn2Learn, and 1Zero9Studio. The 30–80% head-start ambition is
+still a direction, not a present capability claim.
+
+## The direction
 
 The long-term goal is a personal AI product-development environment that can
 begin with:
@@ -59,7 +77,8 @@ include:
 - operations;
 - research and data.
 
-The longer-term model is closer to a very small AI-native company.
+The longer-term model may become a very small AI-native company, but that is
+not what is being built speculatively today.
 
 The required capabilities should be assembled around the work rather than
 every project carrying the cost and complexity of all of them.
@@ -132,8 +151,8 @@ The core rule is:
 
 Real projects are used as experiments.
 
-Observed behaviour, useful interventions, failures and framework friction are
-recorded as evidence.
+Observed behaviour, useful interventions, failures and framework friction
+change a skill, convention, or source asset when a future project can use it.
 
 Ideas remain hypotheses until sufficient evidence exists to promote them.
 
@@ -146,15 +165,10 @@ costs more than the value it creates, Project OS itself is the problem.
 
 ## Current Status
 
-Project OS is early. Its 30–80% head-start ambition is a direction, not a
-present capability claim.
-
 The first phase produced sixteen thousand lines of analysis and no asset a
 future project could use. That record is kept as experience in
-[`docs/archive/`](docs/archive/), and the work has moved to building things a
-project actually consumes. The first of those is [`kit/`](kit/): a capability
-index of previous projects, and a `new-project` skill that shapes an idea into
-the smallest sufficient stack and names the precedent to lift from.
+[`docs/archive/`](docs/archive/). The work now grows [`kit/`](kit/), not the
+archive: a future project should be able to consume every meaningful addition.
 
 The governing rule is now that every addition must be something a future
 project **uses**, not something it has to **read**.

@@ -160,6 +160,12 @@ Screenshot both states into the project's evidence directory if it has one.
   place a photo, adding a caption that states a fact (even a true, verified
   one) beside it is scope the founder didn't ask for. Place what was asked;
   offer the addition as a question, don't ship it inline.
+- **A list that displays dates must be checked in its rendered order, not
+  just for whether all records exist.** RVR 2014 Team Admin (2026-09-20)
+  sorted date labels such as `8 Sept 2026` as database text, so newer albums
+  appeared below August ones. Sort by a machine-readable timestamp (or parse
+  the display value at the presentation boundary) and verify that the newest
+  visible item really leads the user-facing list.
 - **Uploading a founder's own identifying content (a photo of them, personal
   data) to a hosted tool's asset store is a storage-location decision, not
   just a task completion.** Say plainly where it now lives (e.g. "private

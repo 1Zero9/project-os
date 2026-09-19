@@ -4,50 +4,14 @@ Standing rules for anything built under 1Zero9. Short by design — a convention
 earns a place here only when forgetting it would mean going back and redoing
 work. Apply them without being asked.
 
-## Every site gets a real favicon, not the create-next-app default
+## Every site gets a real favicon once its identity is confirmed
 
-Fixed on F1 and LaunchCity (2026-09-19): both shipped the byte-identical
-stock `favicon.ico` `create-next-app` generates, actually being served as
-the browser tab icon. A default favicon is as visible a "this wasn't
-finished" signal as a default page title, and it's cheap to fix: an
-`app/icon.tsx` using `next/og`'s `ImageResponse` generates one from the
-project's own real visual identity (a confirmed accent colour, an existing
-mark) as code, not a binary asset nobody can diff. F1's uses the real
-marshal's SC board on its kerb-red field; LaunchCity's draws its
-horizon-arc-plus-launch-marker straight from the homepage's own
-`--lc-horizon`/`--lc-accent` tokens rather than inventing an unrelated icon.
-
-**Check what's actually being served, not just whether a stock file
-exists.** Marvin and lastman were both wrongly flagged here at first — each
-still has the identical leftover `app/favicon.ico` on disk, but each also
-has an explicit `icons:` entry in its `layout.tsx` metadata pointing at a
-real custom logo, which wins and is what actually renders; the stock file
-is orphaned dead weight, not a live bug. Confirm by checking `metadata.icons`
-(or fetching the page and reading its actual `<link rel="icon">` tag), never
-by a leftover file's presence alone — a project can carry a stale unused
-file and still be doing this correctly.
-
-Only add a custom icon once a project's visual identity is actually
-confirmed — same guardrail as everything else in `new-project`'s "no
-branding until the shape is settled." A neutral project doesn't need a
-custom favicon yet either.
-
-A third failure mode, found on Learn2Learn: a real, reachable custom asset
-(`public/favicon.svg`, 200 on direct request) that nothing in the page
-actually linked to — no `<link rel="icon">` in the rendered head at all, so
-browsers fell back to a 404'd `/favicon.ico` and showed nothing. "The file
-exists and loads" is not the same claim as "the page uses it." It also
-wasn't even the project's own mark to begin with — a generic asset,
-probably scaffold leftover — so the fix used the site's actual existing nav
-badge (a 1px-bordered circle with "L²") instead of wiring up the wrong
-thing correctly.
-
-Surveyed ~15 active Next.js projects this way on 2026-09-19 (checking
-`metadata.icons` and the rendered `<link rel="icon">` tag, not just file
-presence): only F1, LaunchCity and Learn2Learn actually needed fixing.
-RVR2026, lastman, tally, vecta, Ground Control, Marvin, astra, QualFM,
-golf-club-tools and lucy were all already doing this correctly — worth
-knowing before assuming this convention has more to find than it does.
+Never ship the `create-next-app` default favicon. Use the confirmed visual
+identity — ideally an `app/icon.tsx` with `ImageResponse` — rather than
+inventing a new mark. Verify the rendered page's `<link rel="icon">` (or
+`metadata.icons`), not merely that an icon file exists: a stock file can be
+orphaned and a reachable custom file can still be unlinked. A neutral project
+does not need an invented custom favicon before its identity is settled.
 
 ## Every site carries a build credit
 
@@ -120,19 +84,11 @@ there is nothing to add by hand.
 
 ## Every OpenNext/Cloudflare deploy needs its incremental cache wired up
 
-`defineCloudflareConfig({})` (the default from scaffolding) has no
-incremental-cache backend. Without one, the build's prerendered static HTML
-never reaches the deployed Worker — every request, on every route, falls
-back to a full server-side render from scratch. Under concurrent load that's
-expensive enough to blow Cloudflare's per-request CPU budget: error 1102,
-surfacing as 503s and hung connections that get *worse* under real traffic,
-not better. Found on F1 (2026-09-19) by load-testing the live site and
-reproducing a ~50% failure rate under sustained requests. The same empty
-config existed on **launchcity**, the only other project on this stack —
-fixed there the same day, also verified by load test. Both confirmed clean
-as of 2026-09-19; a new OpenNext/Cloudflare project should still be checked
-the same way (`grep defineCloudflareConfig({})`, then load-test if it's
-non-trivial) rather than assumed fine on the strength of a clean deploy log.
+`defineCloudflareConfig({})` has no incremental-cache backend, so every
+request can fall back to a full server render and fail under concurrent load.
+Use R2 incremental cache, bind it as `NEXT_INC_CACHE_R2_BUCKET`, and
+load-test the live site across several routes. A clean deployment is not
+evidence that the cache is being read.
 
 Fix, in `open-next.config.ts`:
 
@@ -153,33 +109,11 @@ Plus an R2 binding in `wrangler.jsonc`:
 ]
 ```
 
-`opennextjs-cloudflare deploy` creates the bucket and populates it from the
-build's prerendered output automatically — nothing else to run by hand.
-Verify it actually worked by load-testing the live site (sequential requests
-across several routes, not just one check), not just by confirming the
-deploy succeeded: a clean deploy log says nothing about whether the cache is
-actually being read at request time.
+`opennextjs-cloudflare deploy` creates and populates the bucket.
 
 ## A fallback path must never show more than the success path would
 
-If content is filtered for visibility (archived, hidden, draft, unpublished
-— anything that shouldn't reach the public site), and that filtering
-depends on a call that can fail (a database, an external API), the failure
-path must apply the same filtering, not skip it. A `catch` that returns the
-raw, unfiltered list "just to keep the site up" fails **open**: the one time
-that code path actually runs — the failure — is exactly when it serves
-things nobody meant to be public.
-
-Found on 1Zero9Studio (2026-09-19): `getLiveProjects()` filtered out
-archived/hidden/draft projects on success, then on a database error
-returned the complete unfiltered list instead. A second, separate copy of
-the same mistake sat one function away — the per-page lookup had its own
-direct fallback that never checked visibility at all, so a project excluded
-from every listing was still reachable by going straight to its URL. Two
-different unguarded paths to the same content, in the same file, found only
-by clicking through the live site after fixing the first one and finding it
-made no visible difference.
-
-The fix in both cases was the same: extract the visibility check into its
-own function, call it on every path out, including the ones that only run
-when something else has already gone wrong.
+If public content is filtered for visibility (archived, hidden, draft,
+unpublished), every failure and direct-lookup path must apply the same filter.
+Never return a raw fallback list "to keep the site up": that fails open.
+Extract the visibility check and call it on every path out.

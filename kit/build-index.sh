@@ -8,6 +8,11 @@ cd "$ROOT" || exit 1
 
 has() { grep -qs "$2" "$1" 2>/dev/null; }
 
+printf '%s\n\n' '# Portfolio Index'
+printf 'Generated: %s by `kit/build-index.sh`. Regenerate before relying on it.\n' "$(date +%F)"
+printf '%s\n\n' 'Read this to answer "have I built this before?" — do not load projects into context to find out.'
+printf '%s\n\n' '`project | stack | last active | files | capabilities | purpose`'
+
 for d in */; do
   n="${d%/}"
   [ "$n" = "Project-OS" ] && continue

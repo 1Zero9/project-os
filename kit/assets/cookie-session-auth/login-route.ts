@@ -8,7 +8,7 @@
  */
 
 import { NextResponse } from "next/server";
-import { AUTH_COOKIE_NAME, getExpectedAuthPassword, signedSessionValue } from "./auth";
+import { AUTH_COOKIE_NAME, getExpectedAuthPassword, SESSION_MAX_AGE_SECONDS, signedSessionValue } from "./auth";
 
 export async function POST(request: Request) {
   try {
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
       sameSite: "lax",
       secure: process.env.NODE_ENV === "production",
       path: "/",
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: SESSION_MAX_AGE_SECONDS,
     });
 
     return response;
