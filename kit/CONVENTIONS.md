@@ -118,6 +118,33 @@ unpublished), every failure and direct-lookup path must apply the same filter.
 Never return a raw fallback list "to keep the site up": that fails open.
 Extract the visibility check and call it on every path out.
 
+## Prisma on Cloudflare Workers: default to Drizzle instead
+
+Prisma's WASM query engine (required for driver adapters, since Workers has
+no Node runtime for the normal native binary) hits multiple real,
+currently-open upstream bugs specific to Prisma-on-Workers-via-OpenNext:
+`cloudflare/workers-sdk#11535`, `prisma/orm#23457`,
+`opennextjs-cloudflare#471`. The WASM file traces into the build correctly,
+but the generated client tries to read it from a filesystem path that
+doesn't exist inside a Worker at runtime — confirmed live on Boot Room
+(2026-09-20): typecheck, lint and `opennextjs-cloudflare build` all passed,
+`wrangler deploy` succeeded, and the first real request still 401'd on
+login with exactly this error. A clean build and a successful deploy proved
+nothing here — only an actual authenticated request against the live URL
+caught it.
+
+Default to **Drizzle with the `node-postgres` driver, through Cloudflare
+Hyperdrive** for any Postgres + Cloudflare Workers project instead. It
+compiles SQL in plain JS — no query-engine binary, no WASM step, nothing
+for the Workers runtime to fail to find. `pg` itself still needs one
+narrower, already-solved fix (`pg-cloudflare`'s workerd build isn't traced
+by Next's file tracer by default — add `outputFileTracingIncludes` for
+`node_modules/pg-cloudflare/{dist,esm}/**` in `next.config.ts`), which is a
+real but minor bundling issue, not the same class of problem.
+
+Prisma stays the default for Postgres on Vercel/Node hosting — this is
+specifically about the Workers runtime.
+
 ## Every secret comparison in a file, not just the one you're reviewing
 
 Finding one correctly timing-safe comparison in an auth file is not evidence

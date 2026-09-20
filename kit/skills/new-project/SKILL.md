@@ -54,7 +54,8 @@ Only apply what steps 1–4 actually justified.
 | Need | Default | Don't reach for |
 |---|---|---|
 | Web app | Next 16 + React 19 + TS + App Router + Tailwind | a new framework to learn |
-| Shared data | Postgres + Prisma | Postgres for a single-user tool |
+| Shared data, hosting on Vercel/Node | Postgres + Prisma | Postgres for a single-user tool |
+| Shared data, hosting on Cloudflare Workers | Postgres + Drizzle (`node-postgres` driver) via Hyperdrive | Prisma — see guardrail below |
 | Local/single-user data | SQLite or IndexedDB | a hosted database |
 | Private single-owner web workspace | verified deployment-level protection, or one shared signed-password session | a user-account/role system |
 | Auth (public/customers) | next-auth | rolling your own |
