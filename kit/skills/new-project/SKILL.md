@@ -56,7 +56,7 @@ Only apply what steps 1–4 actually justified.
 | Web app | Next 16 + React 19 + TS + App Router + Tailwind | a new framework to learn |
 | Shared data | Postgres + Prisma | Postgres for a single-user tool |
 | Local/single-user data | SQLite or IndexedDB | a hosted database |
-| Private single-owner web workspace | deployment-level protection | a second, app-level account/role system |
+| Private single-owner web workspace | verified deployment-level protection, or one shared signed-password session | a user-account/role system |
 | Auth (public/customers) | next-auth | rolling your own |
 | Auth (a known small group) | `kit/assets/cookie-session-auth/` | next-auth (heavier than the tier needs) |
 | Hosting | Vercel | anything needing setup time |
@@ -97,7 +97,12 @@ Four more assets, extracted from eolas's accelerators when it was parked
   sign it with an HMAC and server-verified expiry before use. Require a real
   environment password and secret—never embed a fallback credential. If the
   project has roles, make the role part of a signed session and fail closed
-  for unknown roles; a plain JSON cookie is not authorization.
+  for unknown roles; a plain JSON cookie is not authorization. Verify that
+  deployment protection covers the **production** domain before relying on
+  it: Vercel's Standard Protection did not protect RVR 2014 Team Admin's
+  production URL (2026-09-20), despite its name. Where production protection
+  is not actually enabled, one shared signed-password session is the small
+  sufficient boundary for a private owner workspace.
 - `kit/assets/prisma-postgres-starter.ts` — the dev-hot-reload-safe Prisma
   client singleton.
 - `kit/assets/pwa-shell/` — installable PWA baseline (manifest, offline
