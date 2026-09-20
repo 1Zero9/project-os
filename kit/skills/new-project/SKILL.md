@@ -111,6 +111,14 @@ Four more assets, extracted from eolas's accelerators when it was parked
   wrapper for a project using a Google key. Check the model name against
   Google's current docs before trusting the default — it drifts.
 
+For a project whose runtime secrets are already in 1Password, use
+`kit/assets/1password-project-secrets/`: it keeps a non-secret project-to-
+vault/item/field registry and injects those values only into the command that
+needs them. Do not copy secret values into POS, source control, an `.env`
+template, or an agent handoff. Local interactive use goes through the
+1Password desktop-app CLI integration; CI needs a separate, vault-scoped
+machine identity or Credential Broker configuration.
+
 ## Output
 
 Keep it short. No headings-heavy report.

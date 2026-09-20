@@ -1,0 +1,11 @@
+{
+  "rvr-2014-teamadmin": {
+    "vault": "RVR",
+    "item": "RVR 2014 Team Admin",
+    "env": {
+      "POSTGRES_URL": "op://RVR/RVR 2014 Team Admin/POSTGRES_URL",
+      "PRISMA_DATABASE_URL": "op://RVR/RVR 2014 Team Admin/PRISMA_DATABASE_URL",
+      "ADMIN_PASSWORD": "op://RVR/RVR 2014 Team Admin/ADMIN_PASSWORD"
+    }
+  }
+}
