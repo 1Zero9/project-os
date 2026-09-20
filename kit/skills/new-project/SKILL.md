@@ -38,7 +38,15 @@ scheduled jobs → cron + push/email. If not, skip all of it.
 
 **5. Does it need a paid service or API key?** Ask which the user already has
 before recommending one — do not assume a provider. An available key beats a
-marginally better service every time at this stage.
+marginally better service every time at this stage. **This includes a
+database provider whenever step 2 said hosted Postgres — name and confirm
+one before writing any schema or code against it, don't discover it's
+unreachable mid-build.** Boot Room (2026-09-20) cycled through three
+providers live — Neon (signup blocked), Prisma Postgres (a stuck console
+flow), then Supabase — after the app was already scaffolded around the
+first one. Confirming a provider actually works (an account exists, a
+connection string is in hand) belongs in shaping, not discovered as a
+build-time surprise.
 
 **6. What's the riskiest unknown?** Build the smallest thing that tests that
 first — before any layout, branding or colour work.

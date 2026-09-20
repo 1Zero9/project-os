@@ -13,6 +13,13 @@ inventing a new mark. Verify the rendered page's `<link rel="icon">` (or
 orphaned and a reachable custom file can still be unlinked. A neutral project
 does not need an invented custom favicon before its identity is settled.
 
+Satori (the renderer behind `ImageResponse`/`next/og`) only supports
+`display: flex`, not `grid` — a grid-based mark fails the build outright
+(`Invalid value for CSS property "display"`), not just a rendering
+difference. Confirmed on Boot Room (2026-09-20): its stud-grid mark had to
+be rebuilt as two flex rows. Write any `app/icon.tsx` mark in flex from the
+start.
+
 ## Every site carries a build credit
 
 In the footer of any site built for or by 1Zero9: the logo mark, not text
@@ -120,6 +127,17 @@ Plus an R2 binding in `wrangler.jsonc`:
 ```
 
 `opennextjs-cloudflare deploy` creates and populates the bucket.
+
+## A multi-tenant route uses the tenant's slug, never its internal id
+
+If a table has a public-facing slug column, the URL uses it —
+`/clubs/rivervalley-rangers`, not `/clubs/yzcvbe5fpkp824n9d36ebp7p`. Boot
+Room shipped with the raw id for a full session before this was caught
+(2026-09-20) despite `clubs.slug` existing in the schema the whole time —
+easy to miss because the internal id "works" and nothing errors. Resolve
+slug → id once at the top of the route; every internal query and mutation
+still keys on the real id as normal, only the URL and any `redirect`/
+`revalidatePath` targets use the slug.
 
 ## A fallback path must never show more than the success path would
 
