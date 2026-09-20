@@ -50,7 +50,7 @@ homealone | Revisit | No signal at all | first-pass
 lastman | Keep | Active 3 days ago, mature tag set, real purpose | first-pass
 launchcity | Keep | Active yesterday, live production | first-pass
 life-admin-system | Refresh | Ambitious real purpose (AI document capture), ~8mo stale | first-pass
-lucy | Keep | Active 8 days ago; possible thematic overlap with Learn2Learn (both "learning" tools) — worth a side-by-side look, not an immediate merge call | first-pass
+lucy | Archive | Founder-confirmed 2026-09-20: a failed note-taking app, not a Learn2Learn duplicate — no longer pursued | founder-confirmed
 mater-ims-projects | Revisit | No signal; possible overlap with IMS — check both together | first-pass
 plants | Revisit | Matches Project-OS's own record: in-flight spike, unverified, explicitly parked pending photo testing | first-pass
 rivervalley-rangers-cms | Archive | >1yr stale, unconfigured Sanity boilerplate purpose text never replaced, no evidence it was ever wired to anything | first-pass
@@ -76,5 +76,7 @@ vecta | Keep | Active 3 days ago, mature tag set | first-pass
   be the same idea twice or genuinely different.
 - **IMS / mater-ims-projects:** naming suggests related interview-prep work —
   check together.
-- **lucy / Learn2Learn:** both learning-domain tools, active within days of
-  each other — worth confirming they're not solving the same problem twice.
+- **lucy / Learn2Learn — resolved 2026-09-20.** Not related. `lucy` was a
+  failed note-taking app, no longer pursued (Archive). `Learn2Learn` is a
+  separate, current project about how to learn in school and study —
+  unaffected, stays Keep.
