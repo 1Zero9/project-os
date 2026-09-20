@@ -30,8 +30,8 @@ ParkRun-Excuse | Revisit | No signal; possible overlap with ParkRun — check bo
 ParkRun | Revisit | No signal; possible overlap with ParkRun-Excuse — check both together | first-pass
 Photo App | Revisit | No signal at all | first-pass
 QualFM | Refresh | Active tag set (api/tailwind/upload) ~2mo ago but no purpose text — check README | first-pass
-RVR 2014 Team Admin | Keep | Active today. Part of the 5-way RVR cluster below — Keep now, revisit cluster-wide later | first-pass
-RVR2026 | Keep | Active 5 days ago, most mature/production of the 5-way RVR cluster below | first-pass
+RVR 2014 Team Admin | Keep | Founder-confirmed 2026-09-20: not a cluster duplicate — scoped to one age-group team's fund/accounts, a different job from RVR2026's whole-club site | founder-confirmed
+RVR2026 | Keep | Founder-confirmed 2026-09-20: "the biggest site I've done for a local football club" — the anchor of the Rivervalley cluster | founder-confirmed
 Runway | Refresh | Real purpose (watch planner), ~3mo stale | first-pass
 SWGOH | Keep | Active 3 weeks ago, real purpose | first-pass
 Technics | Revisit | No signal at all | first-pass
@@ -53,19 +53,25 @@ life-admin-system | Refresh | Ambitious real purpose (AI document capture), ~8mo
 lucy | Keep | Active 8 days ago; possible thematic overlap with Learn2Learn (both "learning" tools) — worth a side-by-side look, not an immediate merge call | first-pass
 mater-ims-projects | Revisit | No signal; possible overlap with IMS — check both together | first-pass
 plants | Revisit | Matches Project-OS's own record: in-flight spike, unverified, explicitly parked pending photo testing | first-pass
-rivervalley-rangers-cms | Archive | >1yr stale, unconfigured Sanity boilerplate purpose text never replaced — part of the 5-way RVR cluster | first-pass
-rvr | Redirect | 13mo stale, no purpose text, part of the 5-way RVR cluster — likely folded into RVR2026 | first-pass
-rvrmatchday | Redirect | 472 files, ~10mo stale, purpose overlaps RVR2026 almost completely — largest consolidation decision in the portfolio | first-pass
+rivervalley-rangers-cms | Archive | >1yr stale, unconfigured Sanity boilerplate purpose text never replaced, no evidence it was ever wired to anything | first-pass
+rvr | Archive | Plain static HTML site, 13mo stale — reads as the pre-RVR2026 club site, superseded | first-pass
+rvrmatchday | Archive | Founder-confirmed 2026-09-20: its matchday/game-management feature was rebuilt into RVR2026, which replaced it | founder-confirmed
 tally | Keep | Active 5 days ago, mature tag set | first-pass
 vecta | Keep | Active 3 days ago, mature tag set | first-pass
 
 ## Flagged clusters (worth a joint decision, not five separate ones)
 
-- **Rivervalley Rangers (5 codebases):** `RVR 2014 Team Admin`, `RVR2026`,
-  `rvr`, `rvrmatchday`, `rivervalley-rangers-cms`. RVR2026 reads as the
-  mature production platform; the other four are stale, smaller, or
-  boilerplate. Worth one explicit consolidation decision rather than five
-  independent ones.
+- **Rivervalley Rangers — resolved 2026-09-20.** Not actually a 5-way
+  duplicate cluster once looked at directly. `RVR2026` is the club's real
+  platform ("the biggest site I've done for a local football club" — founder,
+  2026-09-20) and absorbed `rvrmatchday`'s matchday/game-management feature,
+  which is why `rvrmatchday` is now Archive rather than Redirect. `rvr` (plain
+  static HTML) and `rivervalley-rangers-cms` (unconfigured Sanity boilerplate)
+  both predate and are superseded by it — Archive. `RVR 2014 Team Admin` was
+  never actually a duplicate: it's scoped to one age-group team's fund and
+  accounts admin, a different job from the club-wide site, and stays Keep.
+  Net: two codebases doing real work (`RVR2026`, `RVR 2014 Team Admin`),
+  three safe to archive.
 - **ParkRun / ParkRun-Excuse:** no signal on either — check together, might
   be the same idea twice or genuinely different.
 - **IMS / mater-ims-projects:** naming suggests related interview-prep work —
