@@ -120,6 +120,19 @@ Keep it short. No headings-heavy report.
 - **Skip** — what this project does *not* need, and why. This is the valuable part.
 - **Lift from** — project → file → what it gives you.
 - **First step** — the one thing to build that tests the riskiest unknown.
+- **Repo & hosting** — say this every time, don't let the defaults table
+  answer it silently:
+  - **Repo:** `git init` as part of the build, by default — the way any
+    other reversible, standard-practice setup step gets done without being
+    asked. Only skip it if told to.
+  - **Hosting:** name one (Vercel, Cloudflare, or otherwise) with a
+    one-line reason, matching what step 3 already decided about where it
+    runs. Having "Hosting | Vercel" in the defaults table below isn't the
+    same as actually saying it — a real project (Boot Room, 2026-09-20) got
+    fully scaffolded and run without hosting ever being named out loud.
+  - **Database locality, if step 2 said hosted Postgres:** ask local vs. a
+    free-tier hosted instance (Neon / Vercel Postgres) — don't default to
+    installing anything. See the guardrail below; this one is not optional.
 
 Then offer to build it. Don't wait for approval of a plan that isn't written down.
 
@@ -135,3 +148,15 @@ Apply them without being asked.
 - If the idea is close to an existing project, ask whether this is a new project
   or a feature of that one before scaffolding anything.
 - If the answer is "this doesn't need building", say that.
+- **Never install new system-level software without asking first** — a
+  database engine, a `brew`/`apt` package, a background service. Found live
+  scaffolding Boot Room (2026-09-20): local Postgres got installed via
+  Homebrew and started as a persistent `brew services` launch agent,
+  entirely without asking. Founder's own words: "I was never asked to do
+  this before." This is not like editing a file inside the project
+  directory — it's a change to the machine itself that outlives the
+  session, the same category the Bash tool's own safety rules already put
+  a force-push or `rm -rf` in. Ask; don't default to it. A free-tier hosted
+  Postgres (Neon / Vercel Postgres) is very often the better answer anyway —
+  it's what production will actually run, so dev and prod don't quietly
+  diverge on a choice nobody made on purpose.
