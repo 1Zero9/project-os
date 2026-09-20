@@ -1,13 +1,20 @@
+# Portfolio Index
+
+Generated: 2026-09-20 by `kit/build-index.sh`. Regenerate before relying on it.
+Read this to answer "have I built this before?" — do not load projects into context to find out.
+
+`project | stack | last active | files | capabilities | purpose`
+
 109-jobjar | - | 2026-03-23 | 164 |  | JobJar is a household work system built with Next.js, Prisma, and PostgreSQL.
 1Zero9-vault | - | - | - |  | —
-1Zero9Studio | next16+prisma | 2026-09-18 | 134 | ci,email,schema,tailwind | —
+1Zero9Studio | next16+prisma | 2026-09-19 | 138 | ci,email,schema,tailwind | —
 Bookworm | swift | 2026-05-27 | 75 |  | Bookworm is a private macOS writing app for drafting, organising, and revising a novel. It
 CarSearch | react | - | - | ai | —
 Clenicacare | next14 | 2025-11-20 | 27 | api,email,tailwind | Next.js App Router site with a contact workflow that posts via Resend and forwards enquiri
 Ground Control | next16+drizzle | 2026-09-15 | 168 | ci,pwa,tailwind,tests | Your family's shared mission control — a calendar, sticky-note board, and
 IMS | next14 | 2026-03-07 | 58 | api,tailwind | A private Next.js application to practise for the **IMS Programme Manager** interview at M
 Knowledge Generator | - | - | - |  | —
-Learn2Learn | react+drizzle | 2026-09-18 | 31 | tailwind,tests | Four phases for learning anything, built around a normal school week — for the
+Learn2Learn | react+drizzle | 2026-09-19 | 31 | tailwind,tests | Four phases for learning anything, built around a normal school week — for the
 LearningThroughMotion | next16 | 2026-02-21 | 105 | api,tailwind | This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](http
 Marvin | next15+prisma | 2026-08-05 | 286 | api,ci,pwa,schema,tests,upload,vercel | Marvin is a private household cooking, cookbook, meal-planning, and health companion built
 MeidaGuide | react | - | - |  | A personal Ireland-only media guide: Sky/live TV listings, streaming availability, and a t
@@ -17,7 +24,7 @@ ParkRun-Excuse | - | - | - |  | —
 ParkRun | - | - | - |  | —
 Photo App | swift | - | - |  | —
 QualFM | next16+drizzle | 2026-07-17 | 101 | api,tailwind,upload | —
-RVR 2014 Team Admin | next16+drizzle+sqlite | 2026-09-12 | 72 | api,cron,tailwind,vercel | Private team fund, accounts and information hub for the Rivervalley Rangers 2014 team.
+RVR 2014 Team Admin | next16+drizzle+sqlite | 2026-09-20 | 71 | api,cron,tailwind,vercel | Private team fund, accounts and information hub for the Rivervalley Rangers 2014 team.
 RVR2026 | next16+prisma | 2026-09-15 | 402 | api,auth,cron,csv,email,payments,pwa,schema,tailwind,tests,upload,vercel | Production Next.js platform for Rivervalley Rangers AFC. It includes the public club site,
 Runway | next15 | 2026-06-14 | 108 | e2e,tests,vercel | Private Ireland watch planner for TV, streaming, cinema releases, tracked shows, and share
 SWGOH | python | 2026-08-31 | 202 | ci,cron | A small, free reporting service for the **Blues Brothers** SWGOH guild.
