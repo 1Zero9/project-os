@@ -132,6 +132,26 @@ founder has a Google API key and no Anthropic key for this one.
 **Git:** check `git log` and `git status` for the true current state before
 trusting anything above — this section is written by hand and will drift.
 
+**RVR 2014 Team Admin (2026-09-20) — a live cross-provider handoff, not a
+hypothetical.** Built a league-table/scout feature (common-opponent
+comparison against DDSL data, since DDSL's own site doesn't surface it), then
+hit a Claude credit limit mid-session and the founder switched to Codex on the
+same repo to keep going. Reviewing Codex's changes afterward found two things
+worth keeping:
+
+- A properly `timingSafeEqual`-checked session cookie sat next to a login
+  password check using plain `!==` — see `kit/CONVENTIONS.md`'s new secret-
+  comparison guardrail. One careful implementation in a file is not evidence
+  the rest is equally careful.
+- Codex's redesign was technically sound but silently reverted a recent,
+  explicit decision (making `/fixtures` public) made earlier the same session,
+  because nothing in *that* repo recorded it — only this conversation did, and
+  Codex never saw this conversation. This repo's own `AGENTS.md`/
+  `AI-HANDOFF.md` pattern is the fix for exactly this failure mode, but it
+  currently only exists here, in Project-OS itself — not in the client/
+  personal project repos where a handoff actually happens. See
+  `kit/CONVENTIONS.md`'s new handoff-note guardrail.
+
 ## How to use prior learning
 
 Use the [learning register](docs/strategy/LEARNING-REGISTER.md) only when an

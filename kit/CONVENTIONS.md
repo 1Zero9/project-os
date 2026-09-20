@@ -117,3 +117,35 @@ If public content is filtered for visibility (archived, hidden, draft,
 unpublished), every failure and direct-lookup path must apply the same filter.
 Never return a raw fallback list "to keep the site up": that fails open.
 Extract the visibility check and call it on every path out.
+
+## Every secret comparison in a file, not just the one you're reviewing
+
+Finding one correctly timing-safe comparison in an auth file is not evidence
+the rest of the file is safe — check every place a secret gets compared to
+user input. RVR 2014 Team Admin's `authz.ts` had a properly
+`timingSafeEqual`-checked session cookie sitting next to `actions.ts`'s
+`loginAction`, which compared the login password itself with plain `!==`
+(2026-09-20). The careful implementation next to it made the naive one easy to
+miss on a skim. Grep the file for every `===`/`!==` against a secret, env var,
+or token before calling an auth review done, and route the fix through one
+shared comparison function (`timingSafeStringEqual`) rather than a one-off fix
+at the single call site found first — a length-mismatch must still run a
+same-size comparison, or the early-return itself leaks length via timing.
+
+## A mid-session AI-tool handoff needs a note in the project's own repo
+
+Hitting a usage/credit limit and switching tools mid-project (Claude → Codex,
+or any other pairing) is a real, unplanned event, not a hypothetical —
+happened live on RVR 2014 Team Admin (2026-09-20). The receiving tool produced
+a technically sound redesign but silently reverted a recent, explicit decision
+(making `/fixtures` public) because nothing in *that* repository recorded it —
+chat history with the other tool isn't visible to the one that takes over.
+Project-OS's own `AGENTS.md`/`AI-HANDOFF.md` pattern exists to prevent exactly
+this, but as of this finding it existed only in Project-OS itself, not in the
+client/personal repos where a handoff actually happens. Before a session ends
+with a recent, non-obvious decision in play (a reverted default, a security
+tightening, a scope cut) and a tool switch is plausible — including a session
+simply ending, since the next one may not be the same tool — leave a short
+dated note in the project's own repo (a `CURRENT-STATE.md`, a code comment
+next to the decision, or a commit message that says why, not just what) rather
+than trusting the decision survives in conversation alone.
