@@ -5,9 +5,12 @@ before" but "does this need a decision." Built by `kit/skills/portfolio-audit`.
 Update this file after every audit pass; don't leave it stale once a category
 is founder-confirmed, and don't overwrite a confirmed row with a fresh guess.
 
-Status: **first-pass, 2026-09-20** — none of these are founder-confirmed yet.
-Signal-based only (`kit/INDEX.md`'s recency, purpose text and tags); rows
-marked "Revisit" have no reliable signal and were not individually opened.
+Status: mixed — most rows are **first-pass** (signal-based only, from
+`kit/INDEX.md`'s recency, purpose text and tags; "Revisit" rows have no
+reliable signal and were not individually opened). Rows marked
+**founder-confirmed** have been reviewed directly and should not be
+overwritten by a fresh audit pass. All four flagged clusters are resolved
+as of 2026-09-20.
 
 `project | category | reasoning | status`
 
@@ -18,7 +21,7 @@ Bookworm | Refresh | Real purpose (macOS novel-writing app), ~4mo stale | first-
 CarSearch | Revisit | No activity signal, only an "ai" tag | first-pass
 Clenicacare | Revisit | Client site, ~10mo stale — check if client still needs it before refreshing | first-pass
 Ground Control | Keep | Active 5 days ago, full tag set | first-pass
-IMS | Archive | Purpose was interview practice for a specific role — likely already served | first-pass
+IMS | Archive | Founder-confirmed 2026-09-20: not used, not needed | founder-confirmed
 Knowledge Generator | Revisit | No signal at all | first-pass
 Learn2Learn | Keep | Active yesterday, mid visual-change work this session | first-pass
 LearningThroughMotion | Revisit | Purpose text is unedited create-next-app boilerplate — real content unknown | first-pass
@@ -26,8 +29,8 @@ Marvin | Keep | Active ~6 weeks ago, most mature tag set in the portfolio | firs
 MeidaGuide | Revisit | Real purpose text but no activity/file signal to judge staleness | first-pass
 OCTO Objectives | Revisit | Real purpose text but no activity/file signal | first-pass
 PRODUCT-DESIGN-DIRECTOR | Revisit | No signal at all | first-pass
-ParkRun-Excuse | Revisit | No signal; possible overlap with ParkRun — check both together | first-pass
-ParkRun | Revisit | No signal; possible overlap with ParkRun-Excuse — check both together | first-pass
+ParkRun-Excuse | Archive | Founder-confirmed 2026-09-20: not used, not needed | founder-confirmed
+ParkRun | Archive | Founder-confirmed 2026-09-20: not used, not needed | founder-confirmed
 Photo App | Revisit | No signal at all | first-pass
 QualFM | Refresh | Active tag set (api/tailwind/upload) ~2mo ago but no purpose text — check README | first-pass
 RVR 2014 Team Admin | Keep | Founder-confirmed 2026-09-20: not a cluster duplicate — scoped to one age-group team's fund/accounts, a different job from RVR2026's whole-club site | founder-confirmed
@@ -51,7 +54,7 @@ lastman | Keep | Active 3 days ago, mature tag set, real purpose | first-pass
 launchcity | Keep | Active yesterday, live production | first-pass
 life-admin-system | Refresh | Ambitious real purpose (AI document capture), ~8mo stale | first-pass
 lucy | Archive | Founder-confirmed 2026-09-20: a failed note-taking app, not a Learn2Learn duplicate — no longer pursued | founder-confirmed
-mater-ims-projects | Revisit | No signal; possible overlap with IMS — check both together | first-pass
+mater-ims-projects | Archive | Founder-confirmed 2026-09-20: not used, not needed | founder-confirmed
 plants | Revisit | Matches Project-OS's own record: in-flight spike, unverified, explicitly parked pending photo testing | first-pass
 rivervalley-rangers-cms | Archive | >1yr stale, unconfigured Sanity boilerplate purpose text never replaced, no evidence it was ever wired to anything | first-pass
 rvr | Archive | Plain static HTML site, 13mo stale — reads as the pre-RVR2026 club site, superseded | first-pass
@@ -72,10 +75,10 @@ vecta | Keep | Active 3 days ago, mature tag set | first-pass
   accounts admin, a different job from the club-wide site, and stays Keep.
   Net: two codebases doing real work (`RVR2026`, `RVR 2014 Team Admin`),
   three safe to archive.
-- **ParkRun / ParkRun-Excuse:** no signal on either — check together, might
-  be the same idea twice or genuinely different.
-- **IMS / mater-ims-projects:** naming suggests related interview-prep work —
-  check together.
+- **ParkRun / ParkRun-Excuse — resolved 2026-09-20.** Founder-confirmed:
+  neither used nor needed — Archive.
+- **IMS / mater-ims-projects — resolved 2026-09-20.** Founder-confirmed:
+  neither used nor needed — Archive.
 - **lucy / Learn2Learn — resolved 2026-09-20.** Not related. `lucy` was a
   failed note-taking app, no longer pursued (Archive). `Learn2Learn` is a
   separate, current project about how to learn in school and study —
