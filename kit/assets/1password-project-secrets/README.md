@@ -23,3 +23,8 @@ registry.
 When adding a project, create or reuse its vault and item first, then add only
 the item field paths to `projects.json`. Keep access narrowly scoped: a project
 should not be able to read another project's vault.
+
+Use the environment variable name the application actually reads. Do not map a
+legacy field just because it contains a plausible secret: it creates a false
+impression that updating 1Password changed production. For example, RVR Team
+Admin reads `AUTH_PASSWORD`, not its older `ADMIN_PASSWORD` field.
