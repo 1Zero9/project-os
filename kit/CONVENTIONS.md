@@ -145,6 +145,24 @@ real but minor bundling issue, not the same class of problem.
 Prisma stays the default for Postgres on Vercel/Node hosting — this is
 specifically about the Workers runtime.
 
+## A password-manager update is not a production update
+
+1Password is the source of secret values, not a magic sync to every deployment.
+When a credential changes, complete the whole chain deliberately:
+
+1. Store it as a concealed field in the project item.
+2. Map the exact environment-variable name the application reads in
+   `kit/assets/1password-project-secrets/projects.json` — never a plausible
+   legacy name.
+3. Update the matching production environment variable in the host.
+4. Redeploy and verify the new deployment is ready.
+
+Pass a secret directly from 1Password into the process that needs it. Do not
+put it in source, commit it, print it, or pass it as a shell command argument;
+process arguments can be visible to other local processes. The POS runner
+exists for local commands. CI needs its own least-privileged machine identity
+or Credential Broker access, not a personal desktop session.
+
 ## Every secret comparison in a file, not just the one you're reviewing
 
 Finding one correctly timing-safe comparison in an auth file is not evidence

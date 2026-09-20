@@ -152,6 +152,18 @@ worth keeping:
   personal project repos where a handoff actually happens. See
   `kit/CONVENTIONS.md`'s new handoff-note guardrail.
 
+**1Password project-secret proof (2026-09-20).** RVR already had an `RVR`
+vault, so the right first move was to reuse it rather than create a duplicate.
+`kit/assets/1password-project-secrets/` now holds a non-secret registry and a
+runner that resolves `op://` references only into a child process. It was
+verified against RVR's Postgres connection fields and `AUTH_PASSWORD`: values
+were never printed, committed, or written to an `.env` file. The 1Password CLI
+needs its desktop-app integration enabled locally. Crucially, 1Password is the
+source of a secret, not an automatic Vercel sync: map the environment variable
+the application actually reads (RVR uses `AUTH_PASSWORD`, not old
+`ADMIN_PASSWORD`), update the Vercel production variable, then redeploy. The
+RVR production password was migrated and the redeploy verified ready.
+
 ## How to use prior learning
 
 Use the [learning register](docs/strategy/LEARNING-REGISTER.md) only when an
