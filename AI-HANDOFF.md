@@ -219,6 +219,19 @@ feedback to any earlier AI summary.
 
 ## End of turn
 
-State what was done, what was learned, which files changed, and the single next
-action. If the next step needs a founder decision, ask one clear question
-rather than assuming.
+State what was done, which files changed, and the single next action. If the
+next step needs a founder decision, ask one clear question rather than
+assuming.
+
+**"What was learned" is not something to state — it's something to have
+already fixed.** Before ending a substantive session (a real build, a real
+bug, a real founder correction — not a one-line question), check: did
+anything happen that `kit/` doesn't know about yet? A workaround for a
+real bug, a corrected assumption, a "don't do that again," a new precedent.
+If yes, edit the asset (`CONVENTIONS.md`, the relevant `SKILL.md`, or a new
+`kit/assets/` file) in the same turn, before reporting done — not as a
+follow-up, not left for the founder to notice and ask about. Boot Room
+(2026-09-20) produced this instruction itself: the founder had to ask
+"did POS get updated?" more than once in one session before this line
+existed. That is the failure this line exists to stop happening again —
+if you are the one reading this and about to skip it, don't.
