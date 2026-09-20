@@ -160,3 +160,9 @@ Apply them without being asked.
   Postgres (Neon / Vercel Postgres) is very often the better answer anyway —
   it's what production will actually run, so dev and prod don't quietly
   diverge on a choice nobody made on purpose.
+- **A schema change is not shipped until its migration matches the live
+  engine.** Check the configured database driver and migration metadata before
+  generating anything. If an inherited repository has stale or mismatched
+  migration history (for example SQLite snapshots beside a PostgreSQL app),
+  do not run a blind schema push: provide reviewed SQL for the live engine and
+  state exactly where it must be applied.

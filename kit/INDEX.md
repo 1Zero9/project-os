@@ -24,7 +24,7 @@ ParkRun-Excuse | - | - | - |  | —
 ParkRun | - | - | - |  | —
 Photo App | swift | - | - |  | —
 QualFM | next16+drizzle | 2026-07-17 | 101 | api,tailwind,upload | —
-RVR 2014 Team Admin | next16+drizzle+sqlite | 2026-09-20 | 71 | api,cron,tailwind,vercel | Private team fund, accounts and information hub for the Rivervalley Rangers 2014 team.
+RVR 2014 Team Admin | next16+drizzle+postgres | 2026-09-20 | 71 | api,cron,schema,tailwind,vercel | Private team workspace for the Rivervalley Rangers 2014 team, including real-score and player-contribution tracking beside the official DDSL feed.
 RVR2026 | next16+prisma | 2026-09-15 | 402 | api,auth,cron,csv,email,payments,pwa,schema,tailwind,tests,upload,vercel | Production Next.js platform for Rivervalley Rangers AFC. It includes the public club site,
 Runway | next15 | 2026-06-14 | 108 | e2e,tests,vercel | Private Ireland watch planner for TV, streaming, cinema releases, tracked shows, and share
 SWGOH | python | 2026-08-31 | 202 | ci,cron | A small, free reporting service for the **Blues Brothers** SWGOH guild.
