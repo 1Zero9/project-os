@@ -7,5 +7,14 @@
       "PRISMA_DATABASE_URL": "op://RVR/RVR 2014 Team Admin/PRISMA_DATABASE_URL",
       "AUTH_PASSWORD": "op://RVR/RVR 2014 Team Admin/AUTH_PASSWORD"
     }
+  },
+  "boot-room": {
+    "vault": "Boot Room",
+    "item": "Boot Room",
+    "env": {
+      "DATABASE_URL": "op://Boot Room/Boot Room/DATABASE_URL",
+      "AUTH_SECRET": "op://Boot Room/Boot Room/AUTH_SECRET",
+      "CRON_SECRET": "op://Boot Room/Boot Room/CRON_SECRET"
+    }
   }
 }
