@@ -112,6 +112,15 @@ Four more assets, extracted from eolas's accelerators when it was parked
   wrapper for a project using a Google key. Check the model name against
   Google's current docs before trusting the default — it drifts.
 
+One more, extracted from Boot Room (2026-09-20):
+
+- `kit/assets/hyperdrive-drizzle-cloudflare/` — Postgres on Cloudflare
+  Workers via Hyperdrive + Drizzle, the default for that combination (see
+  `kit/CONVENTIONS.md`'s Prisma-on-Workers guardrail for why Prisma isn't
+  it). Request-scoped `getDb()`, a direct-connection variant for local
+  scripts, the `next.config.ts` fixes both Prisma's WASM engine and `pg`
+  itself needed, and the subdomain-attachment snippet.
+
 For a project whose runtime secrets are already in 1Password, use
 `kit/assets/1password-project-secrets/`: it keeps a non-secret project-to-
 vault/item/field registry and injects those values only into the command that
@@ -133,7 +142,12 @@ Keep it short. No headings-heavy report.
   answer it silently:
   - **Repo:** `git init` as part of the build, by default — the way any
     other reversible, standard-practice setup step gets done without being
-    asked. Only skip it if told to.
+    asked. Only skip it if told to. **Pushing to a real GitHub/GitLab org is
+    a different, check-first action** — `git init` is purely local and
+    reversible, creating a remote repo (even private) is a persistent
+    external change with its own visibility. Confirmed on Boot Room
+    (2026-09-20): asked before creating `1Zero9/boot-room`, got an explicit
+    yes, then used `gh repo create --source=. --push`.
   - **Hosting:** name one (Vercel, Cloudflare, or otherwise) with a
     one-line reason, matching what step 3 already decided about where it
     runs. Having "Hosting | Vercel" in the defaults table below isn't the

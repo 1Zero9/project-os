@@ -29,12 +29,13 @@ repository already demonstrated at length.
 |---|---|
 | `kit/CONVENTIONS.md` | Standing rules applied without being asked: the 1Zero9 build credit, adding finished sites to the portfolio, subdomains under 1zero9.com |
 | `kit/build-index.sh` | Regenerates a capability index of `~/Projects` |
-| `kit/INDEX.md` | 47 projects, ~5KB — answers "have I built this before?" without loading repos |
+| `kit/INDEX.md` | 48 projects, ~5KB — answers "have I built this before?" without loading repos |
 | `kit/skills/new-project` | Shapes an idea into the smallest sufficient stack and names the precedent to lift. Installed at `~/.claude/skills/` |
 | `kit/skills/visual-change` | Changes how something looks without the review-reject loop: authoritative intent, isolated proof confirmed before implementing, then verification against the real surface |
 | `kit/skills/inherit-project` | Takes over something built elsewhere — an AI site builder, an old repo, a handover — and finds the next decision rather than rebuilding it |
 | `kit/skills/audience-check` | Checks whether a thing is written for the person meant to read it, and fixes it when it is not — the failure no test catches |
 | `kit/skills/portfolio-audit` | Triages every project into keep/revisit/refresh/redirect/archive; writes the durable call to `kit/PORTFOLIO-DECISIONS.md` |
+| `kit/assets/hyperdrive-drizzle-cloudflare/` | Postgres on Cloudflare Workers via Hyperdrive + Drizzle — the default over Prisma for that combination, from Boot Room |
 
 Also live: [`PRINCIPLES.md`](PRINCIPLES.md), the
 [Delivery Brief and Proof-and-Stop Gate](docs/candidates/V02-DELIVERY-BRIEF-AND-PROOF-GATE.md),
@@ -70,6 +71,21 @@ says nothing about whether the cache is actually being read at request time.
 Both new assets came the same way: a real project hit something the kit had no
 answer for, and the gap was the evidence. Neither was planned.
 
+**Boot Room (2026-09-20)** exercised the kit end to end in a way nothing
+else had: `portfolio-audit`'s first real run (built that same session, then
+immediately used — resolved four flagged clusters with founder input,
+including the "5-way Rivervalley duplicate" turning out to be 2 real
+codebases once actually asked about), feeding straight into a `new-project`
+shape, a throwaway riskiest-unknown spike before any schema existed, and a
+genuine architecture pivot mid-build (Prisma → Drizzle, after Prisma passed
+every automated check and still failed on the first live login — a clean
+deploy proved nothing; only an authenticated request against the real URL
+caught it). Produced a third new asset,
+`kit/assets/hyperdrive-drizzle-cloudflare/`, and two corrections to
+`new-project` itself: repo/hosting/database-locality now has to be said out
+loud, not left to the defaults table, and installing local system software
+without asking joined the guardrails after doing exactly that unprompted.
+
 What to watch for, and what each signal means:
 
 | If the kit… | Then |
@@ -85,6 +101,10 @@ Not a plan. These are the things most likely to be needed next, based on what
 the portfolio audit showed is repeatedly rebuilt or repeatedly skipped:
 
 - **Auth** — wired in only 4 of 21 web projects, rebuilt or avoided each time.
+  Boot Room (2026-09-20) tested the heavier `next-auth`/real-accounts tier for
+  the first time (everything else uses the shared-password tier) — invite-
+  only credentials + bcrypt + club-scoped roles, no dedicated asset extracted
+  yet since it's one data point, not a repeated pattern.
 - **Tests** — present in 6 of 21. The gap is a harness, not discipline.
 - **A design pass** — the reclassification ladder in
   [Lucy's archaeology](docs/archive/archaeology/001-lucy.md) (Product →

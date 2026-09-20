@@ -164,6 +164,43 @@ the application actually reads (RVR uses `AUTH_PASSWORD`, not old
 `ADMIN_PASSWORD`), update the Vercel production variable, then redeploy. The
 RVR production password was migrated and the redeploy verified ready.
 
+**Boot Room (2026-09-20) — a full new-project cycle, spike to live production,
+plus the portfolio-audit skill's first real exercise.** The founder asked for
+a portfolio review; that produced `kit/skills/portfolio-audit` (asked for
+twice before with no repeatable home — this time it wrote its output to
+`kit/PORTFOLIO-DECISIONS.md` instead of evaporating with the conversation)
+and resolved four flagged clusters with founder confirmation, most notably
+the "5-way Rivervalley Rangers duplicate" turning out to be 2 real codebases
+and 3 safe archives once actually asked about, not just inferred from the
+index.
+
+That audit fed directly into shaping **Boot Room**, a new multi-tenant
+zero-money gear-swap product (`github.com/1Zero9/boot-room`, live at
+`boot-room.1zero9.com`) — combining the portfolio's club-admin pattern with
+its never-yet-tested public-multi-user auth tier. Followed `new-project`'s
+own riskiest-unknown rule literally: a throwaway state-machine spike
+(`spike/lifecycle-model.mjs`) before any schema or UI existed, which caught
+a real concurrency gap the spike itself couldn't fix (proven safe only once
+`reserveItem`'s check became a single atomic Postgres `UPDATE`).
+
+Three real architecture decisions got made and reversed live, each one
+worth exactly what it cost: Vercel Postgres → ruled out on purpose (founder:
+"I don't want to reply on that") → Neon and Prisma Postgres both hit
+account-creation friction → landed on **Supabase + Cloudflare Hyperdrive**.
+Then Prisma itself → **Drizzle**, after Prisma's WASM query engine passed a
+clean build and a successful deploy and *still* failed on the first live
+login — a clean deploy log proved nothing, only an actual authenticated
+request against the real URL caught it. Both now-generalized as: the
+Drizzle-on-Workers guardrail in `kit/CONVENTIONS.md`, and the reusable
+`kit/assets/hyperdrive-drizzle-cloudflare/` starting point.
+
+Also corrected, from direct founder feedback mid-build: `new-project`'s own
+output was missing a required repo/hosting/database-locality line (a local
+Postgres got installed via Homebrew without ever asking — "I was never
+asked to do this before") — see the skill's updated Output section and its
+new system-install guardrail. Local `git init` stays a default; pushing to
+a real GitHub org does not, and now says so explicitly.
+
 ## How to use prior learning
 
 Use the [learning register](docs/strategy/LEARNING-REGISTER.md) only when an

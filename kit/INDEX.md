@@ -24,7 +24,7 @@ ParkRun-Excuse | - | - | - |  | —
 ParkRun | - | - | - |  | —
 Photo App | swift | - | - |  | —
 QualFM | next16+drizzle | 2026-07-17 | 101 | api,tailwind,upload | —
-RVR 2014 Team Admin | next16+drizzle+postgres | 2026-09-20 | 71 | api,cron,schema,tailwind,vercel | Private team workspace for the Rivervalley Rangers 2014 team, including real-score and player-contribution tracking beside the official DDSL feed.
+RVR 2014 Team Admin | next16+drizzle+sqlite | 2026-09-20 | 74 | api,cron,tailwind,vercel | Private team fund, match and information hub for the Rivervalley Rangers 2014 team.
 RVR2026 | next16+prisma | 2026-09-15 | 402 | api,auth,cron,csv,email,payments,pwa,schema,tailwind,tests,upload,vercel | Production Next.js platform for Rivervalley Rangers AFC. It includes the public club site,
 Runway | next15 | 2026-06-14 | 108 | e2e,tests,vercel | Private Ireland watch planner for TV, streaming, cinema releases, tracked shows, and share
 SWGOH | python | 2026-08-31 | 202 | ci,cron | A small, free reporting service for the **Blues Brothers** SWGOH guild.
@@ -35,6 +35,7 @@ Ultra Health Optimiser 3000 | next16 | 2026-04-15 | 19 | tailwind | This is a [N
 Vision | swift | - | - |  | **Version 1.1.0** — Display comfort hub for macOS.
 WinstonOnLine | node+drizzle | 2026-09-07 | 37 |  | A personal web portal revisiting a website idea from the 1990s. Built with vanilla JavaScr
 astra | next16+prisma | 2026-02-18 | 698 | auth,charts,ci,cron,e2e,schema,tailwind,vercel | ASTRA has evolved into an **AI agent-led security platform**. A layered base (identity, RB
+boot-room | next16+drizzle | 2026-09-20 | 39 | api,auth,cloudflare,tailwind | A zero-money swap shop for club sports gear — boots, balls, jerseys. Donate
 chewing_gum | swift | 2026-09-02 | 44 | ci | Bubbly sticky notes that live at the edge of your screen. A native macOS app
 dashboard | next14 | 2026-01-31 | 28 |  | —
 eolas | next14+prisma | 2026-09-19 | 174 | schema,tests | Superseded by [Project-OS](../Project-OS) (`~/Projects/Project-OS`), which

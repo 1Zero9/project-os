@@ -80,7 +80,17 @@ zone is. **Never deploy to the apex or `www`**: those serve the portfolio, and
 taking them replaces it.
 
 Attaching a Cloudflare custom domain creates the DNS record automatically;
-there is nothing to add by hand.
+there is nothing to add by hand. For a Workers project (via OpenNext), attach
+it in `wrangler.jsonc` and redeploy — confirmed on Boot Room (2026-09-20):
+
+```jsonc
+"routes": [
+  { "pattern": "<name>.1zero9.com", "custom_domain": true }
+]
+```
+
+This disables the `*.workers.dev` URL by default once added — the subdomain
+becomes the real one, which is the point.
 
 ## Every OpenNext/Cloudflare deploy needs its incremental cache wired up
 
@@ -144,6 +154,11 @@ real but minor bundling issue, not the same class of problem.
 
 Prisma stays the default for Postgres on Vercel/Node hosting — this is
 specifically about the Workers runtime.
+
+Copyable starting point: `kit/assets/hyperdrive-drizzle-cloudflare/` — the
+request-scoped `getDb()`/`getDbAsync()` pattern, the direct-connection
+variant for local scripts, the `next.config.ts` fixes above, and the
+subdomain-attachment snippet, all from Boot Room.
 
 ## A password-manager update is not a production update
 

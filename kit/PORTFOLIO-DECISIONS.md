@@ -18,6 +18,7 @@ as of 2026-09-20.
 1Zero9-vault | Revisit | No git history, no README, no tags — unknown status | first-pass
 1Zero9Studio | Keep | Active yesterday, the portfolio site itself | first-pass
 Bookworm | Refresh | Real purpose (macOS novel-writing app), ~4mo stale | first-pass
+boot-room | Keep | Founder-confirmed 2026-09-20: live production multi-tenant swap-shop, built this session (github.com/1Zero9/boot-room, boot-room.1zero9.com) | founder-confirmed
 CarSearch | Revisit | No activity signal, only an "ai" tag | first-pass
 Clenicacare | Revisit | Client site, ~10mo stale — check if client still needs it before refreshing | first-pass
 Ground Control | Keep | Active 5 days ago, full tag set | first-pass
