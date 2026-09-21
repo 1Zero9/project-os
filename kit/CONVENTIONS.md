@@ -51,6 +51,16 @@ size before this was caught and fixed. When copying an implementation that
 uses a framework-specific sizing mechanism, check what size actually renders,
 not the first number in the markup.
 
+**This has now happened twice independently** — Marvin had the identical
+bug (`width={16} height={16}` passed to `next/image` with no CSS override
+at all) sitting live in production, uncaught until a direct "look at Marvin"
+request months later (2026-09-21). Documenting the mistake once didn't stop
+it recurring on a different project. When `portfolio-audit` or any other
+review touches a project with a build credit already in place, check its
+*rendered* size against a real page load, not just that the credit exists —
+the same way the favicon guardrail already requires checking the linked
+`<link rel="icon">`, not just that an icon file is present.
+
 Icon and text both inside the link, alongside whatever else the footer says.
 Use a plain `<img>`, not a framework image component, unless the project's own
 `next/image` (or equivalent) is known to work in production — Learn2Learn's

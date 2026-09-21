@@ -37,6 +37,14 @@ a genuinely single-owner private workspace with no prospective audience at
 all (step 1's "just you" case) — there, a bare gate is correct, not missing
 anything.
 
+**The opposite mistake is just as real, found in the same sweep:** `vecta`
+has no gate at all — `/` loads straight into the full workspace on a demo
+persona with fake data, no login wall and no explainer either. A visitor
+gets dropped into what looks like a real, logged-in account with no signal
+any of it is a demo. Same root cause as the bare-gate problem — nobody
+decided what a first-time, non-authenticated visitor should actually see —
+just the other failure mode. A public demo needs to say it's a demo.
+
 **2. Does state outlive the session?** No → no database. Use component state or
 a JSON file. Yes, single user → SQLite file or the browser (IndexedDB /
 localStorage). Yes, shared between people or devices → hosted Postgres.

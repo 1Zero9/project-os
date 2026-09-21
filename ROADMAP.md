@@ -34,7 +34,7 @@ repository already demonstrated at length.
 | `kit/skills/visual-change` | Changes how something looks without the review-reject loop: authoritative intent, isolated proof confirmed before implementing, then verification against the real surface |
 | `kit/skills/inherit-project` | Takes over something built elsewhere — an AI site builder, an old repo, a handover — and finds the next decision rather than rebuilding it |
 | `kit/skills/audience-check` | Checks whether a thing is written for the person meant to read it, and fixes it when it is not — the failure no test catches |
-| `kit/skills/portfolio-audit` | Triages every project into keep/revisit/refresh/redirect/archive; writes the durable call to `kit/PORTFOLIO-DECISIONS.md` |
+| `kit/skills/portfolio-audit` | Triages every project into keep/revisit/refresh/redirect/archive; writes the durable call to `kit/PORTFOLIO-DECISIONS.md`; checks `git status` (not just `git log`) before finalizing Archive |
 | `kit/assets/hyperdrive-drizzle-cloudflare/` | Postgres on Cloudflare Workers via Hyperdrive + Drizzle — the default over Prisma for that combination, from Boot Room |
 
 Also live: [`PRINCIPLES.md`](PRINCIPLES.md), the

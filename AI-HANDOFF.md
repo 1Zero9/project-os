@@ -201,6 +201,40 @@ asked to do this before") — see the skill's updated Output section and its
 new system-install guardrail. Local `git init` stays a default; pushing to
 a real GitHub org does not, and now says so explicitly.
 
+**Session continued, 2026-09-21 — Boot Room shipped its public front door,
+then a portfolio-wide sweep found the same "gated content, no explanation"
+pattern and its opposite.** Founder feedback on the bare login wall:
+"there are other sites I have created like this too" — not a one-off.
+`new-project` step 1 now covers this directly. A follow-up scan (forked,
+kept out of main context) found the rest of the portfolio was actually
+fine — `vecta` had the *opposite* problem instead (no gate at all, drops a
+visitor straight into a demo workspace with fake data and no indication
+it's fake) — both now captured as companion guardrails in the same place.
+
+**Marvin's build-credit mark was rendering at 16px, not the confirmed
+28px** — the identical bug `CONVENTIONS.md` already documented from
+Learn2Learn, recurring independently, uncaught for months until a direct
+"look at Marvin" request. Fixed and verified against the live deployed CSS,
+not just the source. Documenting a mistake once didn't stop it happening
+again elsewhere — `portfolio-audit` now carries a standing note to
+spot-check `CONVENTIONS.md` compliance whenever a project is opened for any
+reason, not as a new mandatory audit step.
+
+**A portfolio-wide `git status` sweep found real, substantial work sitting
+uncommitted across 9 repos** — including two already marked Archive
+(`lucy`, `rvrmatchday`) whose last-commit dates read as settled while their
+actual working trees held real unpushed changes the whole time, and one
+Keep-candidate (`Ultra Health Optimiser 3000`) that had a working favicon
+and new components sitting 5 months uncommitted with *no GitHub remote at
+all* — `kit/INDEX.md`'s last-active column had no way to see any of this.
+All 9 committed (junk `.DS_Store` diffs discarded and gitignored instead),
+8 pushed, one given a fresh GitHub repo. `portfolio-audit` now checks
+`git status`, not just `git log`, before finalizing Archive, and flags a
+Keep/Refresh project that has no remote at all. Also archived `Vision`
+(founder: "not needed") to `~/Projects/_archive/` rather than deleted
+outright — no commit history or remote existed anywhere for it — and
+`build-index.sh` now excludes `_archive/` from the index.
+
 ## How to use prior learning
 
 Use the [learning register](docs/strategy/LEARNING-REGISTER.md) only when an

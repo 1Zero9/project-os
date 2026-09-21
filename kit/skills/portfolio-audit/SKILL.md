@@ -70,3 +70,33 @@ open it before saying more.
   rather than rewriting it blind — a founder-confirmed row shouldn't silently
   flip back to a first-pass guess because the signals happened to look
   different this time.
+- **`kit/INDEX.md`'s last-commit-date is blind to uncommitted work — check
+  `git status`, not just `git log`, before finalizing Archive on anything.**
+  A portfolio-wide sweep (2026-09-21) found real, substantial uncommitted
+  work sitting silently across 9 repos — including two, `lucy` and
+  `rvrmatchday`, already marked Archive in this file. Their last real commit
+  read as old and settled; their actual working tree held real unpushed
+  changes the whole time. Before a category becomes final (Archive
+  especially — it implies nothing more is happening), run
+  `git status --porcelain` on the project. Real uncommitted work found on an
+  otherwise-Archive candidate doesn't have to change the category, but
+  commit it for the record before treating the project as settled — losing
+  work nobody looked at is worse than losing a few minutes checking.
+- **When a project gets opened for any reason** (a founder request to "look
+  at X", fixing something else, confirming a category) — spot-check it
+  against `CONVENTIONS.md` while you're already there: the build credit's
+  *rendered* size, the favicon's actual `<link rel="icon">`, not just that
+  the files exist. Marvin's build-credit bug (2026-09-21) sat live in
+  production for months because nothing ever looked; it was only found once
+  the founder asked to check the project for a different reason. This isn't
+  a mandatory step of every audit pass — the index stays cheap and
+  mechanical — but a real, low-cost check worth doing whenever a project is
+  open anyway.
+- Same sweep found a Keep-worthy project (`Ultra Health Optimiser 3000`)
+  with real work — a working favicon, new components — that had sat
+  uncommitted for 5 months with no GitHub remote at all, still showing only
+  its original `create-next-app` scaffold commit. `kit/INDEX.md`'s
+  "last active" column would read this as dead; it wasn't. A project
+  claimed as Keep or Refresh should actually have a remote it's pushed to —
+  flag it plainly when one doesn't exist rather than assuming the commit
+  history tells the whole story.
