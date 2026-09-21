@@ -4,7 +4,18 @@ Standing rules for anything built under 1Zero9. Short by design — a convention
 earns a place here only when forgetting it would mean going back and redoing
 work. Apply them without being asked.
 
-## Every site gets a real favicon once its identity is confirmed
+## Recreate the style, never reproduce the source material
+
+A homage project (`wopr-terminal`, recreating a film's computer interface)
+recreates the *style* — a color palette, a font, a layout logic, a mood — not
+copyrighted frames, stills or footage from the actual source. The founder
+shared real reference stills from the film itself (2026-09-21, via IMDb);
+flagged before using them: a recreated interface aesthetic is transformative,
+literal film stills baked into a live, publicly-attributed site are not — that's
+redistributing someone else's copyrighted images, not building something new.
+Built an original backdrop evoking the same mood instead (an abstract
+tactical grid, not a copy of any specific frame). Applies to any future
+homage/nostalgia project: describe the reference, don't embed it.
 
 Never ship the `create-next-app` default favicon. Use the confirmed visual
 identity — ideally an `app/icon.tsx` with `ImageResponse` — rather than
