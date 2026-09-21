@@ -92,6 +92,18 @@ open it before saying more.
   a mandatory step of every audit pass — the index stays cheap and
   mechanical — but a real, low-cost check worth doing whenever a project is
   open anyway.
+- **Never call a live page a "bare gate" or "no explainer" from `curl`
+  alone — take a real screenshot first.** Got this wrong twice in one pass
+  (2026-09-21): Ground Control and JobJar were both flagged as bare/empty
+  based on a `curl` redirect and a raw-HTML skeleton, and both turned out
+  to have real branding, a name and a tagline once actually rendered —
+  `curl` can't see what a client-rendered page shows after JS runs, and a
+  raw SSR skeleton (zeroed placeholder numbers, no visible copy) looks
+  identical to genuinely-broken from that vantage point. A real finding
+  here was Tally, missing from the portfolio entirely despite being live —
+  that's a fact `curl`/`git log` can state on its own. Whether a live page
+  itself is good enough is a UI judgment call, and judgment calls need the
+  real rendered page, not a proxy for it.
 - Same sweep found a Keep-worthy project (`Ultra Health Optimiser 3000`)
   with real work — a working favicon, new components — that had sat
   uncommitted for 5 months with no GitHub remote at all, still showing only
