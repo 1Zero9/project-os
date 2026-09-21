@@ -24,6 +24,19 @@ Work down. Each answer prunes what follows.
 **1. Who uses it?** Just you → no auth, no accounts, no multi-tenancy. A known
 small group → one shared password or magic link. Public/customers → real auth.
 
+**If anyone other than just you might ever land on this — a prospective
+club, a customer, the 1Zero9 portfolio — gated content needs a public front
+door.** A bare sign-in form is not a product page: it explains nothing to
+someone who doesn't already know what this is. Boot Room shipped behind a
+login wall for a full session before the founder caught it (2026-09-20),
+his own words: "there are other sites I have created like this too" — a
+recurring pattern, not a one-off. Default: a real `/` explaining what it
+does and who it's for, separate from `/sign-in`, before real building
+starts — not a retrofit once someone notices the gap. The one exception is
+a genuinely single-owner private workspace with no prospective audience at
+all (step 1's "just you" case) — there, a bare gate is correct, not missing
+anything.
+
 **2. Does state outlive the session?** No → no database. Use component state or
 a JSON file. Yes, single user → SQLite file or the browser (IndexedDB /
 localStorage). Yes, shared between people or devices → hosted Postgres.
