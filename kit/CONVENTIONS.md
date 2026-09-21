@@ -106,6 +106,39 @@ it in `wrangler.jsonc` and redeploy — confirmed on Boot Room (2026-09-20):
 ]
 ```
 
+The same mechanism works for a plain static site with no framework at all —
+`wrangler.jsonc`'s `assets.directory` needs no OpenNext, just the `routes`
+block above.
+
+**If it's going on a `1zero9.com` subdomain, default to Cloudflare hosting,
+not Vercel — don't discover this mid-build.** Confirmed on `wopr-terminal`
+(2026-09-21): Vercel was picked without saying so out loud (the exact
+mistake this file's own new-project guardrail warns about, made minutes
+after writing it), and hit a real wall — the Cloudflare credentials
+available can read the `1zero9.com` zone but can't write a DNS record, and
+Vercel has no way to attach a subdomain of a zone it doesn't control
+without one. Only Cloudflare-native custom-domain attachment (Workers,
+Pages) works against this zone. Vercel stays fine for anything on its own
+domain; a `1zero9.com` subdomain specifically means Cloudflare hosting.
+
+**A static-assets Worker (`assets.directory` in `wrangler.jsonc`) serves
+the whole directory by default — including `.git/` and any other repo
+tooling files — unless excluded.** The first `wopr-terminal` deploy
+uploaded `.git/` and `.vercel/project.json` as publicly-servable files
+before this was caught. Add a `.assetsignore` next to `wrangler.jsonc`,
+same shape as `.gitignore`:
+
+```
+.git
+.gitignore
+.vercel
+.wrangler
+wrangler.jsonc
+.assetsignore
+README.md
+.env.local
+```
+
 This disables the `*.workers.dev` URL by default once added — the subdomain
 becomes the real one, which is the point.
 

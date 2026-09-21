@@ -89,7 +89,7 @@ Only apply what steps 1–4 actually justified.
 | Private single-owner web workspace | verified deployment-level protection, or one shared signed-password session | a user-account/role system |
 | Auth (public/customers) | next-auth | rolling your own |
 | Auth (a known small group) | `kit/assets/cookie-session-auth/` | next-auth (heavier than the tier needs) |
-| Hosting | Vercel | anything needing setup time |
+| Hosting | Vercel — **unless it's going on a `1zero9.com` subdomain, then Cloudflare** | anything needing setup time |
 | Scheduled work | Vercel cron | a long-running server |
 | Tests | Vitest; Playwright only for critical flows | 100% coverage |
 | Static site | plain HTML/CSS or Astro | Next.js |
