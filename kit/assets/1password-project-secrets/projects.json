@@ -16,5 +16,13 @@
       "AUTH_SECRET": "op://Boot Room/Boot Room/AUTH_SECRET",
       "CRON_SECRET": "op://Boot Room/Boot Room/CRON_SECRET"
     }
+  },
+  "lastman": {
+    "vault": "Last Man Standing",
+    "item": "Last Man Standing",
+    "env": {
+      "PRISMA_DATABASE_URL": "op://Last Man Standing/Last Man Standing/PRISMA_DATABASE_URL",
+      "AUTH_SECRET": "op://Last Man Standing/Last Man Standing/AUTH_SECRET"
+    }
   }
 }
