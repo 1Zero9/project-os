@@ -235,6 +235,32 @@ Keep/Refresh project that has no remote at all. Also archived `Vision`
 outright — no commit history or remote existed anywhere for it — and
 `build-index.sh` now excludes `_archive/` from the index.
 
+**A founder-shared external reference (2026-09-21) — Version1's internal
+`ai-agents_skills` repo, added to Project-OS as a zip for review.** Most of
+it (Intune/SCCM packaging, Azure DevOps planning, PowerShell validation,
+SharePoint knowledge articles) is enterprise-IT-specific and doesn't
+transfer — no `LICENSE` file either, so treat their specific text/branding
+as theirs, learn the *patterns* rather than copy content. Four ideas were
+genuinely portable and got adapted in: a `PreToolUse` secret-scanning hook
+(`kit/hooks/secret-scan.sh`, wired globally in `~/.claude/settings.json`)
+that blocks a `git commit`/`push` containing a likely secret, rather than
+their original's warn-after-the-fact `PostToolUse` version; `git-weekly-
+summary` as a real skill instead of an ad hoc report each time; and
+`agent-creator`'s "is a new skill actually justified, or should this extend
+an existing one" checklist, folded into this file's own "Before adding a
+new skill" section rather than becoming its own asset.
+
+**The most interesting find wasn't in the zip at all.** Building the
+kit-to-`~/.claude/skills` sync script that was supposed to replace manual
+`diff`-then-`cp` turned up something real: 4 of the 5 existing skills were
+already **hard-linked** (same inode, same bytes on disk, no possible
+drift) — set up that way before this session, not by anything this session
+did. Only `portfolio-audit` (built fresh this session via a plain `cp`)
+was a genuinely independent, driftable file. `kit/sync-skills.sh` now
+makes hard-linking the standing mechanism and self-heals anything that's
+fallen out of it, rather than scripting a weaker version of the same
+copy-diff-copy dance it was meant to replace.
+
 ## How to use prior learning
 
 Use the [learning register](docs/strategy/LEARNING-REGISTER.md) only when an

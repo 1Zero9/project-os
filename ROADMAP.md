@@ -36,10 +36,34 @@ repository already demonstrated at length.
 | `kit/skills/audience-check` | Checks whether a thing is written for the person meant to read it, and fixes it when it is not — the failure no test catches |
 | `kit/skills/portfolio-audit` | Triages every project into keep/revisit/refresh/redirect/archive; writes the durable call to `kit/PORTFOLIO-DECISIONS.md`; checks `git status` (not just `git log`) before finalizing Archive |
 | `kit/assets/hyperdrive-drizzle-cloudflare/` | Postgres on Cloudflare Workers via Hyperdrive + Drizzle — the default over Prisma for that combination, from Boot Room |
+| `kit/skills/git-weekly-summary` | Summarizes real activity (committed and uncommitted) across one or more projects over a time window, for a recap or standup-style update |
+| `kit/sync-skills.sh` | Hard-links every `kit/skills/*/SKILL.md` to its `~/.claude/skills/` install — same bytes on disk, no drift possible, self-heals anything that's fallen out of sync |
+| `kit/hooks/secret-scan.sh` | Global Claude Code hook (wired in `~/.claude/settings.json`) — blocks a `git commit`/`git push` if the diff contains a likely secret |
 
 Also live: [`PRINCIPLES.md`](PRINCIPLES.md), the
 [Delivery Brief and Proof-and-Stop Gate](docs/candidates/V02-DELIVERY-BRIEF-AND-PROOF-GATE.md),
 and the [learning register](docs/strategy/LEARNING-REGISTER.md).
+
+## Before adding a new skill
+
+Idea adapted from Version1's internal `ai-agents_skills` repo (2026-09-21).
+Check this before proposing a new `kit/skills/*` entry — the same "an asset
+is built when a real project demands it" rule applies here, and most of the
+time the honest answer is to extend something that already exists.
+
+Extend an existing skill instead of creating a new one when the request is
+only: a new trigger phrase or example, a small workflow addition within an
+existing skill's responsibility, or logic that would otherwise be
+duplicated across two skills.
+
+A new skill is justified when the responsibility is genuinely distinct,
+needs its own process/guardrails that don't fit inside an existing skill
+without diluting it, or will get triggered independently of any existing
+skill's own trigger conditions. State the decision and the reason before
+writing a new `SKILL.md` — "portfolio-audit deserved its own skill because
+its process (audit categories, the decision file, the artifact) doesn't
+fit inside `new-project` or anything else" is the kind of reasoning this
+is asking for, made explicit instead of assumed.
 
 ## Next
 
