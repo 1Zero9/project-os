@@ -42,7 +42,7 @@ Technics | Revisit | No signal at all | first-pass
 Tieronesportsevents | Revisit | Client site (same template as Clenicacare), ~3mo stale — check client status | first-pass
 Ultimate Chiclen Horse Clone | Revisit | No signal; name suggests a scrapped toy but unconfirmed | first-pass
 Ultra Health Optimiser 3000 | Revisit | Unedited boilerplate purpose text, small footprint | first-pass
-Vision | Refresh | Real purpose, versioned ("1.1.0") suggesting it actually shipped — no recent activity signal captured | first-pass
+Vision | Archive | Founder-confirmed 2026-09-21: not needed. No commit history or remote existed — moved to ~/Projects/_archive/Vision rather than deleted outright | founder-confirmed
 WinstonOnLine | Keep | Active ~2 weeks ago, real (if niche) purpose | first-pass
 astra | Redirect | Founder-confirmed 2026-09-20: "the art of the possible" — a $200-credit exploration, a collection of apps under one roof, not a coherent product. Prompt Builder is the one piece that proved out; last real commits (2026-02-18) were all Prompt Builder polish, nothing on the other three "suites." Next step is carrying Prompt Builder forward, not refreshing the platform | founder-confirmed
 chewing_gum | Keep | Active 3 weeks ago, real purpose | first-pass

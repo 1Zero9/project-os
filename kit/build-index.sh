@@ -16,6 +16,7 @@ printf '%s\n\n' '`project | stack | last active | files | capabilities | purpose
 for d in */; do
   n="${d%/}"
   [ "$n" = "Project-OS" ] && continue
+  [ "$n" = "_archive" ] && continue
   pkg="${d}package.json"
   tags=""
   stack=""

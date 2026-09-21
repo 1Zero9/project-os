@@ -1,6 +1,6 @@
 # Portfolio Index
 
-Generated: 2026-09-20 by `kit/build-index.sh`. Regenerate before relying on it.
+Generated: 2026-09-21 by `kit/build-index.sh`. Regenerate before relying on it.
 Read this to answer "have I built this before?" — do not load projects into context to find out.
 
 `project | stack | last active | files | capabilities | purpose`
@@ -16,7 +16,7 @@ IMS | next14 | 2026-03-07 | 58 | api,tailwind | A private Next.js application to
 Knowledge Generator | - | - | - |  | —
 Learn2Learn | react+drizzle | 2026-09-19 | 31 | tailwind,tests | Four phases for learning anything, built around a normal school week — for the
 LearningThroughMotion | next16 | 2026-02-21 | 105 | api,tailwind | This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](http
-Marvin | next15+prisma | 2026-08-05 | 286 | api,ci,pwa,schema,tests,upload,vercel | Marvin is a private household cooking, cookbook, meal-planning, and health companion built
+Marvin | next15+prisma | 2026-09-21 | 286 | api,ci,pwa,schema,tests,upload,vercel | Marvin is a private household cooking, cookbook, meal-planning, and health companion built
 MeidaGuide | react | - | - |  | A personal Ireland-only media guide: Sky/live TV listings, streaming availability, and a t
 OCTO Objectives | python | - | - |  | ELT-style programme dashboard: per-team Excel as the system of record (v1), flexible count
 PRODUCT-DESIGN-DIRECTOR | - | - | - |  | —
@@ -32,10 +32,9 @@ Technics | node | - | - |  | —
 Tieronesportsevents | next14 | 2026-06-30 | 22 | api,email,tailwind | Next.js App Router site with a contact workflow that posts via Resend and forwards enquiri
 Ultimate Chiclen Horse Clone | - | - | - |  | —
 Ultra Health Optimiser 3000 | next16 | 2026-04-15 | 19 | tailwind | This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](http
-Vision | swift | - | - |  | **Version 1.1.0** — Display comfort hub for macOS.
 WinstonOnLine | node+drizzle | 2026-09-07 | 37 |  | A personal web portal revisiting a website idea from the 1990s. Built with vanilla JavaScr
 astra | next16+prisma | 2026-02-18 | 698 | auth,charts,ci,cron,e2e,schema,tailwind,vercel | ASTRA has evolved into an **AI agent-led security platform**. A layered base (identity, RB
-boot-room | next16+drizzle | 2026-09-20 | 39 | api,auth,cloudflare,tailwind | A zero-money swap shop for club sports gear — boots, balls, jerseys. Donate
+boot-room | next16+drizzle | 2026-09-21 | 42 | api,auth,cloudflare,tailwind | A zero-money swap shop for club sports gear — boots, balls, jerseys. Donate
 chewing_gum | swift | 2026-09-02 | 44 | ci | Bubbly sticky notes that live at the edge of your screen. A native macOS app
 dashboard | next14 | 2026-01-31 | 28 |  | —
 eolas | next14+prisma | 2026-09-19 | 174 | schema,tests | Superseded by [Project-OS](../Project-OS) (`~/Projects/Project-OS`), which
