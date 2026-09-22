@@ -47,7 +47,23 @@ if [ -f "$TARGET_CLAUDE_MD" ]; then
   } > "$TMP"
   mv "$TMP" "$TARGET_CLAUDE_MD"
   echo "Prepended Project-OS import to existing $TARGET_CLAUDE_MD"
+  echo "NOTE: that file already existed (and may already be tracked in git)."
+  echo "The import line is an absolute, machine-specific path — if this file"
+  echo "is shared/committed, decide whether that's OK or move the import"
+  echo "somewhere machine-local instead."
 else
   echo "$IMPORT_LINE" > "$TARGET_CLAUDE_MD"
   echo "Created $TARGET_CLAUDE_MD with Project-OS import"
+  # A freshly-created CLAUDE.md here is nothing but a personal, machine-specific
+  # link — never meaningful to commit (wrong for other machines/collaborators).
+  GITIGNORE="$TARGET_DIR/.gitignore"
+  if [ -d "$TARGET_DIR/.git" ]; then
+    if [ -f "$GITIGNORE" ] && ! grep -qxF "CLAUDE.md" "$GITIGNORE"; then
+      echo "CLAUDE.md" >> "$GITIGNORE"
+      echo "Added CLAUDE.md to .gitignore"
+    elif [ ! -f "$GITIGNORE" ]; then
+      echo "CLAUDE.md" > "$GITIGNORE"
+      echo "Created .gitignore with CLAUDE.md"
+    fi
+  fi
 fi
