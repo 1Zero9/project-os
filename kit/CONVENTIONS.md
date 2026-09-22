@@ -286,6 +286,23 @@ idempotency key derived from that same identity so a retry after a timeout is
 safe too. Last Man Standing's pick reminders exposed this exact race
 (2026-09-22); an audit log records history, it is not a concurrency control.
 
+## A retention promise needs an executable retention job
+
+Privacy-policy text saying data will be deleted or anonymised after a period
+does not make it happen. If a product names a retention period, ship a
+scheduled, authenticated job that applies it, preserves only the anonymised
+record needed for product history, and leaves an audit event without copying
+the deleted personal data into it. Make optional long-term history a separate,
+unticked consent with an actual expiry; provide a self-service withdrawal
+control that stops the optional processing immediately and anonymises the
+historic identity once the live product no longer needs it.
+
+Last Man Standing had a 12-month promise and an account-delete action but no
+automated retention process or leaderboard-history withdrawal control until
+2026-09-22. The useful distinction is stable anonymous season aggregates
+(which can remain) versus a named historical result (which remains personal
+data and needs a separate purpose, time limit, and withdrawal path).
+
 ## Every secret comparison in a file, not just the one you're reviewing
 
 Finding one correctly timing-safe comparison in an auth file is not evidence
