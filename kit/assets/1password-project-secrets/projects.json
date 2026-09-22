@@ -22,7 +22,8 @@
     "item": "Last Man Standing",
     "env": {
       "PRISMA_DATABASE_URL": "op://Last Man Standing/Last Man Standing/PRISMA_DATABASE_URL",
-      "AUTH_SECRET": "op://Last Man Standing/Last Man Standing/AUTH_SECRET"
+      "AUTH_SECRET": "op://Last Man Standing/Last Man Standing/AUTH_SECRET",
+      "RESEND_API_KEY": "op://Last Man Standing/Last Man Standing/RESEND_API_KEY"
     }
   }
 }
