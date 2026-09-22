@@ -201,6 +201,23 @@ slug → id once at the top of the route; every internal query and mutation
 still keys on the real id as normal, only the URL and any `redirect`/
 `revalidatePath` targets use the slug.
 
+## Dashboard privacy is enforced in the route, for the tenant
+
+Removing a dashboard from public navigation is not access control: a visitor
+can still open or guess its direct URL. A dashboard that shows entrant names,
+picks, results, fundraising totals, or similar competition data must first
+require a signed-in user and then verify that user is a participant or member
+of the route's tenant. Apply the check in every canonical tenant route, not
+only in a friendly redirect such as `/standings` → `/c/<slug>/standings`.
+
+Last Man Standing exposed standings, leaderboard and selection dashboards to
+guests because its canonical slug routes only checked that a competition was
+not a draft (2026-09-22). Login alone would still have let one fundraiser's
+member view another's data; the correct boundary is the viewer's actual
+relationship to the tenant. Keep genuinely public content (for example a
+generic landing page or fixture list) explicitly separate, and do not cache
+private dashboard reads in a service worker or public data cache.
+
 ## A fallback path must never show more than the success path would
 
 If public content is filtered for visibility (archived, hidden, draft,
