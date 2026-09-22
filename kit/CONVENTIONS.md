@@ -121,6 +121,14 @@ The same mechanism works for a plain static site with no framework at all —
 `wrangler.jsonc`'s `assets.directory` needs no OpenNext, just the `routes`
 block above.
 
+When CI or another external system must call a Worker, use its configured
+custom domain, not a constructed `*.workers.dev` hostname. The account portion
+of `workers.dev` is not safely inferable and a guessed one can fail as a
+Cloudflare 404 even while the deployed Worker is healthy. LaunchCity's hourly
+GitHub ingestion silently used `launchcity.onezeronine.workers.dev` instead
+of its real `launchcity.1zero9.com` endpoint and failed every run until this
+was corrected (2026-09-22).
+
 **If it's going on a `1zero9.com` subdomain, default to Cloudflare hosting,
 not Vercel — don't discover this mid-build.** Confirmed on `wopr-terminal`
 (2026-09-21): Vercel was picked without saying so out loud (the exact
@@ -249,6 +257,17 @@ put it in source, commit it, print it, or pass it as a shell command argument;
 process arguments can be visible to other local processes. The POS runner
 exists for local commands. CI needs its own least-privileged machine identity
 or Credential Broker access, not a personal desktop session.
+
+## A scheduled notification needs an atomic delivery claim
+
+Never dedupe a periodic email or notification by asking whether an audit row
+exists, then sending, then writing that row. Overlapping cron invocations can
+both pass the lookup and deliver duplicates. Create a durable record with a
+database uniqueness constraint on the real event identity (for example,
+`entryId + gameweekId`) *before* sending. Give the provider a stable
+idempotency key derived from that same identity so a retry after a timeout is
+safe too. Last Man Standing's pick reminders exposed this exact race
+(2026-09-22); an audit log records history, it is not a concurrency control.
 
 ## Every secret comparison in a file, not just the one you're reviewing
 
