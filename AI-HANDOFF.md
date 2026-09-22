@@ -318,11 +318,65 @@ feedback to any earlier AI summary.
 - Before deleting, resetting or migrating anything: confirm the target, confirm
   authority, prefer a reversible step.
 
+## Agent-use budget
+
+Treat model usage as a finite project resource, not free background capacity.
+These rules are tool-neutral: apply them in Claude, Codex, or any successor.
+
+- Work single-agent by default. Delegate only a bounded, independent subtask
+  whose result will materially shorten the work or improve its reliability;
+  state its question and stopping condition. Do not use subagents for routine
+  file searches, status checks, or open-ended exploration.
+- Do not start a polling loop, background agent, or recurring check without the
+  founder explicitly asking to monitor something and agreeing what meaningful
+  change should wake them. Stop it as soon as that condition is met.
+- Keep a session to one coherent outcome. When the next task needs a different
+  body of evidence, compact or start a fresh session and leave the relevant
+  decision in the project repo for the next tool. Do not keep a session alive
+  merely because it has accumulated context.
+- When the active tool reports that 75% or more of its weekly allowance is
+  used, preserve the remainder: no speculative research, no background work,
+  and no subagents unless the founder explicitly requests them or a bounded
+  parallel check is necessary to avoid a real mistake. Say when that constraint
+  changes the chosen approach.
+
+## Question this file's own rules
+
+Every rule in `kit/` or this file was written in response to one real
+incident, not derived from first principles. That is what makes them useful —
+and it is exactly what makes them capable of calcifying into overcorrection
+once the incident that produced them stops recurring, or never generalised
+the way it first seemed to.
+
+The founder's standing "challenge me when it's wrong" instruction (above)
+applies to this file's own rules, not only to external product decisions.
+When a rule here would visibly narrow what you're about to do — skip a
+subagent that would genuinely help, cut a session short mid-task, decline
+research that would materially improve the answer — say so **before**
+complying: name the rule, check its provenance (most entries below cite the
+incident that produced them, with a date), and say whether it actually fits
+the situation in front of you. Comply by default; the point is to surface the
+tension, not to quietly override the rule or to quietly obey it without
+noticing it bit.
+
+You don't need to wait for the founder to ask. If several rules are
+compounding to make you more conservative than the work actually calls for —
+declining reasonable investigation, defaulting to the slowest path, treating
+every action as high-risk — that pattern is itself worth naming out loud,
+unprompted, the same way a real bug or a wrong assumption is. A framework
+whose rules only ever tighten, never get questioned, stops being "the best of
+Claude or AI" and starts being a smaller, more anxious version of it — which
+is the opposite of what this repository is for.
+
 ## End of turn
 
 State what was done, which files changed, and the single next action. If the
 next step needs a founder decision, ask one clear question rather than
 assuming.
+
+The retrospective-fold-in rule below applies wherever this file is loaded —
+including a session rooted in an unrelated project that only pulled it in via
+a `CLAUDE.md` reference — not only to sessions working inside this repository.
 
 **"What was learned" is not something to state — it's something to have
 already fixed.** Before ending a substantive session (a real build, a real

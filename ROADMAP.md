@@ -39,6 +39,7 @@ repository already demonstrated at length.
 | `kit/skills/git-weekly-summary` | Summarizes real activity (committed and uncommitted) across one or more projects over a time window, for a recap or standup-style update |
 | `kit/sync-skills.sh` | Hard-links every `kit/skills/*/SKILL.md` to its `~/.claude/skills/` install — same bytes on disk, no drift possible, self-heals anything that's fallen out of sync |
 | `kit/hooks/secret-scan.sh` | Global Claude Code hook (wired in `~/.claude/settings.json`) — blocks a `git commit`/`git push` if the diff contains a likely secret |
+| `kit/link-project.sh` | Wires a project into Project OS by adding an `@AGENTS.md` import to its own `CLAUDE.md`, so a session rooted there auto-loads `AI-HANDOFF.md` the same way a session inside Project-OS itself already does. Idempotent, run per-project rather than swept across all ~48 at once |
 
 Also live: [`PRINCIPLES.md`](PRINCIPLES.md), the
 [Delivery Brief and Proof-and-Stop Gate](docs/candidates/V02-DELIVERY-BRIEF-AND-PROOF-GATE.md),
