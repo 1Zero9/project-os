@@ -261,6 +261,47 @@ makes hard-linking the standing mechanism and self-heals anything that's
 fallen out of it, rather than scripting a weaker version of the same
 copy-diff-copy dance it was meant to replace.
 
+**lastman (2026-09-20 to 2026-09-22) — a multi-day session covering a full
+usability pass, a live 3-competition stress test, and a site-wide visual
+identity rollout.** Three things worth carrying forward:
+
+Stress-testing with real, disposable data (three fake competitions, played
+through to completion — missed picks, autopick, buy-backs, a full wipeout)
+found bugs that reading the code never would have: "Void round" claimed to
+be a no-op bye but actually burned the picked team and the season's
+restricted-group allowance forever, because `eligibleTeamIds`'s history
+query never excluded `VOID`-outcome picks — the filter simply didn't know
+that state existed. Same session also found that `WINNER` status was
+*only* ever set inside the wipeout branch, so a normal (non-wipeout) finish
+where the last entry standing won its final pick never closed the season
+out at all. Neither is the kind of bug a read-through catches; both needed
+someone to actually play the game to the end state and watch what the UI
+claimed versus what the database actually did.
+
+**A visual-identity rollout run into a real architectural ceiling, and the
+honest move was to say so rather than fake it.** "Carry this dark theme
+across the whole site" met a single shared root layout with no route
+groups — admin and player pages render through the same header/main/footer,
+so a true edge-to-edge per-route background swap would have meant
+restructuring routing, not just adding classes. Shipped each themed page as
+a large dark panel within the existing content column instead (looks fully
+immersive at phone width, shows slim light gutters at the far edges on very
+wide desktop), and said plainly in the handoff that genuine full-bleed is a
+separate, bigger change — not silently declared "done" against a proof that
+implied more than what shipped.
+
+**Isolate tenant customization from platform chrome — don't let it bleed.**
+Asked to carry a fixed visual identity across the app while also supporting
+per-competition club branding (logo, colour, name), the fix was to confine
+the variable part to bordered badge elements (an accent stripe, a logo
+tile, one CTA button) rather than the previous pattern of tinting an entire
+popup's background with whatever colour an organiser picked. Any multi-
+tenant app with a "make it yours" customization option should default to
+this shape: the platform's own identity stays constant and correct
+regardless of input; the tenant's identity lives in a contained,
+readability-safe box. A bad or clashing customer colour choice should never
+be able to break the surrounding page.
+
 ## How to use prior learning
 
 Use the [learning register](docs/strategy/LEARNING-REGISTER.md) only when an
