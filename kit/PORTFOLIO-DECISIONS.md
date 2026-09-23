@@ -62,6 +62,69 @@ rvr | Archive | Plain static HTML site, 13mo stale — reads as the pre-RVR2026 
 rvrmatchday | Archive | Founder-confirmed 2026-09-20: its matchday/game-management feature was rebuilt into RVR2026, which replaced it | founder-confirmed
 tally | Keep | Active 5 days ago, mature tag set | first-pass
 vecta | Keep | Active 3 days ago, mature tag set | first-pass
+ogham-design | Keep | Built and deployed live this session (2026-09-23), ogham.1zero9.com — README/build-credit/portfolio-entry added same session, see below | founder-confirmed
+wopr-terminal | Keep | Live on 1zero9.com (wopr.1zero9.com), real purpose, has git+remote | first-pass
+
+## Site-vs-local contradiction (2026-09-23) — needs a founder call
+
+`ParkRun` is **founder-confirmed Archive** in this file (2026-09-20: "not
+used, not needed"), but `1zero9.com/labs` lists it **Live** as "Park Run
+Dash" (`content/projects/park-run-dash/index.mdx`, `status: active`) as of
+2026-09-23 — three days later. One of these is stale: either the site
+should come down, or the Archive call should be revisited. Not resolved
+here — needs Steve's read, not a guess.
+
+## Project OS convention coverage (2026-09-23 sweep)
+
+Three mechanical signals swept across every project: has a git repo, has a
+pushed remote, and actually references Project-OS anywhere (not just the
+Next.js-generated `CLAUDE.md` → `@AGENTS.md` stub every project gets by
+default, which is not real wiring and was a false signal in an earlier pass
+of this sweep).
+
+- **No git repo at all** (12): `1Zero9-vault`, `CarSearch`,
+  `Knowledge Generator`, `MeidaGuide`, `OCTO Objectives`,
+  `PRODUCT-DESIGN-DIRECTOR`, `ParkRun-Excuse`, `ParkRun`, `Photo App`,
+  `Technics`, `Ultimate Chiclen Horse Clone`, `homealone`,
+  `mater-ims-projects` — matches the existing Revisit/Archive calls above
+  almost exactly; consistent, not a new finding.
+- **Git but no pushed remote**: `WinstonOnLine`, `rivervalley-rangers-cms`
+  (both already Keep/Archive appropriately), and **`f1`** — live in
+  production at f1.1zero9.com with no GitHub remote configured. Worth a
+  `gh repo create` pass so the live site has a real backup, same class of
+  gap `Ultra Health Optimiser 3000` had.
+- **Genuinely references Project-OS** (6 of ~48): `boot-room`, `eolas`,
+  `f1`, `lastman`, `launchcity`, `wopr-terminal` — all just incidental
+  README mentions, not a real wiring convention. **No project has an actual
+  README section, footer credit, or file that says "built via Project OS,
+  here's what it lifted" as a matter of course** — this map/audit is the
+  first time that trail has been made visible at all.
+- **Missing README, build credit, or portfolio entry entirely**:
+  `ogham-design` had none of the three despite being built with Project OS
+  in the same session — fixed 2026-09-23 (README, footer credit, draft
+  portfolio MDX added). This is the concrete pattern worth repeating for
+  any Keep/Refresh project that's missing them: **git-wired ≠
+  Project-OS-wired**, and nothing currently checks the second one.
+
+## Portfolio content vs. live code (2026-09-23)
+
+`1Zero9Studio/content/projects/` (the actual source for 1zero9.com) has
+entries for `audience`, `dougies-discs`, `holiday-concierge`, and
+`scribble` — none of which have any corresponding folder in `~/Projects`.
+Their frontmatter says why: `audience` is `status: concept` (a written idea,
+no code expected yet); `dougies-discs` and `scribble` are `status:
+in-progress` with real `wipProgress` notes; `holiday-concierge` is `status:
+active`. These aren't missing repos so much as **written ahead of, or
+disconnected from, the code** — worth telling this audit where (or whether)
+that code actually lives.
+
+Separately: `content/projects/homealone/index.mdx` is titled "Home Alone"
+but its summary text is Tally's actual description verbatim ("household
+expense and subscription tracker... synced across every device"), and the
+1zero9.com homepage features Tally with a case-study link pointing at
+`/projects/homealone`. The local `homealone` folder is empty (no git, no
+source, just a stray `.next` cache dir) — this reads as a real content bug
+on the live site, not a project status question.
 
 ## Flagged clusters (worth a joint decision, not five separate ones)
 
