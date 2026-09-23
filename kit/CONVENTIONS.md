@@ -265,6 +265,59 @@ request-scoped `getDb()`/`getDbAsync()` pattern, the direct-connection
 variant for local scripts, the `next.config.ts` fixes above, and the
 subdomain-attachment snippet, all from Boot Room.
 
+## Any Postgres project on Cloudflare needs a provider that actually has capacity
+
+Before wiring Hyperdrive to anything, confirm the Postgres provider has room
+for a new project — a free-tier account already at its project cap fails
+this late, after Hyperdrive/schema work is already done. Confirmed on
+ogham-design (2026-09-23): Supabase free tier was already at its one-project
+limit. Rather than opening a second provider, the fix was to question
+whether Postgres was needed at all — for a small-group app with no
+cross-project data sharing, **Cloudflare D1** (native SQLite binding) is
+the simpler default: no external account, no Hyperdrive layer, no
+`pg`/`pg-cloudflare` bundling fix, same Drizzle query API. Reach for
+Hyperdrive+Postgres specifically when data needs to live outside Cloudflare
+or be queried from elsewhere — not as the automatic default for every
+Cloudflare-hosted project with state.
+
+## WASM in a Next.js route on Cloudflare Workers: three distinct failure modes, not one
+
+A route that needs to rasterize something at request time (fonts, image
+composition, etc.) cannot use a native-binding library (`sharp`,
+`@napi-rs/*`) — confirmed on ogham-design (2026-09-23), fails to load at
+all on Workers. The WASM alternative has two further, separate failure
+modes that each look like a fix until the next one appears:
+
+1. **Fetching the `.wasm` binary at runtime and calling
+   `WebAssembly.instantiate()` on the bytes fails** — Workers' security
+   model disallows compiling WASM from dynamically-fetched bytes:
+   `CompileError: Wasm code generation disallowed by embedder`. WASM must
+   be statically imported so wrangler's bundler precompiles it at deploy
+   time into a `WebAssembly.Module`.
+2. **Next's own bundler (both Turbopack and webpack) cannot parse that
+   static import correctly** — it tries to treat the `.wasm` file as a
+   wasm-bindgen module with named JS-glue exports (`Attempted import
+   error: does not contain a default export` / `Module not found: Can't
+   resolve 'wbg'`), which is incompatible with wrangler/esbuild's actual
+   convention (a raw, uninstantiated `Module`, linked by the package's own
+   code). Neither `experiments.asyncWebAssembly` nor `--webpack` fixes
+   this — it's a genuine semantic mismatch, not a missing flag.
+
+Fix: use a package built specifically for this Cloudflare/Next combination
+(`@cf-wasm/resvg`'s `/workerd` entrypoint for SVG/font rasterization, not
+plain `@resvg/resvg-wasm`), and add it to `serverExternalPackages` in
+`next.config.ts` so Next's bundler never touches the `.wasm` import at all
+— OpenNext's later esbuild pass (which does understand wrangler's
+convention) bundles it correctly. Non-WASM assets (fonts, etc.) the route
+also needs can still be fetched at runtime via the Worker's own `ASSETS`
+binding (`env.ASSETS.fetch(new URL("/font.ttf", "http://assets.local"))`)
+— only the WASM binary itself needs the static-import treatment.
+
+A clean `next build` and successful `wrangler deploy` proved nothing for
+either of the WASM failures above — both only surfaced on an actual
+authenticated request against the live URL, the same lesson as the Prisma
+guardrail above.
+
 ## A password-manager update is not a production update
 
 1Password is the source of secret values, not a magic sync to every deployment.
