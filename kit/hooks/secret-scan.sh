@@ -29,7 +29,13 @@ diff=$(git diff --cached 2>/dev/null; git diff 2>/dev/null)
 
 # POSIX extended regex (BSD grep on macOS has no -P/PCRE support) — no \s,
 # no (?i); case-insensitivity comes from -i, whitespace from [[:space:]].
-pattern='(password[[:space:]]*[:=]|api[_-]?key[[:space:]]*[:=]|secret[[:space:]]*[:=]|bearer[[:space:]]+[A-Za-z0-9._-]{20,}|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|AKIA[0-9A-Z]{16}|connectionstring[[:space:]]*[:=]|(postgres|postgresql|mysql|mongodb)(\+[a-z]+)?://[^:[:space:]]+:[^@[:space:]]+@)'
+#
+# password/api-key/secret/connectionstring require a quote (', ", or `)
+# right after the [:=] — that's the shape of a hardcoded string literal,
+# not a variable read like `String(formData.get(...))` or `req.body.password`,
+# which matched too before this change (2026-09-23, lastman) — reading a
+# value out of a request/form is not a secret, only assigning a literal is.
+pattern="(password[[:space:]]*[:=][[:space:]]*['\"\`]|api[_-]?key[[:space:]]*[:=][[:space:]]*['\"\`]|secret[[:space:]]*[:=][[:space:]]*['\"\`]|bearer[[:space:]]+[A-Za-z0-9._-]{20,}|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|AKIA[0-9A-Z]{16}|connectionstring[[:space:]]*[:=][[:space:]]*['\"\`]|(postgres|postgresql|mysql|mongodb)(\+[a-z]+)?://[^:[:space:]]+:[^@[:space:]]+@)"
 
 match=$(echo "$diff" | grep -iEo "$pattern" | head -5)
 
