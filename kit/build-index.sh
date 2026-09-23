@@ -57,6 +57,11 @@ for d in */; do
   else
     [ -f "${d}requirements.txt" ] || [ -f "${d}pyproject.toml" ] && stack="python"
     [ -f "${d}Package.swift" ] || ls "${d}"*.xcodeproj >/dev/null 2>&1 && stack="swift"
+    # A real, shippable project needn't have a build tool at all - a plain
+    # HTML/JS/CSS page (ParkRun's canvas game, live as "Park Run Dash" on
+    # 1zero9.com) has neither, and fell through to "-" (looks empty/parked)
+    # until this was added. See feedback-site-is-ground-truth memory.
+    [ -z "$stack" ] && [ -f "${d}index.html" ] && stack="html"
     [ -z "$stack" ] && stack="-"
   fi
 
@@ -73,6 +78,12 @@ for d in */; do
   # --- activity + size ---
   last=$(git -C "$d" log -1 --format=%ad --date=short 2>/dev/null || echo "-")
   files=$(git -C "$d" ls-files 2>/dev/null | wc -l | tr -d ' ')
+  # A project with no git repo at all (never `git init`) isn't necessarily
+  # empty or abandoned - fall back to a real file count instead of "-",
+  # which reads as "nothing here" and hides a genuinely shipped project.
+  if [ "$files" = "0" ]; then
+    files=$(find "$d" -type f -not -path '*/node_modules/*' -not -path '*/.git/*' 2>/dev/null | wc -l | tr -d ' ')
+  fi
   [ "$files" = "0" ] && files="-"
 
   # --- purpose: first non-empty, non-heading line of README ---
