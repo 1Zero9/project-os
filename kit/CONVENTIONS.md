@@ -218,6 +218,14 @@ relationship to the tenant. Keep genuinely public content (for example a
 generic landing page or fixture list) explicitly separate, and do not cache
 private dashboard reads in a service worker or public data cache.
 
+When a controlled app needs a public demonstration, make it an explicit,
+read-only demo route backed by one known synthetic tenant. Never achieve it by
+leaving all active tenants public and hoping their URLs stay obscure. The demo
+must say that its data is fictional and must not permit joining, picking,
+payment, or access to an organiser area. Last Man Standing's public demo
+(2026-09-23) exposed only fixture-style sample data; every real competition,
+including its fixture route, requires membership.
+
 ## A fallback path must never show more than the success path would
 
 If public content is filtered for visibility (archived, hidden, draft,
