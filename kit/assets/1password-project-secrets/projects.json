@@ -23,7 +23,8 @@
     "env": {
       "PRISMA_DATABASE_URL": "op://Last Man Standing/Last Man Standing/PRISMA_DATABASE_URL",
       "AUTH_SECRET": "op://Last Man Standing/Last Man Standing/AUTH_SECRET",
-      "RESEND_API_KEY": "op://Last Man Standing/Last Man Standing/RESEND_API_KEY"
+      "RESEND_API_KEY": "op://Last Man Standing/Last Man Standing/RESEND_API_KEY",
+      "SHOWCASE_PASSWORD": "op://Last Man Standing/Last Man Standing/SHOWCASE_PASSWORD"
     }
   }
 }
