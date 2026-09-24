@@ -82,6 +82,20 @@ Add a test for the credit where the project has a test suite (asserting on
 "Built by" text and the `1zero9.com` href is enough — don't assert on exact
 markup), so it cannot quietly disappear in a redesign.
 
+**A source asset is not a shipped asset.** When adding a referenced static
+file — especially a footer mark copied from the kit — confirm it exists in
+the project's public/static directory *and* request its deployed URL after
+release. A screenshot can expose the failure immediately: a broken-image
+placeholder next to an otherwise correct credit still fails the credit
+requirement. This caught an Ogham Design footer that referenced the dark-footer
+white mark without copying it into `public/` (2026-09-24). Build success does
+not validate runtime asset paths.
+
+For a visual redesign, inspect one real desktop render and one narrow/mobile
+render after deployment. Treat the visual states of selected controls,
+disabled controls, remote/static images, and the footer as acceptance criteria;
+they are product behaviour, not cosmetic follow-up.
+
 ## Every finished site goes in the portfolio
 
 The portfolio is `~/Projects/1Zero9Studio`, on Vercel, deploying from `main`.
