@@ -96,6 +96,16 @@ render after deployment. Treat the visual states of selected controls,
 disabled controls, remote/static images, and the footer as acceptance criteria;
 they are product behaviour, not cosmetic follow-up.
 
+**A new Worker version does not necessarily replace cached HTML at the edge.**
+After a release, verify the canonical URL without a query string, not only a
+cache-busted URL. If `/?release=<id>` shows the new UI while `/` shows the old
+one, the deployment succeeded but the edge is serving stale HTML. Make the
+page's cache policy intentional (for a frequently redesigned public landing
+page, use dynamic/no-store rendering) or purge the exact public URL before
+calling the release complete. Ogham Design exposed this on 2026-09-24: its
+new Worker was at 100%, yet `/` continued to return the preceding design from
+a one-year static response cache.
+
 ## Every finished site goes in the portfolio
 
 The portfolio is `~/Projects/1Zero9Studio`, on Vercel, deploying from `main`.
