@@ -105,6 +105,15 @@ of this sweep).
   portfolio MDX added). This is the concrete pattern worth repeating for
   any Keep/Refresh project that's missing them: **git-wired ≠
   Project-OS-wired**, and nothing currently checks the second one.
+  **Update 2026-09-25:** the same sweep's "genuinely references Project-OS"
+  check was too shallow even for this fixed case — `ogham-design`'s
+  `CLAUDE.md` was still the plain Next.js-generated `@AGENTS.md` stub
+  pointing at its own repo, not `@/Users/stephencranfield/Projects/Project-OS/AGENTS.md`
+  like the rest of the wired projects. Fixed, and untracked/gitignored to
+  match the personal, machine-specific convention. Worth adding this as a
+  fourth mechanical signal alongside the other three next time this sweep
+  runs — README/credit/portfolio-entry existing doesn't mean the actual
+  handoff link is correct.
 
 ## Portfolio content vs. live code (2026-09-23)
 
