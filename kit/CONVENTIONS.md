@@ -483,3 +483,45 @@ extracted from Finn's Team on 2026-09-26 specifically because that project
 had already shipped a plain score line, been told it "looks basic," and
 needed a second pass to fix what copying the asset up front would have
 avoided. Check here before reinventing this one again.
+
+## A feature-simplification pass leaves the old CSS/code behind - audit it via the import graph, not grep
+
+Run `kit/assets/dead-code-audit/` rather than re-deriving this by hand —
+four small scripts (trace real imports from the entry points, find dead
+classes against that live set, prune, mechanically verify nothing live
+changed) that do exactly what the rest of this entry describes.
+
+When a project gets stripped down to fewer routes (a "simplify to X" commit,
+a pivot, a scope cut), the removed pages' CSS and helper files routinely
+stay behind wholesale. Confirmed on Finn's Team (2026-09-26): `app/page.tsx`
+had been a bare `redirect('/portal')` for a while, only 5 routes actually
+existed, and `globals.css` still carried ~5,000 dead lines from an entire
+earlier app (public marketing homepage, photo gallery, gamification,
+nutrition, training, staff admin) — plus 6 dead `.ts`/`.tsx` files and 3 dead
+server actions whose only callers were the removed pages.
+
+Grep-for-the-classname is not sufficient to find this: a class or exported
+function can appear "used" inside a component that is itself never imported
+by anything live (`sc-section.tsx` on Finn's Team referenced several classes
+inside its own JSX while being an orphaned file nothing rendered). Trace the
+real reachability graph instead — walk `import`/`export ... from` statements
+outward from the actual entry points (every `page.tsx`, `layout.tsx`, and
+`route.ts`) and treat anything unreached as the live set; check dead-code
+candidates against *that*, not a text search of the repo. A `.tsx`/`.ts`
+file is dead when nothing in the live set imports it; a CSS class is dead
+when the live set's file contents (checked as an exact, word-boundary token,
+not a substring — `"card"` is a substring of `"card-label"` and will produce
+false "still used" positives otherwise) never contain it.
+
+Before applying a mass deletion of CSS/code found this way — no visual
+verification tool was available in that session, which is exactly the
+situation the "visual claim needs an actual render" convention above warns
+about — mechanically verify the edit is safe rather than trusting the diff
+by eye: re-parse the original and the edited file into individual selectors/
+rule bodies, and assert every selector that maps to a still-live class has a
+byte-identical declaration body, in the same order, before and after. This
+turns "I deleted what I believe is dead" into "I proved nothing live
+changed," which is checkable without ever rendering the page — the removal
+found and fixed a real bug in the process (a prior maroon rebrand's blanket
+colour replace had left light-blue text on a now-maroon badge in a component
+nobody had actually looked at since).

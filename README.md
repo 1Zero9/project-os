@@ -26,7 +26,8 @@ The kit is deliberately small and directly consumable:
 - skills for shaping a new project, taking over an inherited one, making a
   visual change, and checking audience fit;
 - copy-and-adapt assets for resilient API ingestion, small-group auth,
-  Prisma/Postgres, PWAs, Gemini, and a sports/results-list card;
+  Prisma/Postgres, PWAs, Gemini, a sports/results-list card, and a
+  verified dead-code audit for a project that's been simplified down;
 - conventions earned from deployed projects, including safe fallbacks and
   OpenNext/Cloudflare caching.
 
