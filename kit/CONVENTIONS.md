@@ -473,3 +473,13 @@ before calling a visual or branding change done — matches this file's
 existing "inspect one real desktop render and one narrow/mobile render after
 deployment" rule, generalised past redesigns to any change where appearance
 is the point.
+
+## A results/scoreline list starts from the result-card asset, not a text line
+
+Before building a match/game/fixture results list from scratch — a plain
+"Team A 3 - 1 Team B" text line, then patching its styling reactively — copy
+`kit/assets/result-card/`. It's the W/D/L-badge-plus-crest-row pattern
+extracted from Finn's Team on 2026-09-26 specifically because that project
+had already shipped a plain score line, been told it "looks basic," and
+needed a second pass to fix what copying the asset up front would have
+avoided. Check here before reinventing this one again.
