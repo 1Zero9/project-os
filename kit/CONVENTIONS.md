@@ -419,3 +419,57 @@ simply ending, since the next one may not be the same tool — leave a short
 dated note in the project's own repo (a `CURRENT-STATE.md`, a code comment
 next to the decision, or a commit message that says why, not just what) rather
 than trusting the decision survives in conversation alone.
+
+## An id sourced from a scraped/external list must be derived from the record, never its position
+
+A match/result/fixture tracker that scrapes a third-party page and assigns
+each row `id: source-${leagueId}-${idx++}` (a plain counter over that scrape)
+is not giving those rows a stable identity — it's numbering today's HTML
+order. Confirmed on RVR 2014 Team Admin/"Finn's Team" (2026-09-26): the same
+real fixture (e.g. "Greystones United AFC, 29 Aug") was found under six
+different ids across old syncs, because the counter ran over the *entire*
+division (147 rows), so any match anywhere reordering — a result posted, a
+new fixture added — reassigned the number for everything after it. The
+private, user-entered result (score, scorers, player of the match) saved
+against that id at import time stayed on the old number while the live page
+moved on, so a later lookup by the same id silently returned a *different*,
+unrelated match. This is not a missing-foreign-key bug — every join still
+resolved to a real row, just the wrong one — so it produced no error, only
+wrong data (a match shown against the wrong opponent, today's result briefly
+attributed to a fixture that hadn't been played), until checked against
+ground truth the founder actually had ("today we played St Joseph's").
+
+Derive the id from the record's own stable content instead —
+`slug(date) + slug(homeTeam) + slug(awayTeam)` is enough for anything with a
+fixed date — so a resync reproduces the *same* id for the *same* real event,
+not a new one. When migrating an existing project off a positional id, expect
+the id to have already drifted under live data: reconcile each stored record
+against ground truth (ask, don't infer) before trusting the old id → new id
+mapping, and don't silently guess when several old records can't be
+confidently matched — say so and ask, the same way this file's own
+`AGENTS.md` pattern expects a real decision to be surfaced, not assumed.
+
+## A visual/branding claim needs an actual render, not a passing build and a grep
+
+"Build succeeded" and "the HTML now contains X" are necessary, not
+sufficient, for a claim about how something *looks* — this file's Prisma and
+WASM entries already established that for runtime correctness; the same gap
+exists for appearance, and no build or `curl` catches it. Confirmed twice in
+one session on RVR 2014 Team Admin (2026-09-26): a full accent-colour rebrand
+was reported "confirmed" from a compiled-CSS variable check alone, without
+ever seeing it rendered — and while adding a compact logo to a page's topbar
+in the same session, the src was set to the transparent-background,
+white-line asset variant (correct for the dark sidebar it was copied from)
+against a *light* topbar background, which would have rendered the crest
+functionally invisible; caught only by reasoning about the two assets'
+backgrounds, not by seeing it, because no screenshot tool was available in
+that session.
+
+When no visual-verification tool (screenshot, browser, device emulator) is
+available: say exactly that ("I can't see this rendered — here's what the
+code does, please confirm the actual result") rather than a confidence-laden
+"confirmed" resting on text/structure checks. When one *is* available, use it
+before calling a visual or branding change done — matches this file's
+existing "inspect one real desktop render and one narrow/mobile render after
+deployment" rule, generalised past redesigns to any change where appearance
+is the point.
