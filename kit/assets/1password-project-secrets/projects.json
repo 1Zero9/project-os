@@ -26,5 +26,13 @@
       "RESEND_API_KEY": "op://Last Man Standing/Last Man Standing/RESEND_API_KEY",
       "SHOWCASE_PASSWORD": "op://Last Man Standing/Last Man Standing/SHOWCASE_PASSWORD"
     }
+  },
+  "vantage-sport-travel": {
+    "vault": "Vantage Sport Travel",
+    "item": "Vantage Sport Travel",
+    "env": {
+      "ADMIN_PASSWORD": "op://Vantage Sport Travel/Vantage Sport Travel/ADMIN_PASSWORD",
+      "ADMIN_SESSION_SECRET": "op://Vantage Sport Travel/Vantage Sport Travel/ADMIN_SESSION_SECRET"
+    }
   }
 }
