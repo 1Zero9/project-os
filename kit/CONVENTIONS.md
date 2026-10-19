@@ -106,6 +106,22 @@ calling the release complete. Ogham Design exposed this on 2026-09-24: its
 new Worker was at 100%, yet `/` continued to return the preceding design from
 a one-year static response cache.
 
+## A 200 and correct HTML do not prove a site looks right
+
+Fosterstown (2026-10-19) was live for hours serving plain, unstyled
+browser-default HTML. Rewriting `next.config.ts` for a static export had
+dropped the scaffold's `turbopack.rules` entry that compiles Tailwind v4, so
+the built stylesheet was 99 bytes. Every check that had been run passed: HTTP
+200, expected text in the HTML, correct canonicals. None of them looked at a
+render, and only taking a screenshot for the portfolio exposed it.
+
+- When replacing a scaffolded config file, diff it against the original and
+  keep every entry you did not mean to remove.
+- After any deploy, open a real screenshot of the live URL (desktop, and a
+  true phone-width frame: headless Chrome will not render below about 500px
+  wide, so put the page in a 390px iframe), and check the built CSS is not
+  near-empty.
+
 ## Every finished site goes in the portfolio
 
 The portfolio is `~/Projects/1Zero9Studio`, on Vercel, deploying from `main`.
